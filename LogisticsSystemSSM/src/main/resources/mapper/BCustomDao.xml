@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.BCustomDao">
+
+    <resultMap type="com.logistics.entity.BCustom" id="BCustomMap">
+        <result property="customid" column="CustomID" jdbcType="INTEGER"/>
+        <result property="customertypeid" column="CustomerTypeID" jdbcType="INTEGER"/>
+        <result property="customname" column="CustomName" jdbcType="VARCHAR"/>
+        <result property="custompassword" column="CustomPassword" jdbcType="VARCHAR"/>
+        <result property="customphonenumber" column="CustomPhoneNumber" jdbcType="VARCHAR"/>
+        <result property="sex" column="Sex" jdbcType="VARCHAR"/>
+        <result property="customidnumber" column="CustomIDNumber" jdbcType="VARCHAR"/>
+        <result property="customidphoto" column="CustomIDPhoto" jdbcType="VARCHAR"/>
+        <result property="customerusername" column="CustomerUsername" jdbcType="VARCHAR"/>
+        <result property="qq" column="QQ" jdbcType="VARCHAR"/>
+        <result property="mailbox" column="Mailbox" jdbcType="VARCHAR"/>
+        <result property="registrationdate" column="RegistrationDate" jdbcType="TIMESTAMP"/>
+        <result property="telephonenumber" column="TelephoneNumber" jdbcType="VARCHAR"/>
+        <result property="businesslicense" column="BusinessLicense" jdbcType="VARCHAR"/>
+        <result property="businesslicensenumber" column="BusinessLicenseNumber" jdbcType="VARCHAR"/>
+        <result property="corporaterepresentative" column="CorporateRepresentative" jdbcType="VARCHAR"/>
+        <result property="companyadress" column="CompanyAdress" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BCustomMap">
+        select
+          CustomID, CustomerTypeID, CustomName, CustomPassword, CustomPhoneNumber, Sex, CustomIDNumber, CustomIDPhoto, CustomerUsername, QQ, Mailbox, RegistrationDate, TelephoneNumber, BusinessLicense, BusinessLicenseNumber, CorporateRepresentative, CompanyAdress
+        from wl.b_custom
+        where CustomID = #{customid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BCustomMap">
+        select
+          CustomID, CustomerTypeID, CustomName, CustomPassword, CustomPhoneNumber, Sex, CustomIDNumber, CustomIDPhoto, CustomerUsername, QQ, Mailbox, RegistrationDate, TelephoneNumber, BusinessLicense, BusinessLicenseNumber, CorporateRepresentative, CompanyAdress
+        from wl.b_custom
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BCustomMap">
+        select
+          CustomID, CustomerTypeID, CustomName, CustomPassword, CustomPhoneNumber, Sex, CustomIDNumber, CustomIDPhoto, CustomerUsername, QQ, Mailbox, RegistrationDate, TelephoneNumber, BusinessLicense, BusinessLicenseNumber, CorporateRepresentative, CompanyAdress
+        from wl.b_custom
+        <where>
+            <if test="customid != null">
+                and CustomID = #{customid}
+            </if>
+            <if test="customertypeid != null">
+                and CustomerTypeID = #{customertypeid}
+            </if>
+            <if test="customname != null and customname != ''">
+                and CustomName = #{customname}
+            </if>
+            <if test="custompassword != null and custompassword != ''">
+                and CustomPassword = #{custompassword}
+            </if>
+            <if test="customphonenumber != null and customphonenumber != ''">
+                and CustomPhoneNumber = #{customphonenumber}
+            </if>
+            <if test="sex != null and sex != ''">
+                and Sex = #{sex}
+            </if>
+            <if test="customidnumber != null and customidnumber != ''">
+                and CustomIDNumber = #{customidnumber}
+            </if>
+            <if test="customidphoto != null and customidphoto != ''">
+                and CustomIDPhoto = #{customidphoto}
+            </if>
+            <if test="customerusername != null and customerusername != ''">
+                and CustomerUsername = #{customerusername}
+            </if>
+            <if test="qq != null and qq != ''">
+                and QQ = #{qq}
+            </if>
+            <if test="mailbox != null and mailbox != ''">
+                and Mailbox = #{mailbox}
+            </if>
+            <if test="registrationdate != null">
+                and RegistrationDate = #{registrationdate}
+            </if>
+            <if test="telephonenumber != null and telephonenumber != ''">
+                and TelephoneNumber = #{telephonenumber}
+            </if>
+            <if test="businesslicense != null and businesslicense != ''">
+                and BusinessLicense = #{businesslicense}
+            </if>
+            <if test="businesslicensenumber != null and businesslicensenumber != ''">
+                and BusinessLicenseNumber = #{businesslicensenumber}
+            </if>
+            <if test="corporaterepresentative != null and corporaterepresentative != ''">
+                and CorporateRepresentative = #{corporaterepresentative}
+            </if>
+            <if test="companyadress != null and companyadress != ''">
+                and CompanyAdress = #{companyadress}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="customid" useGeneratedKeys="true">
+        insert into wl.b_custom(CustomerTypeID, CustomName, CustomPassword, CustomPhoneNumber, Sex, CustomIDNumber, CustomIDPhoto, CustomerUsername, QQ, Mailbox, RegistrationDate, TelephoneNumber, BusinessLicense, BusinessLicenseNumber, CorporateRepresentative, CompanyAdress)
+        values (#{customertypeid}, #{customname}, #{custompassword}, #{customphonenumber}, #{sex}, #{customidnumber}, #{customidphoto}, #{customerusername}, #{qq}, #{mailbox}, #{registrationdate}, #{telephonenumber}, #{businesslicense}, #{businesslicensenumber}, #{corporaterepresentative}, #{companyadress})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.b_custom
+        <set>
+            <if test="customertypeid != null">
+                CustomerTypeID = #{customertypeid},
+            </if>
+            <if test="customname != null and customname != ''">
+                CustomName = #{customname},
+            </if>
+            <if test="custompassword != null and custompassword != ''">
+                CustomPassword = #{custompassword},
+            </if>
+            <if test="customphonenumber != null and customphonenumber != ''">
+                CustomPhoneNumber = #{customphonenumber},
+            </if>
+            <if test="sex != null and sex != ''">
+                Sex = #{sex},
+            </if>
+            <if test="customidnumber != null and customidnumber != ''">
+                CustomIDNumber = #{customidnumber},
+            </if>
+            <if test="customidphoto != null and customidphoto != ''">
+                CustomIDPhoto = #{customidphoto},
+            </if>
+            <if test="customerusername != null and customerusername != ''">
+                CustomerUsername = #{customerusername},
+            </if>
+            <if test="qq != null and qq != ''">
+                QQ = #{qq},
+            </if>
+            <if test="mailbox != null and mailbox != ''">
+                Mailbox = #{mailbox},
+            </if>
+            <if test="registrationdate != null">
+                RegistrationDate = #{registrationdate},
+            </if>
+            <if test="telephonenumber != null and telephonenumber != ''">
+                TelephoneNumber = #{telephonenumber},
+            </if>
+            <if test="businesslicense != null and businesslicense != ''">
+                BusinessLicense = #{businesslicense},
+            </if>
+            <if test="businesslicensenumber != null and businesslicensenumber != ''">
+                BusinessLicenseNumber = #{businesslicensenumber},
+            </if>
+            <if test="corporaterepresentative != null and corporaterepresentative != ''">
+                CorporateRepresentative = #{corporaterepresentative},
+            </if>
+            <if test="companyadress != null and companyadress != ''">
+                CompanyAdress = #{companyadress},
+            </if>
+        </set>
+        where CustomID = #{customid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.b_custom where CustomID = #{customid}
+    </delete>
+
+</mapper>

@@ -1,0 +1,24 @@
+{
+  "name" : "SBillingmethod",
+  "comment" : null,
+  "fullColumn" : [ {
+    "name" : "billingmethodid",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "billingmethodname",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  } ],
+  "pkColumn" : null,
+  "otherColumn" : null,
+  "savePackageName" : "com.logistics",
+  "savePath" : "./src/main/java/com/logistics",
+  "saveModelName" : "LogisticsSystemSSM"
+}

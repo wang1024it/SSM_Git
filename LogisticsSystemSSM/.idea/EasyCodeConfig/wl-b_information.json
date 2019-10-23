@@ -1,0 +1,38 @@
+{
+  "name" : "BInformation",
+  "comment" : null,
+  "fullColumn" : [ {
+    "name" : "informationid",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "informationpicture",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "informationcontent",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "isenableno",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  } ],
+  "pkColumn" : null,
+  "otherColumn" : null,
+  "savePackageName" : "com.logistics",
+  "savePath" : "./src/main/java/com/logistics",
+  "saveModelName" : "LogisticsSystemSSM"
+}

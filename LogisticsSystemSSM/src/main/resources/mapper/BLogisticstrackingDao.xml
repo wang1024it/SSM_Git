@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.BLogisticstrackingDao">
+
+    <resultMap type="com.logistics.entity.BLogisticstracking" id="BLogisticstrackingMap">
+        <result property="logisticstrackingid" column="LogisticsTrackingID" jdbcType="INTEGER"/>
+        <result property="orderformid" column="OrderFormID" jdbcType="INTEGER"/>
+        <result property="specificinformation" column="SpecificInformation" jdbcType="VARCHAR"/>
+        <result property="uploadlogisticstime" column="UploadLogisticsTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BLogisticstrackingMap">
+        select
+          LogisticsTrackingID, OrderFormID, SpecificInformation, UploadLogisticsTime
+        from wl.b_logisticstracking
+        where LogisticsTrackingID = #{logisticstrackingid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BLogisticstrackingMap">
+        select
+          LogisticsTrackingID, OrderFormID, SpecificInformation, UploadLogisticsTime
+        from wl.b_logisticstracking
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BLogisticstrackingMap">
+        select
+          LogisticsTrackingID, OrderFormID, SpecificInformation, UploadLogisticsTime
+        from wl.b_logisticstracking
+        <where>
+            <if test="logisticstrackingid != null">
+                and LogisticsTrackingID = #{logisticstrackingid}
+            </if>
+            <if test="orderformid != null">
+                and OrderFormID = #{orderformid}
+            </if>
+            <if test="specificinformation != null and specificinformation != ''">
+                and SpecificInformation = #{specificinformation}
+            </if>
+            <if test="uploadlogisticstime != null">
+                and UploadLogisticsTime = #{uploadlogisticstime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="logisticstrackingid" useGeneratedKeys="true">
+        insert into wl.b_logisticstracking(OrderFormID, SpecificInformation, UploadLogisticsTime)
+        values (#{orderformid}, #{specificinformation}, #{uploadlogisticstime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.b_logisticstracking
+        <set>
+            <if test="orderformid != null">
+                OrderFormID = #{orderformid},
+            </if>
+            <if test="specificinformation != null and specificinformation != ''">
+                SpecificInformation = #{specificinformation},
+            </if>
+            <if test="uploadlogisticstime != null">
+                UploadLogisticsTime = #{uploadlogisticstime},
+            </if>
+        </set>
+        where LogisticsTrackingID = #{logisticstrackingid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.b_logisticstracking where LogisticsTrackingID = #{logisticstrackingid}
+    </delete>
+
+</mapper>

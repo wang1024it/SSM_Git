@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.BAttendanceDao">
+
+    <resultMap type="com.logistics.entity.BAttendance" id="BAttendanceMap">
+        <result property="attendanceid" column="AttendanceID" jdbcType="INTEGER"/>
+        <result property="auditorid" column="AuditorID" jdbcType="INTEGER"/>
+        <result property="userid" column="UserID" jdbcType="INTEGER"/>
+        <result property="carid" column="CarID" jdbcType="INTEGER"/>
+        <result property="isratification" column="IsRatification" jdbcType="OTHER"/>
+        <result property="startworktime" column="StartWorkTime" jdbcType="TIMESTAMP"/>
+        <result property="offwork" column="OffWork" jdbcType="TIMESTAMP"/>
+        <result property="remark" column="Remark" jdbcType="VARCHAR"/>
+        <result property="mark" column="Mark" jdbcType="VARCHAR"/>
+        <result property="isaudit" column="IsAudit" jdbcType="OTHER"/>
+        <result property="audittime" column="AuditTime" jdbcType="TIMESTAMP"/>
+        <result property="applicationtime" column="ApplicationTime" jdbcType="TIMESTAMP"/>
+        <result property="reason" column="Reason" jdbcType="VARCHAR"/>
+        <result property="leaveday" column="LeaveDay" jdbcType="VARCHAR"/>
+        <result property="startmileage" column="StartMileage" jdbcType="OTHER"/>
+        <result property="startoilmass" column="StartOilMass" jdbcType="OTHER"/>
+        <result property="startlocation" column="StartLocation" jdbcType="VARCHAR"/>
+        <result property="offmileage" column="OffMileage" jdbcType="OTHER"/>
+        <result property="offoilmass" column="OffOilMass" jdbcType="OTHER"/>
+        <result property="offlocation" column="OffLocation" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BAttendanceMap">
+        select
+          AttendanceID, AuditorID, UserID, CarID, IsRatification, StartWorkTime, OffWork, Remark, Mark, IsAudit, AuditTime, ApplicationTime, Reason, LeaveDay, StartMileage, StartOilMass, StartLocation, OffMileage, OffOilMass, OffLocation
+        from wl.b_attendance
+        where AttendanceID = #{attendanceid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BAttendanceMap">
+        select
+          AttendanceID, AuditorID, UserID, CarID, IsRatification, StartWorkTime, OffWork, Remark, Mark, IsAudit, AuditTime, ApplicationTime, Reason, LeaveDay, StartMileage, StartOilMass, StartLocation, OffMileage, OffOilMass, OffLocation
+        from wl.b_attendance
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BAttendanceMap">
+        select
+          AttendanceID, AuditorID, UserID, CarID, IsRatification, StartWorkTime, OffWork, Remark, Mark, IsAudit, AuditTime, ApplicationTime, Reason, LeaveDay, StartMileage, StartOilMass, StartLocation, OffMileage, OffOilMass, OffLocation
+        from wl.b_attendance
+        <where>
+            <if test="attendanceid != null">
+                and AttendanceID = #{attendanceid}
+            </if>
+            <if test="auditorid != null">
+                and AuditorID = #{auditorid}
+            </if>
+            <if test="userid != null">
+                and UserID = #{userid}
+            </if>
+            <if test="carid != null">
+                and CarID = #{carid}
+            </if>
+            <if test="isratification != null">
+                and IsRatification = #{isratification}
+            </if>
+            <if test="startworktime != null">
+                and StartWorkTime = #{startworktime}
+            </if>
+            <if test="offwork != null">
+                and OffWork = #{offwork}
+            </if>
+            <if test="remark != null and remark != ''">
+                and Remark = #{remark}
+            </if>
+            <if test="mark != null and mark != ''">
+                and Mark = #{mark}
+            </if>
+            <if test="isaudit != null">
+                and IsAudit = #{isaudit}
+            </if>
+            <if test="audittime != null">
+                and AuditTime = #{audittime}
+            </if>
+            <if test="applicationtime != null">
+                and ApplicationTime = #{applicationtime}
+            </if>
+            <if test="reason != null and reason != ''">
+                and Reason = #{reason}
+            </if>
+            <if test="leaveday != null and leaveday != ''">
+                and LeaveDay = #{leaveday}
+            </if>
+            <if test="startmileage != null">
+                and StartMileage = #{startmileage}
+            </if>
+            <if test="startoilmass != null">
+                and StartOilMass = #{startoilmass}
+            </if>
+            <if test="startlocation != null and startlocation != ''">
+                and StartLocation = #{startlocation}
+            </if>
+            <if test="offmileage != null">
+                and OffMileage = #{offmileage}
+            </if>
+            <if test="offoilmass != null">
+                and OffOilMass = #{offoilmass}
+            </if>
+            <if test="offlocation != null and offlocation != ''">
+                and OffLocation = #{offlocation}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="attendanceid" useGeneratedKeys="true">
+        insert into wl.b_attendance(AuditorID, UserID, CarID, IsRatification, StartWorkTime, OffWork, Remark, Mark, IsAudit, AuditTime, ApplicationTime, Reason, LeaveDay, StartMileage, StartOilMass, StartLocation, OffMileage, OffOilMass, OffLocation)
+        values (#{auditorid}, #{userid}, #{carid}, #{isratification}, #{startworktime}, #{offwork}, #{remark}, #{mark}, #{isaudit}, #{audittime}, #{applicationtime}, #{reason}, #{leaveday}, #{startmileage}, #{startoilmass}, #{startlocation}, #{offmileage}, #{offoilmass}, #{offlocation})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.b_attendance
+        <set>
+            <if test="auditorid != null">
+                AuditorID = #{auditorid},
+            </if>
+            <if test="userid != null">
+                UserID = #{userid},
+            </if>
+            <if test="carid != null">
+                CarID = #{carid},
+            </if>
+            <if test="isratification != null">
+                IsRatification = #{isratification},
+            </if>
+            <if test="startworktime != null">
+                StartWorkTime = #{startworktime},
+            </if>
+            <if test="offwork != null">
+                OffWork = #{offwork},
+            </if>
+            <if test="remark != null and remark != ''">
+                Remark = #{remark},
+            </if>
+            <if test="mark != null and mark != ''">
+                Mark = #{mark},
+            </if>
+            <if test="isaudit != null">
+                IsAudit = #{isaudit},
+            </if>
+            <if test="audittime != null">
+                AuditTime = #{audittime},
+            </if>
+            <if test="applicationtime != null">
+                ApplicationTime = #{applicationtime},
+            </if>
+            <if test="reason != null and reason != ''">
+                Reason = #{reason},
+            </if>
+            <if test="leaveday != null and leaveday != ''">
+                LeaveDay = #{leaveday},
+            </if>
+            <if test="startmileage != null">
+                StartMileage = #{startmileage},
+            </if>
+            <if test="startoilmass != null">
+                StartOilMass = #{startoilmass},
+            </if>
+            <if test="startlocation != null and startlocation != ''">
+                StartLocation = #{startlocation},
+            </if>
+            <if test="offmileage != null">
+                OffMileage = #{offmileage},
+            </if>
+            <if test="offoilmass != null">
+                OffOilMass = #{offoilmass},
+            </if>
+            <if test="offlocation != null and offlocation != ''">
+                OffLocation = #{offlocation},
+            </if>
+        </set>
+        where AttendanceID = #{attendanceid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.b_attendance where AttendanceID = #{attendanceid}
+    </delete>
+
+</mapper>

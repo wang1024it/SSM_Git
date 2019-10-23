@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.BInformationDao">
+
+    <resultMap type="com.logistics.entity.BInformation" id="BInformationMap">
+        <result property="informationid" column="InformationID" jdbcType="INTEGER"/>
+        <result property="informationpicture" column="InformationPicture" jdbcType="VARCHAR"/>
+        <result property="informationcontent" column="InformationContent" jdbcType="VARCHAR"/>
+        <result property="isenableno" column="IsEnableNo" jdbcType="OTHER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BInformationMap">
+        select
+          InformationID, InformationPicture, InformationContent, IsEnableNo
+        from wl.b_information
+        where InformationID = #{informationid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BInformationMap">
+        select
+          InformationID, InformationPicture, InformationContent, IsEnableNo
+        from wl.b_information
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BInformationMap">
+        select
+          InformationID, InformationPicture, InformationContent, IsEnableNo
+        from wl.b_information
+        <where>
+            <if test="informationid != null">
+                and InformationID = #{informationid}
+            </if>
+            <if test="informationpicture != null and informationpicture != ''">
+                and InformationPicture = #{informationpicture}
+            </if>
+            <if test="informationcontent != null and informationcontent != ''">
+                and InformationContent = #{informationcontent}
+            </if>
+            <if test="isenableno != null">
+                and IsEnableNo = #{isenableno}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="informationid" useGeneratedKeys="true">
+        insert into wl.b_information(InformationPicture, InformationContent, IsEnableNo)
+        values (#{informationpicture}, #{informationcontent}, #{isenableno})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.b_information
+        <set>
+            <if test="informationpicture != null and informationpicture != ''">
+                InformationPicture = #{informationpicture},
+            </if>
+            <if test="informationcontent != null and informationcontent != ''">
+                InformationContent = #{informationcontent},
+            </if>
+            <if test="isenableno != null">
+                IsEnableNo = #{isenableno},
+            </if>
+        </set>
+        where InformationID = #{informationid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.b_information where InformationID = #{informationid}
+    </delete>
+
+</mapper>

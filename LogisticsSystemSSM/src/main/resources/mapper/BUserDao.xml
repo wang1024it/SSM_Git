@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.BUserDao">
+
+    <resultMap type="com.logistics.entity.BUser" id="BUserMap">
+        <result property="userid" column="UserID" jdbcType="INTEGER"/>
+        <result property="institutionalorganizationid" column="InstitutionalOrganizationID" jdbcType="INTEGER"/>
+        <result property="statusid" column="StatusID" jdbcType="INTEGER"/>
+        <result property="username" column="UserName" jdbcType="VARCHAR"/>
+        <result property="phonenumber" column="PhoneNumber" jdbcType="VARCHAR"/>
+        <result property="loginpassword" column="LoginPassword" jdbcType="VARCHAR"/>
+        <result property="paymentpassword" column="PaymentPassword" jdbcType="VARCHAR"/>
+        <result property="idnumber" column="IDNumber" jdbcType="VARCHAR"/>
+        <result property="idphoto" column="IDPhoto" jdbcType="VARCHAR"/>
+        <result property="photo" column="Photo" jdbcType="VARCHAR"/>
+        <result property="sex" column="Sex" jdbcType="VARCHAR"/>
+        <result property="drivinglicencephoto" column="DrivingLicencePhoto" jdbcType="VARCHAR"/>
+        <result property="mancarphoto" column="ManCarPhoto" jdbcType="VARCHAR"/>
+        <result property="ishavecar" column="IsHaveCar" jdbcType="OTHER"/>
+        <result property="remainingsum" column="RemainingSum" jdbcType="OTHER"/>
+        <result property="entrytime" column="EntryTime" jdbcType="TIMESTAMP"/>
+        <result property="departuretime" column="DepartureTime" jdbcType="TIMESTAMP"/>
+        <result property="address" column="Address" jdbcType="VARCHAR"/>
+        <result property="enableno" column="EnableNo" jdbcType="OTHER"/>
+        <result property="onlinetime" column="OnLineTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BUserMap">
+        select
+          UserID, InstitutionalOrganizationID, StatusID, UserName, PhoneNumber, LoginPassword, PaymentPassword, IDNumber, IDPhoto, Photo, Sex, DrivingLicencePhoto, ManCarPhoto, IsHaveCar, RemainingSum, EntryTime, DepartureTime, Address, EnableNo, OnLineTime
+        from wl.b_user
+        where UserID = #{userid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BUserMap">
+        select
+          UserID, InstitutionalOrganizationID, StatusID, UserName, PhoneNumber, LoginPassword, PaymentPassword, IDNumber, IDPhoto, Photo, Sex, DrivingLicencePhoto, ManCarPhoto, IsHaveCar, RemainingSum, EntryTime, DepartureTime, Address, EnableNo, OnLineTime
+        from wl.b_user
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BUserMap">
+        select
+          UserID, InstitutionalOrganizationID, StatusID, UserName, PhoneNumber, LoginPassword, PaymentPassword, IDNumber, IDPhoto, Photo, Sex, DrivingLicencePhoto, ManCarPhoto, IsHaveCar, RemainingSum, EntryTime, DepartureTime, Address, EnableNo, OnLineTime
+        from wl.b_user
+        <where>
+            <if test="userid != null">
+                and UserID = #{userid}
+            </if>
+            <if test="institutionalorganizationid != null">
+                and InstitutionalOrganizationID = #{institutionalorganizationid}
+            </if>
+            <if test="statusid != null">
+                and StatusID = #{statusid}
+            </if>
+            <if test="username != null and username != ''">
+                and UserName = #{username}
+            </if>
+            <if test="phonenumber != null and phonenumber != ''">
+                and PhoneNumber = #{phonenumber}
+            </if>
+            <if test="loginpassword != null and loginpassword != ''">
+                and LoginPassword = #{loginpassword}
+            </if>
+            <if test="paymentpassword != null and paymentpassword != ''">
+                and PaymentPassword = #{paymentpassword}
+            </if>
+            <if test="idnumber != null and idnumber != ''">
+                and IDNumber = #{idnumber}
+            </if>
+            <if test="idphoto != null and idphoto != ''">
+                and IDPhoto = #{idphoto}
+            </if>
+            <if test="photo != null and photo != ''">
+                and Photo = #{photo}
+            </if>
+            <if test="sex != null and sex != ''">
+                and Sex = #{sex}
+            </if>
+            <if test="drivinglicencephoto != null and drivinglicencephoto != ''">
+                and DrivingLicencePhoto = #{drivinglicencephoto}
+            </if>
+            <if test="mancarphoto != null and mancarphoto != ''">
+                and ManCarPhoto = #{mancarphoto}
+            </if>
+            <if test="ishavecar != null">
+                and IsHaveCar = #{ishavecar}
+            </if>
+            <if test="remainingsum != null">
+                and RemainingSum = #{remainingsum}
+            </if>
+            <if test="entrytime != null">
+                and EntryTime = #{entrytime}
+            </if>
+            <if test="departuretime != null">
+                and DepartureTime = #{departuretime}
+            </if>
+            <if test="address != null and address != ''">
+                and Address = #{address}
+            </if>
+            <if test="enableno != null">
+                and EnableNo = #{enableno}
+            </if>
+            <if test="onlinetime != null">
+                and OnLineTime = #{onlinetime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="userid" useGeneratedKeys="true">
+        insert into wl.b_user(InstitutionalOrganizationID, StatusID, UserName, PhoneNumber, LoginPassword, PaymentPassword, IDNumber, IDPhoto, Photo, Sex, DrivingLicencePhoto, ManCarPhoto, IsHaveCar, RemainingSum, EntryTime, DepartureTime, Address, EnableNo, OnLineTime)
+        values (#{institutionalorganizationid}, #{statusid}, #{username}, #{phonenumber}, #{loginpassword}, #{paymentpassword}, #{idnumber}, #{idphoto}, #{photo}, #{sex}, #{drivinglicencephoto}, #{mancarphoto}, #{ishavecar}, #{remainingsum}, #{entrytime}, #{departuretime}, #{address}, #{enableno}, #{onlinetime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.b_user
+        <set>
+            <if test="institutionalorganizationid != null">
+                InstitutionalOrganizationID = #{institutionalorganizationid},
+            </if>
+            <if test="statusid != null">
+                StatusID = #{statusid},
+            </if>
+            <if test="username != null and username != ''">
+                UserName = #{username},
+            </if>
+            <if test="phonenumber != null and phonenumber != ''">
+                PhoneNumber = #{phonenumber},
+            </if>
+            <if test="loginpassword != null and loginpassword != ''">
+                LoginPassword = #{loginpassword},
+            </if>
+            <if test="paymentpassword != null and paymentpassword != ''">
+                PaymentPassword = #{paymentpassword},
+            </if>
+            <if test="idnumber != null and idnumber != ''">
+                IDNumber = #{idnumber},
+            </if>
+            <if test="idphoto != null and idphoto != ''">
+                IDPhoto = #{idphoto},
+            </if>
+            <if test="photo != null and photo != ''">
+                Photo = #{photo},
+            </if>
+            <if test="sex != null and sex != ''">
+                Sex = #{sex},
+            </if>
+            <if test="drivinglicencephoto != null and drivinglicencephoto != ''">
+                DrivingLicencePhoto = #{drivinglicencephoto},
+            </if>
+            <if test="mancarphoto != null and mancarphoto != ''">
+                ManCarPhoto = #{mancarphoto},
+            </if>
+            <if test="ishavecar != null">
+                IsHaveCar = #{ishavecar},
+            </if>
+            <if test="remainingsum != null">
+                RemainingSum = #{remainingsum},
+            </if>
+            <if test="entrytime != null">
+                EntryTime = #{entrytime},
+            </if>
+            <if test="departuretime != null">
+                DepartureTime = #{departuretime},
+            </if>
+            <if test="address != null and address != ''">
+                Address = #{address},
+            </if>
+            <if test="enableno != null">
+                EnableNo = #{enableno},
+            </if>
+            <if test="onlinetime != null">
+                OnLineTime = #{onlinetime},
+            </if>
+        </set>
+        where UserID = #{userid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.b_user where UserID = #{userid}
+    </delete>
+
+</mapper>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.BLocationDao">
+
+    <resultMap type="com.logistics.entity.BLocation" id="BLocationMap">
+        <result property="locationid" column="LocationID" jdbcType="INTEGER"/>
+        <result property="userid" column="UserID" jdbcType="INTEGER"/>
+        <result property="carlocation" column="CarLocation" jdbcType="VARCHAR"/>
+        <result property="uploadtime" column="UploadTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BLocationMap">
+        select
+          LocationID, UserID, CarLocation, UploadTime
+        from wl.b_location
+        where LocationID = #{locationid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BLocationMap">
+        select
+          LocationID, UserID, CarLocation, UploadTime
+        from wl.b_location
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BLocationMap">
+        select
+          LocationID, UserID, CarLocation, UploadTime
+        from wl.b_location
+        <where>
+            <if test="locationid != null">
+                and LocationID = #{locationid}
+            </if>
+            <if test="userid != null">
+                and UserID = #{userid}
+            </if>
+            <if test="carlocation != null and carlocation != ''">
+                and CarLocation = #{carlocation}
+            </if>
+            <if test="uploadtime != null">
+                and UploadTime = #{uploadtime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="locationid" useGeneratedKeys="true">
+        insert into wl.b_location(UserID, CarLocation, UploadTime)
+        values (#{userid}, #{carlocation}, #{uploadtime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.b_location
+        <set>
+            <if test="userid != null">
+                UserID = #{userid},
+            </if>
+            <if test="carlocation != null and carlocation != ''">
+                CarLocation = #{carlocation},
+            </if>
+            <if test="uploadtime != null">
+                UploadTime = #{uploadtime},
+            </if>
+        </set>
+        where LocationID = #{locationid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.b_location where LocationID = #{locationid}
+    </delete>
+
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.SMrchandisetypeDao">
+
+    <resultMap type="com.logistics.entity.SMrchandisetype" id="SMrchandisetypeMap">
+        <result property="mrchandisetypeid" column="MrchandiseTypeID" jdbcType="INTEGER"/>
+        <result property="mrchandisetypename" column="MrchandiseTypeName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SMrchandisetypeMap">
+        select
+          MrchandiseTypeID, MrchandiseTypeName
+        from wl.s_mrchandisetype
+        where MrchandiseTypeID = #{mrchandisetypeid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SMrchandisetypeMap">
+        select
+          MrchandiseTypeID, MrchandiseTypeName
+        from wl.s_mrchandisetype
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SMrchandisetypeMap">
+        select
+          MrchandiseTypeID, MrchandiseTypeName
+        from wl.s_mrchandisetype
+        <where>
+            <if test="mrchandisetypeid != null">
+                and MrchandiseTypeID = #{mrchandisetypeid}
+            </if>
+            <if test="mrchandisetypename != null and mrchandisetypename != ''">
+                and MrchandiseTypeName = #{mrchandisetypename}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="mrchandisetypeid" useGeneratedKeys="true">
+        insert into wl.s_mrchandisetype(MrchandiseTypeName)
+        values (#{mrchandisetypename})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.s_mrchandisetype
+        <set>
+            <if test="mrchandisetypename != null and mrchandisetypename != ''">
+                MrchandiseTypeName = #{mrchandisetypename},
+            </if>
+        </set>
+        where MrchandiseTypeID = #{mrchandisetypeid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.s_mrchandisetype where MrchandiseTypeID = #{mrchandisetypeid}
+    </delete>
+
+</mapper>

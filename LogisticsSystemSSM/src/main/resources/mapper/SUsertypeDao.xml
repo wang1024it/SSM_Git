@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.SUsertypeDao">
+
+    <resultMap type="com.logistics.entity.SUsertype" id="SUsertypeMap">
+        <result property="usertypeid" column="UserTypeID" jdbcType="INTEGER"/>
+        <result property="usertypename" column="UserTypeName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SUsertypeMap">
+        select
+          UserTypeID, UserTypeName
+        from wl.s_usertype
+        where UserTypeID = #{usertypeid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SUsertypeMap">
+        select
+          UserTypeID, UserTypeName
+        from wl.s_usertype
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SUsertypeMap">
+        select
+          UserTypeID, UserTypeName
+        from wl.s_usertype
+        <where>
+            <if test="usertypeid != null">
+                and UserTypeID = #{usertypeid}
+            </if>
+            <if test="usertypename != null and usertypename != ''">
+                and UserTypeName = #{usertypename}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="usertypeid" useGeneratedKeys="true">
+        insert into wl.s_usertype(UserTypeName)
+        values (#{usertypename})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.s_usertype
+        <set>
+            <if test="usertypename != null and usertypename != ''">
+                UserTypeName = #{usertypename},
+            </if>
+        </set>
+        where UserTypeID = #{usertypeid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.s_usertype where UserTypeID = #{usertypeid}
+    </delete>
+
+</mapper>

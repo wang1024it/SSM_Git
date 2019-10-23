@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.BPowerDao">
+
+    <resultMap type="com.logistics.entity.BPower" id="BPowerMap">
+        <result property="powerid" column="PowerID" jdbcType="INTEGER"/>
+        <result property="usertypeid" column="UserTypeID" jdbcType="INTEGER"/>
+        <result property="moduleid" column="ModuleID" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BPowerMap">
+        select
+          PowerID, UserTypeID, ModuleID
+        from wl.b_power
+        where PowerID = #{powerid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BPowerMap">
+        select
+          PowerID, UserTypeID, ModuleID
+        from wl.b_power
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BPowerMap">
+        select
+          PowerID, UserTypeID, ModuleID
+        from wl.b_power
+        <where>
+            <if test="powerid != null">
+                and PowerID = #{powerid}
+            </if>
+            <if test="usertypeid != null">
+                and UserTypeID = #{usertypeid}
+            </if>
+            <if test="moduleid != null">
+                and ModuleID = #{moduleid}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="powerid" useGeneratedKeys="true">
+        insert into wl.b_power(UserTypeID, ModuleID)
+        values (#{usertypeid}, #{moduleid})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.b_power
+        <set>
+            <if test="usertypeid != null">
+                UserTypeID = #{usertypeid},
+            </if>
+            <if test="moduleid != null">
+                ModuleID = #{moduleid},
+            </if>
+        </set>
+        where PowerID = #{powerid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.b_power where PowerID = #{powerid}
+    </delete>
+
+</mapper>

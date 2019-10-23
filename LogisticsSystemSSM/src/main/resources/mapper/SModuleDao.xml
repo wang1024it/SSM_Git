@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.SModuleDao">
+
+    <resultMap type="com.logistics.entity.SModule" id="SModuleMap">
+        <result property="moduleid" column="ModuleID" jdbcType="INTEGER"/>
+        <result property="modulename" column="ModuleName" jdbcType="VARCHAR"/>
+        <result property="moduleurl" column="ModuleUrl" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SModuleMap">
+        select
+          ModuleID, ModuleName, ModuleUrl
+        from wl.s_module
+        where ModuleID = #{moduleid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SModuleMap">
+        select
+          ModuleID, ModuleName, ModuleUrl
+        from wl.s_module
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SModuleMap">
+        select
+          ModuleID, ModuleName, ModuleUrl
+        from wl.s_module
+        <where>
+            <if test="moduleid != null">
+                and ModuleID = #{moduleid}
+            </if>
+            <if test="modulename != null and modulename != ''">
+                and ModuleName = #{modulename}
+            </if>
+            <if test="moduleurl != null and moduleurl != ''">
+                and ModuleUrl = #{moduleurl}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="moduleid" useGeneratedKeys="true">
+        insert into wl.s_module(ModuleName, ModuleUrl)
+        values (#{modulename}, #{moduleurl})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.s_module
+        <set>
+            <if test="modulename != null and modulename != ''">
+                ModuleName = #{modulename},
+            </if>
+            <if test="moduleurl != null and moduleurl != ''">
+                ModuleUrl = #{moduleurl},
+            </if>
+        </set>
+        where ModuleID = #{moduleid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.s_module where ModuleID = #{moduleid}
+    </delete>
+
+</mapper>

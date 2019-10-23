@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.BApprovalrecordDao">
+
+    <resultMap type="com.logistics.entity.BApprovalrecord" id="BApprovalrecordMap">
+        <result property="approvalrecordid" column="ApprovalRecordID" jdbcType="INTEGER"/>
+        <result property="orderformid" column="OrderFormID" jdbcType="INTEGER"/>
+        <result property="approverid" column="ApproverID" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BApprovalrecordMap">
+        select
+          ApprovalRecordID, OrderFormID, ApproverID
+        from wl.b_approvalrecord
+        where ApprovalRecordID = #{approvalrecordid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BApprovalrecordMap">
+        select
+          ApprovalRecordID, OrderFormID, ApproverID
+        from wl.b_approvalrecord
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BApprovalrecordMap">
+        select
+          ApprovalRecordID, OrderFormID, ApproverID
+        from wl.b_approvalrecord
+        <where>
+            <if test="approvalrecordid != null">
+                and ApprovalRecordID = #{approvalrecordid}
+            </if>
+            <if test="orderformid != null">
+                and OrderFormID = #{orderformid}
+            </if>
+            <if test="approverid != null">
+                and ApproverID = #{approverid}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="approvalrecordid" useGeneratedKeys="true">
+        insert into wl.b_approvalrecord(OrderFormID, ApproverID)
+        values (#{orderformid}, #{approverid})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.b_approvalrecord
+        <set>
+            <if test="orderformid != null">
+                OrderFormID = #{orderformid},
+            </if>
+            <if test="approverid != null">
+                ApproverID = #{approverid},
+            </if>
+        </set>
+        where ApprovalRecordID = #{approvalrecordid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.b_approvalrecord where ApprovalRecordID = #{approvalrecordid}
+    </delete>
+
+</mapper>

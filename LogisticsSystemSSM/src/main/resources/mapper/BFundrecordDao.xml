@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.BFundrecordDao">
+
+    <resultMap type="com.logistics.entity.BFundrecord" id="BFundrecordMap">
+        <result property="fundrecordid" column="FundRecordID" jdbcType="INTEGER"/>
+        <result property="userid" column="UserID" jdbcType="INTEGER"/>
+        <result property="auditorid" column="AuditorID" jdbcType="INTEGER"/>
+        <result property="extractmoney" column="ExtractMoney" jdbcType="OTHER"/>
+        <result property="isaudit" column="IsAudit" jdbcType="OTHER"/>
+        <result property="operationlog" column="OperationLog" jdbcType="VARCHAR"/>
+        <result property="applicationtime" column="ApplicationTime" jdbcType="TIMESTAMP"/>
+        <result property="remark" column="Remark" jdbcType="VARCHAR"/>
+        <result property="audittime" column="AuditTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BFundrecordMap">
+        select
+          FundRecordID, UserID, AuditorID, ExtractMoney, IsAudit, OperationLog, ApplicationTime, Remark, AuditTime
+        from wl.b_fundrecord
+        where FundRecordID = #{fundrecordid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BFundrecordMap">
+        select
+          FundRecordID, UserID, AuditorID, ExtractMoney, IsAudit, OperationLog, ApplicationTime, Remark, AuditTime
+        from wl.b_fundrecord
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BFundrecordMap">
+        select
+          FundRecordID, UserID, AuditorID, ExtractMoney, IsAudit, OperationLog, ApplicationTime, Remark, AuditTime
+        from wl.b_fundrecord
+        <where>
+            <if test="fundrecordid != null">
+                and FundRecordID = #{fundrecordid}
+            </if>
+            <if test="userid != null">
+                and UserID = #{userid}
+            </if>
+            <if test="auditorid != null">
+                and AuditorID = #{auditorid}
+            </if>
+            <if test="extractmoney != null">
+                and ExtractMoney = #{extractmoney}
+            </if>
+            <if test="isaudit != null">
+                and IsAudit = #{isaudit}
+            </if>
+            <if test="operationlog != null and operationlog != ''">
+                and OperationLog = #{operationlog}
+            </if>
+            <if test="applicationtime != null">
+                and ApplicationTime = #{applicationtime}
+            </if>
+            <if test="remark != null and remark != ''">
+                and Remark = #{remark}
+            </if>
+            <if test="audittime != null">
+                and AuditTime = #{audittime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="fundrecordid" useGeneratedKeys="true">
+        insert into wl.b_fundrecord(UserID, AuditorID, ExtractMoney, IsAudit, OperationLog, ApplicationTime, Remark, AuditTime)
+        values (#{userid}, #{auditorid}, #{extractmoney}, #{isaudit}, #{operationlog}, #{applicationtime}, #{remark}, #{audittime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.b_fundrecord
+        <set>
+            <if test="userid != null">
+                UserID = #{userid},
+            </if>
+            <if test="auditorid != null">
+                AuditorID = #{auditorid},
+            </if>
+            <if test="extractmoney != null">
+                ExtractMoney = #{extractmoney},
+            </if>
+            <if test="isaudit != null">
+                IsAudit = #{isaudit},
+            </if>
+            <if test="operationlog != null and operationlog != ''">
+                OperationLog = #{operationlog},
+            </if>
+            <if test="applicationtime != null">
+                ApplicationTime = #{applicationtime},
+            </if>
+            <if test="remark != null and remark != ''">
+                Remark = #{remark},
+            </if>
+            <if test="audittime != null">
+                AuditTime = #{audittime},
+            </if>
+        </set>
+        where FundRecordID = #{fundrecordid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.b_fundrecord where FundRecordID = #{fundrecordid}
+    </delete>
+
+</mapper>

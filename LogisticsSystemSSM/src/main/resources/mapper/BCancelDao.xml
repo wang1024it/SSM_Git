@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.BCancelDao">
+
+    <resultMap type="com.logistics.entity.BCancel" id="BCancelMap">
+        <result property="cancelid" column="CancelID" jdbcType="INTEGER"/>
+        <result property="orderformid" column="OrderFormID" jdbcType="INTEGER"/>
+        <result property="isaudit" column="IsAudit" jdbcType="OTHER"/>
+        <result property="operatorid" column="OperatorID" jdbcType="INTEGER"/>
+        <result property="cancelreason" column="CancelReason" jdbcType="VARCHAR"/>
+        <result property="applicationcanceltime" column="ApplicationCancelTime" jdbcType="TIMESTAMP"/>
+        <result property="auditcanceltime" column="AuditCancelTime" jdbcType="TIMESTAMP"/>
+        <result property="defaultmoney" column="DefaultMoney" jdbcType="OTHER"/>
+        <result property="cancelremark" column="CancelRemark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BCancelMap">
+        select
+          CancelID, OrderFormID, IsAudit, OperatorID, CancelReason, ApplicationCancelTime, AuditCancelTime, DefaultMoney, CancelRemark
+        from wl.b_cancel
+        where CancelID = #{cancelid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BCancelMap">
+        select
+          CancelID, OrderFormID, IsAudit, OperatorID, CancelReason, ApplicationCancelTime, AuditCancelTime, DefaultMoney, CancelRemark
+        from wl.b_cancel
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BCancelMap">
+        select
+          CancelID, OrderFormID, IsAudit, OperatorID, CancelReason, ApplicationCancelTime, AuditCancelTime, DefaultMoney, CancelRemark
+        from wl.b_cancel
+        <where>
+            <if test="cancelid != null">
+                and CancelID = #{cancelid}
+            </if>
+            <if test="orderformid != null">
+                and OrderFormID = #{orderformid}
+            </if>
+            <if test="isaudit != null">
+                and IsAudit = #{isaudit}
+            </if>
+            <if test="operatorid != null">
+                and OperatorID = #{operatorid}
+            </if>
+            <if test="cancelreason != null and cancelreason != ''">
+                and CancelReason = #{cancelreason}
+            </if>
+            <if test="applicationcanceltime != null">
+                and ApplicationCancelTime = #{applicationcanceltime}
+            </if>
+            <if test="auditcanceltime != null">
+                and AuditCancelTime = #{auditcanceltime}
+            </if>
+            <if test="defaultmoney != null">
+                and DefaultMoney = #{defaultmoney}
+            </if>
+            <if test="cancelremark != null and cancelremark != ''">
+                and CancelRemark = #{cancelremark}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="cancelid" useGeneratedKeys="true">
+        insert into wl.b_cancel(OrderFormID, IsAudit, OperatorID, CancelReason, ApplicationCancelTime, AuditCancelTime, DefaultMoney, CancelRemark)
+        values (#{orderformid}, #{isaudit}, #{operatorid}, #{cancelreason}, #{applicationcanceltime}, #{auditcanceltime}, #{defaultmoney}, #{cancelremark})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.b_cancel
+        <set>
+            <if test="orderformid != null">
+                OrderFormID = #{orderformid},
+            </if>
+            <if test="isaudit != null">
+                IsAudit = #{isaudit},
+            </if>
+            <if test="operatorid != null">
+                OperatorID = #{operatorid},
+            </if>
+            <if test="cancelreason != null and cancelreason != ''">
+                CancelReason = #{cancelreason},
+            </if>
+            <if test="applicationcanceltime != null">
+                ApplicationCancelTime = #{applicationcanceltime},
+            </if>
+            <if test="auditcanceltime != null">
+                AuditCancelTime = #{auditcanceltime},
+            </if>
+            <if test="defaultmoney != null">
+                DefaultMoney = #{defaultmoney},
+            </if>
+            <if test="cancelremark != null and cancelremark != ''">
+                CancelRemark = #{cancelremark},
+            </if>
+        </set>
+        where CancelID = #{cancelid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.b_cancel where CancelID = #{cancelid}
+    </delete>
+
+</mapper>

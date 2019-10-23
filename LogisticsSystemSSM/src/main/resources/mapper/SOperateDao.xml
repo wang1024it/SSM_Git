@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.SOperateDao">
+
+    <resultMap type="com.logistics.entity.SOperate" id="SOperateMap">
+        <result property="operateid" column="OperateID" jdbcType="INTEGER"/>
+        <result property="operatename" column="OperateName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SOperateMap">
+        select
+          OperateID, OperateName
+        from wl.s_operate
+        where OperateID = #{operateid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SOperateMap">
+        select
+          OperateID, OperateName
+        from wl.s_operate
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SOperateMap">
+        select
+          OperateID, OperateName
+        from wl.s_operate
+        <where>
+            <if test="operateid != null">
+                and OperateID = #{operateid}
+            </if>
+            <if test="operatename != null and operatename != ''">
+                and OperateName = #{operatename}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="operateid" useGeneratedKeys="true">
+        insert into wl.s_operate(OperateName)
+        values (#{operatename})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.s_operate
+        <set>
+            <if test="operatename != null and operatename != ''">
+                OperateName = #{operatename},
+            </if>
+        </set>
+        where OperateID = #{operateid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.s_operate where OperateID = #{operateid}
+    </delete>
+
+</mapper>

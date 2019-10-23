@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.SDistrictDao">
+
+    <resultMap type="com.logistics.entity.SDistrict" id="SDistrictMap">
+        <result property="disid" column="DisID" jdbcType="INTEGER"/>
+        <result property="disname" column="DisName" jdbcType="VARCHAR"/>
+        <result property="cityid" column="CityID" jdbcType="INTEGER"/>
+        <result property="dissort" column="DisSort" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SDistrictMap">
+        select
+          DisID, DisName, CityID, DisSort
+        from wl.s_district
+        where DisID = #{disid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SDistrictMap">
+        select
+          DisID, DisName, CityID, DisSort
+        from wl.s_district
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SDistrictMap">
+        select
+          DisID, DisName, CityID, DisSort
+        from wl.s_district
+        <where>
+            <if test="disid != null">
+                and DisID = #{disid}
+            </if>
+            <if test="disname != null and disname != ''">
+                and DisName = #{disname}
+            </if>
+            <if test="cityid != null">
+                and CityID = #{cityid}
+            </if>
+            <if test="dissort != null">
+                and DisSort = #{dissort}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="disid" useGeneratedKeys="true">
+        insert into wl.s_district(DisName, CityID, DisSort)
+        values (#{disname}, #{cityid}, #{dissort})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.s_district
+        <set>
+            <if test="disname != null and disname != ''">
+                DisName = #{disname},
+            </if>
+            <if test="cityid != null">
+                CityID = #{cityid},
+            </if>
+            <if test="dissort != null">
+                DisSort = #{dissort},
+            </if>
+        </set>
+        where DisID = #{disid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.s_district where DisID = #{disid}
+    </delete>
+
+</mapper>

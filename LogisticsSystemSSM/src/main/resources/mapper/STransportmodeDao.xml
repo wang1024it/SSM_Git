@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.STransportmodeDao">
+
+    <resultMap type="com.logistics.entity.STransportmode" id="STransportmodeMap">
+        <result property="transportmodeid" column="TransportModeID" jdbcType="INTEGER"/>
+        <result property="transportmodename" column="TransportModeName" jdbcType="VARCHAR"/>
+        <result property="firstcharge" column="FirstCharge" jdbcType="OTHER"/>
+        <result property="renewalfee" column="RenewalFee" jdbcType="OTHER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="STransportmodeMap">
+        select
+          TransportModeID, TransportModeName, FirstCharge, RenewalFee
+        from wl.s_transportmode
+        where TransportModeID = #{transportmodeid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="STransportmodeMap">
+        select
+          TransportModeID, TransportModeName, FirstCharge, RenewalFee
+        from wl.s_transportmode
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="STransportmodeMap">
+        select
+          TransportModeID, TransportModeName, FirstCharge, RenewalFee
+        from wl.s_transportmode
+        <where>
+            <if test="transportmodeid != null">
+                and TransportModeID = #{transportmodeid}
+            </if>
+            <if test="transportmodename != null and transportmodename != ''">
+                and TransportModeName = #{transportmodename}
+            </if>
+            <if test="firstcharge != null">
+                and FirstCharge = #{firstcharge}
+            </if>
+            <if test="renewalfee != null">
+                and RenewalFee = #{renewalfee}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="transportmodeid" useGeneratedKeys="true">
+        insert into wl.s_transportmode(TransportModeName, FirstCharge, RenewalFee)
+        values (#{transportmodename}, #{firstcharge}, #{renewalfee})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.s_transportmode
+        <set>
+            <if test="transportmodename != null and transportmodename != ''">
+                TransportModeName = #{transportmodename},
+            </if>
+            <if test="firstcharge != null">
+                FirstCharge = #{firstcharge},
+            </if>
+            <if test="renewalfee != null">
+                RenewalFee = #{renewalfee},
+            </if>
+        </set>
+        where TransportModeID = #{transportmodeid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.s_transportmode where TransportModeID = #{transportmodeid}
+    </delete>
+
+</mapper>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.SRouteDao">
+
+    <resultMap type="com.logistics.entity.SRoute" id="SRouteMap">
+        <result property="routeid" column="RouteID" jdbcType="INTEGER"/>
+        <result property="routestartid" column="RouteStartID" jdbcType="INTEGER"/>
+        <result property="routeendid" column="RouteEndID" jdbcType="INTEGER"/>
+        <result property="contactid" column="ContactID" jdbcType="INTEGER"/>
+        <result property="freightrate" column="FreightRate" jdbcType="VARCHAR"/>
+        <result property="prescription" column="Prescription" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SRouteMap">
+        select
+          RouteID, RouteStartID, RouteEndID, ContactID, FreightRate, Prescription
+        from wl.s_route
+        where RouteID = #{routeid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SRouteMap">
+        select
+          RouteID, RouteStartID, RouteEndID, ContactID, FreightRate, Prescription
+        from wl.s_route
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SRouteMap">
+        select
+          RouteID, RouteStartID, RouteEndID, ContactID, FreightRate, Prescription
+        from wl.s_route
+        <where>
+            <if test="routeid != null">
+                and RouteID = #{routeid}
+            </if>
+            <if test="routestartid != null">
+                and RouteStartID = #{routestartid}
+            </if>
+            <if test="routeendid != null">
+                and RouteEndID = #{routeendid}
+            </if>
+            <if test="contactid != null">
+                and ContactID = #{contactid}
+            </if>
+            <if test="freightrate != null and freightrate != ''">
+                and FreightRate = #{freightrate}
+            </if>
+            <if test="prescription != null and prescription != ''">
+                and Prescription = #{prescription}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="routeid" useGeneratedKeys="true">
+        insert into wl.s_route(RouteStartID, RouteEndID, ContactID, FreightRate, Prescription)
+        values (#{routestartid}, #{routeendid}, #{contactid}, #{freightrate}, #{prescription})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.s_route
+        <set>
+            <if test="routestartid != null">
+                RouteStartID = #{routestartid},
+            </if>
+            <if test="routeendid != null">
+                RouteEndID = #{routeendid},
+            </if>
+            <if test="contactid != null">
+                ContactID = #{contactid},
+            </if>
+            <if test="freightrate != null and freightrate != ''">
+                FreightRate = #{freightrate},
+            </if>
+            <if test="prescription != null and prescription != ''">
+                Prescription = #{prescription},
+            </if>
+        </set>
+        where RouteID = #{routeid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.s_route where RouteID = #{routeid}
+    </delete>
+
+</mapper>

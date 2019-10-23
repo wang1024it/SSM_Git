@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.BCarDao">
+
+    <resultMap type="com.logistics.entity.BCar" id="BCarMap">
+        <result property="carid" column="CarID" jdbcType="INTEGER"/>
+        <result property="userid" column="UserID" jdbcType="INTEGER"/>
+        <result property="statusid" column="StatusID" jdbcType="INTEGER"/>
+        <result property="cartypeid" column="CarTypeID" jdbcType="INTEGER"/>
+        <result property="platenumber" column="PlateNumber" jdbcType="VARCHAR"/>
+        <result property="cardrivinglicensephoto" column="CarDrivingLicensePhoto" jdbcType="VARCHAR"/>
+        <result property="maxload" column="MaxLoad" jdbcType="VARCHAR"/>
+        <result property="carriagespecification" column="CarriageSpecification" jdbcType="VARCHAR"/>
+        <result property="isprivate" column="IsPrivate" jdbcType="OTHER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BCarMap">
+        select
+          CarID, UserID, StatusID, CarTypeID, PlateNumber, CarDrivingLicensePhoto, MaxLoad, CarriageSpecification, IsPrivate
+        from wl.b_car
+        where CarID = #{carid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BCarMap">
+        select
+          CarID, UserID, StatusID, CarTypeID, PlateNumber, CarDrivingLicensePhoto, MaxLoad, CarriageSpecification, IsPrivate
+        from wl.b_car
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BCarMap">
+        select
+          CarID, UserID, StatusID, CarTypeID, PlateNumber, CarDrivingLicensePhoto, MaxLoad, CarriageSpecification, IsPrivate
+        from wl.b_car
+        <where>
+            <if test="carid != null">
+                and CarID = #{carid}
+            </if>
+            <if test="userid != null">
+                and UserID = #{userid}
+            </if>
+            <if test="statusid != null">
+                and StatusID = #{statusid}
+            </if>
+            <if test="cartypeid != null">
+                and CarTypeID = #{cartypeid}
+            </if>
+            <if test="platenumber != null and platenumber != ''">
+                and PlateNumber = #{platenumber}
+            </if>
+            <if test="cardrivinglicensephoto != null and cardrivinglicensephoto != ''">
+                and CarDrivingLicensePhoto = #{cardrivinglicensephoto}
+            </if>
+            <if test="maxload != null and maxload != ''">
+                and MaxLoad = #{maxload}
+            </if>
+            <if test="carriagespecification != null and carriagespecification != ''">
+                and CarriageSpecification = #{carriagespecification}
+            </if>
+            <if test="isprivate != null">
+                and IsPrivate = #{isprivate}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="carid" useGeneratedKeys="true">
+        insert into wl.b_car(UserID, StatusID, CarTypeID, PlateNumber, CarDrivingLicensePhoto, MaxLoad, CarriageSpecification, IsPrivate)
+        values (#{userid}, #{statusid}, #{cartypeid}, #{platenumber}, #{cardrivinglicensephoto}, #{maxload}, #{carriagespecification}, #{isprivate})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.b_car
+        <set>
+            <if test="userid != null">
+                UserID = #{userid},
+            </if>
+            <if test="statusid != null">
+                StatusID = #{statusid},
+            </if>
+            <if test="cartypeid != null">
+                CarTypeID = #{cartypeid},
+            </if>
+            <if test="platenumber != null and platenumber != ''">
+                PlateNumber = #{platenumber},
+            </if>
+            <if test="cardrivinglicensephoto != null and cardrivinglicensephoto != ''">
+                CarDrivingLicensePhoto = #{cardrivinglicensephoto},
+            </if>
+            <if test="maxload != null and maxload != ''">
+                MaxLoad = #{maxload},
+            </if>
+            <if test="carriagespecification != null and carriagespecification != ''">
+                CarriageSpecification = #{carriagespecification},
+            </if>
+            <if test="isprivate != null">
+                IsPrivate = #{isprivate},
+            </if>
+        </set>
+        where CarID = #{carid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.b_car where CarID = #{carid}
+    </delete>
+
+</mapper>

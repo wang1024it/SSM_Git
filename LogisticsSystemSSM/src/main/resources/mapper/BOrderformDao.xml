@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.BOrderformDao">
+
+    <resultMap type="com.logistics.entity.BOrderform" id="BOrderformMap">
+        <result property="orderformid" column="OrderFormID" jdbcType="INTEGER"/>
+        <result property="customid" column="CustomID" jdbcType="INTEGER"/>
+        <result property="transportmodeid" column="TransportModeID" jdbcType="INTEGER"/>
+        <result property="billingmethodid" column="BillingMethodID" jdbcType="INTEGER"/>
+        <result property="paymentid" column="PaymentID" jdbcType="INTEGER"/>
+        <result property="ordernumber" column="OrderNumber" jdbcType="VARCHAR"/>
+        <result property="sendname" column="SendName" jdbcType="VARCHAR"/>
+        <result property="sendadress" column="SendAdress" jdbcType="VARCHAR"/>
+        <result property="sendphonenumber" column="SendPhoneNumber" jdbcType="VARCHAR"/>
+        <result property="takename" column="TakeName" jdbcType="VARCHAR"/>
+        <result property="takeadress" column="TakeAdress" jdbcType="VARCHAR"/>
+        <result property="takephonenumber" column="TakePhoneNumber" jdbcType="VARCHAR"/>
+        <result property="uploadtime" column="UploadTime" jdbcType="TIMESTAMP"/>
+        <result property="isindeedupload" column="IsIndeedUpload" jdbcType="OTHER"/>
+        <result property="isauditing" column="IsAuditing" jdbcType="OTHER"/>
+        <result property="audittime" column="AuditTime" jdbcType="TIMESTAMP"/>
+        <result property="transportcost" column="TransportCost" jdbcType="OTHER"/>
+        <result property="bargainmoney" column="BargainMoney" jdbcType="OTHER"/>
+        <result property="deliverytime" column="DeliveryTime" jdbcType="TIMESTAMP"/>
+        <result property="receipttime" column="ReceiptTime" jdbcType="TIMESTAMP"/>
+        <result property="remark" column="Remark" jdbcType="VARCHAR"/>
+        <result property="statusid" column="StatusID" jdbcType="INTEGER"/>
+        <result property="singletime" column="SingleTime" jdbcType="TIMESTAMP"/>
+        <result property="starttime" column="StartTime" jdbcType="TIMESTAMP"/>
+        <result property="finishtime" column="FinishTime" jdbcType="TIMESTAMP"/>
+        <result property="isfinish" column="IsFinish" jdbcType="OTHER"/>
+        <result property="isproblem" column="IsProblem" jdbcType="OTHER"/>
+        <result property="iscancel" column="IsCancel" jdbcType="OTHER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BOrderformMap">
+        select
+          OrderFormID, CustomID, TransportModeID, BillingMethodID, PaymentID, OrderNumber, SendName, SendAdress, SendPhoneNumber, TakeName, TakeAdress, TakePhoneNumber, UploadTime, IsIndeedUpload, IsAuditing, AuditTime, TransportCost, BargainMoney, DeliveryTime, ReceiptTime, Remark, StatusID, SingleTime, StartTime, FinishTime, IsFinish, IsProblem, IsCancel
+        from wl.b_orderform
+        where OrderFormID = #{orderformid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BOrderformMap">
+        select
+          OrderFormID, CustomID, TransportModeID, BillingMethodID, PaymentID, OrderNumber, SendName, SendAdress, SendPhoneNumber, TakeName, TakeAdress, TakePhoneNumber, UploadTime, IsIndeedUpload, IsAuditing, AuditTime, TransportCost, BargainMoney, DeliveryTime, ReceiptTime, Remark, StatusID, SingleTime, StartTime, FinishTime, IsFinish, IsProblem, IsCancel
+        from wl.b_orderform
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BOrderformMap">
+        select
+          OrderFormID, CustomID, TransportModeID, BillingMethodID, PaymentID, OrderNumber, SendName, SendAdress, SendPhoneNumber, TakeName, TakeAdress, TakePhoneNumber, UploadTime, IsIndeedUpload, IsAuditing, AuditTime, TransportCost, BargainMoney, DeliveryTime, ReceiptTime, Remark, StatusID, SingleTime, StartTime, FinishTime, IsFinish, IsProblem, IsCancel
+        from wl.b_orderform
+        <where>
+            <if test="orderformid != null">
+                and OrderFormID = #{orderformid}
+            </if>
+            <if test="customid != null">
+                and CustomID = #{customid}
+            </if>
+            <if test="transportmodeid != null">
+                and TransportModeID = #{transportmodeid}
+            </if>
+            <if test="billingmethodid != null">
+                and BillingMethodID = #{billingmethodid}
+            </if>
+            <if test="paymentid != null">
+                and PaymentID = #{paymentid}
+            </if>
+            <if test="ordernumber != null and ordernumber != ''">
+                and OrderNumber = #{ordernumber}
+            </if>
+            <if test="sendname != null and sendname != ''">
+                and SendName = #{sendname}
+            </if>
+            <if test="sendadress != null and sendadress != ''">
+                and SendAdress = #{sendadress}
+            </if>
+            <if test="sendphonenumber != null and sendphonenumber != ''">
+                and SendPhoneNumber = #{sendphonenumber}
+            </if>
+            <if test="takename != null and takename != ''">
+                and TakeName = #{takename}
+            </if>
+            <if test="takeadress != null and takeadress != ''">
+                and TakeAdress = #{takeadress}
+            </if>
+            <if test="takephonenumber != null and takephonenumber != ''">
+                and TakePhoneNumber = #{takephonenumber}
+            </if>
+            <if test="uploadtime != null">
+                and UploadTime = #{uploadtime}
+            </if>
+            <if test="isindeedupload != null">
+                and IsIndeedUpload = #{isindeedupload}
+            </if>
+            <if test="isauditing != null">
+                and IsAuditing = #{isauditing}
+            </if>
+            <if test="audittime != null">
+                and AuditTime = #{audittime}
+            </if>
+            <if test="transportcost != null">
+                and TransportCost = #{transportcost}
+            </if>
+            <if test="bargainmoney != null">
+                and BargainMoney = #{bargainmoney}
+            </if>
+            <if test="deliverytime != null">
+                and DeliveryTime = #{deliverytime}
+            </if>
+            <if test="receipttime != null">
+                and ReceiptTime = #{receipttime}
+            </if>
+            <if test="remark != null and remark != ''">
+                and Remark = #{remark}
+            </if>
+            <if test="statusid != null">
+                and StatusID = #{statusid}
+            </if>
+            <if test="singletime != null">
+                and SingleTime = #{singletime}
+            </if>
+            <if test="starttime != null">
+                and StartTime = #{starttime}
+            </if>
+            <if test="finishtime != null">
+                and FinishTime = #{finishtime}
+            </if>
+            <if test="isfinish != null">
+                and IsFinish = #{isfinish}
+            </if>
+            <if test="isproblem != null">
+                and IsProblem = #{isproblem}
+            </if>
+            <if test="iscancel != null">
+                and IsCancel = #{iscancel}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="orderformid" useGeneratedKeys="true">
+        insert into wl.b_orderform(CustomID, TransportModeID, BillingMethodID, PaymentID, OrderNumber, SendName, SendAdress, SendPhoneNumber, TakeName, TakeAdress, TakePhoneNumber, UploadTime, IsIndeedUpload, IsAuditing, AuditTime, TransportCost, BargainMoney, DeliveryTime, ReceiptTime, Remark, StatusID, SingleTime, StartTime, FinishTime, IsFinish, IsProblem, IsCancel)
+        values (#{customid}, #{transportmodeid}, #{billingmethodid}, #{paymentid}, #{ordernumber}, #{sendname}, #{sendadress}, #{sendphonenumber}, #{takename}, #{takeadress}, #{takephonenumber}, #{uploadtime}, #{isindeedupload}, #{isauditing}, #{audittime}, #{transportcost}, #{bargainmoney}, #{deliverytime}, #{receipttime}, #{remark}, #{statusid}, #{singletime}, #{starttime}, #{finishtime}, #{isfinish}, #{isproblem}, #{iscancel})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.b_orderform
+        <set>
+            <if test="customid != null">
+                CustomID = #{customid},
+            </if>
+            <if test="transportmodeid != null">
+                TransportModeID = #{transportmodeid},
+            </if>
+            <if test="billingmethodid != null">
+                BillingMethodID = #{billingmethodid},
+            </if>
+            <if test="paymentid != null">
+                PaymentID = #{paymentid},
+            </if>
+            <if test="ordernumber != null and ordernumber != ''">
+                OrderNumber = #{ordernumber},
+            </if>
+            <if test="sendname != null and sendname != ''">
+                SendName = #{sendname},
+            </if>
+            <if test="sendadress != null and sendadress != ''">
+                SendAdress = #{sendadress},
+            </if>
+            <if test="sendphonenumber != null and sendphonenumber != ''">
+                SendPhoneNumber = #{sendphonenumber},
+            </if>
+            <if test="takename != null and takename != ''">
+                TakeName = #{takename},
+            </if>
+            <if test="takeadress != null and takeadress != ''">
+                TakeAdress = #{takeadress},
+            </if>
+            <if test="takephonenumber != null and takephonenumber != ''">
+                TakePhoneNumber = #{takephonenumber},
+            </if>
+            <if test="uploadtime != null">
+                UploadTime = #{uploadtime},
+            </if>
+            <if test="isindeedupload != null">
+                IsIndeedUpload = #{isindeedupload},
+            </if>
+            <if test="isauditing != null">
+                IsAuditing = #{isauditing},
+            </if>
+            <if test="audittime != null">
+                AuditTime = #{audittime},
+            </if>
+            <if test="transportcost != null">
+                TransportCost = #{transportcost},
+            </if>
+            <if test="bargainmoney != null">
+                BargainMoney = #{bargainmoney},
+            </if>
+            <if test="deliverytime != null">
+                DeliveryTime = #{deliverytime},
+            </if>
+            <if test="receipttime != null">
+                ReceiptTime = #{receipttime},
+            </if>
+            <if test="remark != null and remark != ''">
+                Remark = #{remark},
+            </if>
+            <if test="statusid != null">
+                StatusID = #{statusid},
+            </if>
+            <if test="singletime != null">
+                SingleTime = #{singletime},
+            </if>
+            <if test="starttime != null">
+                StartTime = #{starttime},
+            </if>
+            <if test="finishtime != null">
+                FinishTime = #{finishtime},
+            </if>
+            <if test="isfinish != null">
+                IsFinish = #{isfinish},
+            </if>
+            <if test="isproblem != null">
+                IsProblem = #{isproblem},
+            </if>
+            <if test="iscancel != null">
+                IsCancel = #{iscancel},
+            </if>
+        </set>
+        where OrderFormID = #{orderformid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.b_orderform where OrderFormID = #{orderformid}
+    </delete>
+
+</mapper>

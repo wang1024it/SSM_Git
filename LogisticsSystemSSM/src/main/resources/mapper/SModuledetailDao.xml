@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.SModuledetailDao">
+
+    <resultMap type="com.logistics.entity.SModuledetail" id="SModuledetailMap">
+        <result property="moduledetailid" column="ModuleDetailID" jdbcType="INTEGER"/>
+        <result property="moduleid" column="ModuleID" jdbcType="INTEGER"/>
+        <result property="operateid" column="OperateID" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SModuledetailMap">
+        select
+          ModuleDetailID, ModuleID, OperateID
+        from wl.s_moduledetail
+        where ModuleDetailID = #{moduledetailid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SModuledetailMap">
+        select
+          ModuleDetailID, ModuleID, OperateID
+        from wl.s_moduledetail
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SModuledetailMap">
+        select
+          ModuleDetailID, ModuleID, OperateID
+        from wl.s_moduledetail
+        <where>
+            <if test="moduledetailid != null">
+                and ModuleDetailID = #{moduledetailid}
+            </if>
+            <if test="moduleid != null">
+                and ModuleID = #{moduleid}
+            </if>
+            <if test="operateid != null">
+                and OperateID = #{operateid}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="moduledetailid" useGeneratedKeys="true">
+        insert into wl.s_moduledetail(ModuleID, OperateID)
+        values (#{moduleid}, #{operateid})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.s_moduledetail
+        <set>
+            <if test="moduleid != null">
+                ModuleID = #{moduleid},
+            </if>
+            <if test="operateid != null">
+                OperateID = #{operateid},
+            </if>
+        </set>
+        where ModuleDetailID = #{moduledetailid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.s_moduledetail where ModuleDetailID = #{moduledetailid}
+    </delete>
+
+</mapper>

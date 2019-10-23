@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.BOrderproblemDao">
+
+    <resultMap type="com.logistics.entity.BOrderproblem" id="BOrderproblemMap">
+        <result property="orderproblemid" column="OrderProblemID" jdbcType="INTEGER"/>
+        <result property="orderformid" column="OrderFormID" jdbcType="INTEGER"/>
+        <result property="reason" column="Reason" jdbcType="VARCHAR"/>
+        <result property="registrationtime" column="RegistrationTime" jdbcType="TIMESTAMP"/>
+        <result property="formerlyuserid" column="FormerlyUserID" jdbcType="INTEGER"/>
+        <result property="nowuserid" column="NowUserID" jdbcType="INTEGER"/>
+        <result property="orderformlocation" column="OrderFormLocation" jdbcType="VARCHAR"/>
+        <result property="issolve" column="IsSolve" jdbcType="OTHER"/>
+        <result property="solutionid" column="SolutionID" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BOrderproblemMap">
+        select
+          OrderProblemID, OrderFormID, Reason, RegistrationTime, FormerlyUserID, NowUserID, OrderFormLocation, IsSolve, SolutionID
+        from wl.b_orderproblem
+        where OrderProblemID = #{orderproblemid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BOrderproblemMap">
+        select
+          OrderProblemID, OrderFormID, Reason, RegistrationTime, FormerlyUserID, NowUserID, OrderFormLocation, IsSolve, SolutionID
+        from wl.b_orderproblem
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BOrderproblemMap">
+        select
+          OrderProblemID, OrderFormID, Reason, RegistrationTime, FormerlyUserID, NowUserID, OrderFormLocation, IsSolve, SolutionID
+        from wl.b_orderproblem
+        <where>
+            <if test="orderproblemid != null">
+                and OrderProblemID = #{orderproblemid}
+            </if>
+            <if test="orderformid != null">
+                and OrderFormID = #{orderformid}
+            </if>
+            <if test="reason != null and reason != ''">
+                and Reason = #{reason}
+            </if>
+            <if test="registrationtime != null">
+                and RegistrationTime = #{registrationtime}
+            </if>
+            <if test="formerlyuserid != null">
+                and FormerlyUserID = #{formerlyuserid}
+            </if>
+            <if test="nowuserid != null">
+                and NowUserID = #{nowuserid}
+            </if>
+            <if test="orderformlocation != null and orderformlocation != ''">
+                and OrderFormLocation = #{orderformlocation}
+            </if>
+            <if test="issolve != null">
+                and IsSolve = #{issolve}
+            </if>
+            <if test="solutionid != null">
+                and SolutionID = #{solutionid}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="orderproblemid" useGeneratedKeys="true">
+        insert into wl.b_orderproblem(OrderFormID, Reason, RegistrationTime, FormerlyUserID, NowUserID, OrderFormLocation, IsSolve, SolutionID)
+        values (#{orderformid}, #{reason}, #{registrationtime}, #{formerlyuserid}, #{nowuserid}, #{orderformlocation}, #{issolve}, #{solutionid})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.b_orderproblem
+        <set>
+            <if test="orderformid != null">
+                OrderFormID = #{orderformid},
+            </if>
+            <if test="reason != null and reason != ''">
+                Reason = #{reason},
+            </if>
+            <if test="registrationtime != null">
+                RegistrationTime = #{registrationtime},
+            </if>
+            <if test="formerlyuserid != null">
+                FormerlyUserID = #{formerlyuserid},
+            </if>
+            <if test="nowuserid != null">
+                NowUserID = #{nowuserid},
+            </if>
+            <if test="orderformlocation != null and orderformlocation != ''">
+                OrderFormLocation = #{orderformlocation},
+            </if>
+            <if test="issolve != null">
+                IsSolve = #{issolve},
+            </if>
+            <if test="solutionid != null">
+                SolutionID = #{solutionid},
+            </if>
+        </set>
+        where OrderProblemID = #{orderproblemid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.b_orderproblem where OrderProblemID = #{orderproblemid}
+    </delete>
+
+</mapper>

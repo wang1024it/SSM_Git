@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.SCustomertypeDao">
+
+    <resultMap type="com.logistics.entity.SCustomertype" id="SCustomertypeMap">
+        <result property="customertypeid" column="CustomerTypeID" jdbcType="INTEGER"/>
+        <result property="customername" column="CustomerName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SCustomertypeMap">
+        select
+          CustomerTypeID, CustomerName
+        from wl.s_customertype
+        where CustomerTypeID = #{customertypeid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SCustomertypeMap">
+        select
+          CustomerTypeID, CustomerName
+        from wl.s_customertype
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SCustomertypeMap">
+        select
+          CustomerTypeID, CustomerName
+        from wl.s_customertype
+        <where>
+            <if test="customertypeid != null">
+                and CustomerTypeID = #{customertypeid}
+            </if>
+            <if test="customername != null and customername != ''">
+                and CustomerName = #{customername}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="customertypeid" useGeneratedKeys="true">
+        insert into wl.s_customertype(CustomerName)
+        values (#{customername})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.s_customertype
+        <set>
+            <if test="customername != null and customername != ''">
+                CustomerName = #{customername},
+            </if>
+        </set>
+        where CustomerTypeID = #{customertypeid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.s_customertype where CustomerTypeID = #{customertypeid}
+    </delete>
+
+</mapper>

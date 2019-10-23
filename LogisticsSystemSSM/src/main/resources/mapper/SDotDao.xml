@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.SDotDao">
+
+    <resultMap type="com.logistics.entity.SDot" id="SDotMap">
+        <result property="dotid" column="DotID" jdbcType="INTEGER"/>
+        <result property="dotname" column="DotName" jdbcType="VARCHAR"/>
+        <result property="adress" column="Adress" jdbcType="VARCHAR"/>
+        <result property="tlephone" column="Tlephone" jdbcType="VARCHAR"/>
+        <result property="dotadministratorid" column="DotAdministratorID" jdbcType="INTEGER"/>
+        <result property="milbox" column="Milbox" jdbcType="VARCHAR"/>
+        <result property="disid" column="DisID" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SDotMap">
+        select
+          DotID, DotName, Adress, Tlephone, DotAdministratorID, Milbox, DisID
+        from wl.s_dot
+        where DotID = #{dotid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SDotMap">
+        select
+          DotID, DotName, Adress, Tlephone, DotAdministratorID, Milbox, DisID
+        from wl.s_dot
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SDotMap">
+        select
+          DotID, DotName, Adress, Tlephone, DotAdministratorID, Milbox, DisID
+        from wl.s_dot
+        <where>
+            <if test="dotid != null">
+                and DotID = #{dotid}
+            </if>
+            <if test="dotname != null and dotname != ''">
+                and DotName = #{dotname}
+            </if>
+            <if test="adress != null and adress != ''">
+                and Adress = #{adress}
+            </if>
+            <if test="tlephone != null and tlephone != ''">
+                and Tlephone = #{tlephone}
+            </if>
+            <if test="dotadministratorid != null">
+                and DotAdministratorID = #{dotadministratorid}
+            </if>
+            <if test="milbox != null and milbox != ''">
+                and Milbox = #{milbox}
+            </if>
+            <if test="disid != null">
+                and DisID = #{disid}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="dotid" useGeneratedKeys="true">
+        insert into wl.s_dot(DotName, Adress, Tlephone, DotAdministratorID, Milbox, DisID)
+        values (#{dotname}, #{adress}, #{tlephone}, #{dotadministratorid}, #{milbox}, #{disid})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.s_dot
+        <set>
+            <if test="dotname != null and dotname != ''">
+                DotName = #{dotname},
+            </if>
+            <if test="adress != null and adress != ''">
+                Adress = #{adress},
+            </if>
+            <if test="tlephone != null and tlephone != ''">
+                Tlephone = #{tlephone},
+            </if>
+            <if test="dotadministratorid != null">
+                DotAdministratorID = #{dotadministratorid},
+            </if>
+            <if test="milbox != null and milbox != ''">
+                Milbox = #{milbox},
+            </if>
+            <if test="disid != null">
+                DisID = #{disid},
+            </if>
+        </set>
+        where DotID = #{dotid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.s_dot where DotID = #{dotid}
+    </delete>
+
+</mapper>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.SProvinceDao">
+
+    <resultMap type="com.logistics.entity.SProvince" id="SProvinceMap">
+        <result property="proid" column="ProID" jdbcType="INTEGER"/>
+        <result property="proname" column="ProName" jdbcType="VARCHAR"/>
+        <result property="prosort" column="ProSort" jdbcType="INTEGER"/>
+        <result property="proremark" column="ProRemark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SProvinceMap">
+        select
+          ProID, ProName, ProSort, ProRemark
+        from wl.s_province
+        where ProID = #{proid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SProvinceMap">
+        select
+          ProID, ProName, ProSort, ProRemark
+        from wl.s_province
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SProvinceMap">
+        select
+          ProID, ProName, ProSort, ProRemark
+        from wl.s_province
+        <where>
+            <if test="proid != null">
+                and ProID = #{proid}
+            </if>
+            <if test="proname != null and proname != ''">
+                and ProName = #{proname}
+            </if>
+            <if test="prosort != null">
+                and ProSort = #{prosort}
+            </if>
+            <if test="proremark != null and proremark != ''">
+                and ProRemark = #{proremark}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="proid" useGeneratedKeys="true">
+        insert into wl.s_province(ProName, ProSort, ProRemark)
+        values (#{proname}, #{prosort}, #{proremark})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.s_province
+        <set>
+            <if test="proname != null and proname != ''">
+                ProName = #{proname},
+            </if>
+            <if test="prosort != null">
+                ProSort = #{prosort},
+            </if>
+            <if test="proremark != null and proremark != ''">
+                ProRemark = #{proremark},
+            </if>
+        </set>
+        where ProID = #{proid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.s_province where ProID = #{proid}
+    </delete>
+
+</mapper>

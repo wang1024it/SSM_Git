@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.BBankcardinformationDao">
+
+    <resultMap type="com.logistics.entity.BBankcardinformation" id="BBankcardinformationMap">
+        <result property="bankcardinformationid" column="BankCardInformationID" jdbcType="INTEGER"/>
+        <result property="userid" column="UserID" jdbcType="INTEGER"/>
+        <result property="bankcardnumber" column="BankCardNumber" jdbcType="VARCHAR"/>
+        <result property="bankcardreservedphonenumber" column="BankCardReservedPhoneNumber" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BBankcardinformationMap">
+        select
+          BankCardInformationID, UserID, BankCardNumber, BankCardReservedPhoneNumber
+        from wl.b_bankcardinformation
+        where BankCardInformationID = #{bankcardinformationid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BBankcardinformationMap">
+        select
+          BankCardInformationID, UserID, BankCardNumber, BankCardReservedPhoneNumber
+        from wl.b_bankcardinformation
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BBankcardinformationMap">
+        select
+          BankCardInformationID, UserID, BankCardNumber, BankCardReservedPhoneNumber
+        from wl.b_bankcardinformation
+        <where>
+            <if test="bankcardinformationid != null">
+                and BankCardInformationID = #{bankcardinformationid}
+            </if>
+            <if test="userid != null">
+                and UserID = #{userid}
+            </if>
+            <if test="bankcardnumber != null and bankcardnumber != ''">
+                and BankCardNumber = #{bankcardnumber}
+            </if>
+            <if test="bankcardreservedphonenumber != null and bankcardreservedphonenumber != ''">
+                and BankCardReservedPhoneNumber = #{bankcardreservedphonenumber}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="bankcardinformationid" useGeneratedKeys="true">
+        insert into wl.b_bankcardinformation(UserID, BankCardNumber, BankCardReservedPhoneNumber)
+        values (#{userid}, #{bankcardnumber}, #{bankcardreservedphonenumber})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.b_bankcardinformation
+        <set>
+            <if test="userid != null">
+                UserID = #{userid},
+            </if>
+            <if test="bankcardnumber != null and bankcardnumber != ''">
+                BankCardNumber = #{bankcardnumber},
+            </if>
+            <if test="bankcardreservedphonenumber != null and bankcardreservedphonenumber != ''">
+                BankCardReservedPhoneNumber = #{bankcardreservedphonenumber},
+            </if>
+        </set>
+        where BankCardInformationID = #{bankcardinformationid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.b_bankcardinformation where BankCardInformationID = #{bankcardinformationid}
+    </delete>
+
+</mapper>

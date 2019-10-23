@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.BReceivablesDao">
+
+    <resultMap type="com.logistics.entity.BReceivables" id="BReceivablesMap">
+        <result property="receivablesid" column="ReceivablesID" jdbcType="INTEGER"/>
+        <result property="orderformid" column="OrderFormID" jdbcType="INTEGER"/>
+        <result property="paymenttypeid" column="PaymentTypeID" jdbcType="INTEGER"/>
+        <result property="receivablescontent" column="ReceivablesContent" jdbcType="VARCHAR"/>
+        <result property="money" column="Money" jdbcType="OTHER"/>
+        <result property="receivablestime" column="ReceivablesTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BReceivablesMap">
+        select
+          ReceivablesID, OrderFormID, PaymentTypeID, ReceivablesContent, Money, ReceivablesTime
+        from wl.b_receivables
+        where ReceivablesID = #{receivablesid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BReceivablesMap">
+        select
+          ReceivablesID, OrderFormID, PaymentTypeID, ReceivablesContent, Money, ReceivablesTime
+        from wl.b_receivables
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BReceivablesMap">
+        select
+          ReceivablesID, OrderFormID, PaymentTypeID, ReceivablesContent, Money, ReceivablesTime
+        from wl.b_receivables
+        <where>
+            <if test="receivablesid != null">
+                and ReceivablesID = #{receivablesid}
+            </if>
+            <if test="orderformid != null">
+                and OrderFormID = #{orderformid}
+            </if>
+            <if test="paymenttypeid != null">
+                and PaymentTypeID = #{paymenttypeid}
+            </if>
+            <if test="receivablescontent != null and receivablescontent != ''">
+                and ReceivablesContent = #{receivablescontent}
+            </if>
+            <if test="money != null">
+                and Money = #{money}
+            </if>
+            <if test="receivablestime != null">
+                and ReceivablesTime = #{receivablestime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="receivablesid" useGeneratedKeys="true">
+        insert into wl.b_receivables(OrderFormID, PaymentTypeID, ReceivablesContent, Money, ReceivablesTime)
+        values (#{orderformid}, #{paymenttypeid}, #{receivablescontent}, #{money}, #{receivablestime})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wl.b_receivables
+        <set>
+            <if test="orderformid != null">
+                OrderFormID = #{orderformid},
+            </if>
+            <if test="paymenttypeid != null">
+                PaymentTypeID = #{paymenttypeid},
+            </if>
+            <if test="receivablescontent != null and receivablescontent != ''">
+                ReceivablesContent = #{receivablescontent},
+            </if>
+            <if test="money != null">
+                Money = #{money},
+            </if>
+            <if test="receivablestime != null">
+                ReceivablesTime = #{receivablestime},
+            </if>
+        </set>
+        where ReceivablesID = #{receivablesid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wl.b_receivables where ReceivablesID = #{receivablesid}
+    </delete>
+
+</mapper>
