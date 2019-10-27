@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.DotMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Dot">
+		<id column="DotID" jdbcType="INTEGER" property="dotid" />
+		<result column="DotName" jdbcType="VARCHAR" property="dotname" />
+		<result column="Adress" jdbcType="VARCHAR" property="adress" />
+		<result column="Tlephone" jdbcType="VARCHAR" property="tlephone" />
+		<result column="DotAdministratorID" jdbcType="INTEGER"
+			property="dotadministratorid" />
+		<result column="Milbox" jdbcType="VARCHAR" property="milbox" />
+		<result column="DisID" jdbcType="INTEGER" property="disid" />
+	</resultMap>
+
+
+	<resultMap type="com.logistics.vo.DotVo" id="DotVo" extends="BaseResultMap">
+		<result column="cityname" jdbcType="VARCHAR" property="cityname" />
+		<result column="proname" jdbcType="VARCHAR" property="proname" />
+		<result column="username" jdbcType="VARCHAR" property="username" />
+		<result column="proid" jdbcType="INTEGER" property="proid" />
+
+		<result column="disname" jdbcType="VARCHAR" property="disname" />
+
+	</resultMap>
+	<sql id="dotSql">
+		<if test="proName!=null and proName!=''">
+			and s_province.ProName=#{proName}
+		</if>
+		<if test="cityName!=null and cityName!=''">
+			and s_city.CityName=#{cityName}
+		</if>
+	</sql>
+
+	<select id="findPage" resultMap="DotVo">
+		SELECT
+		s_dot.*,s_city.CityName,b_user.UserName,s_province.ProName,s_district.DisName
+		FROM s_dot LEFT JOIN b_user ON s_dot.DotAdministratorID=b_user.UserID
+		LEFT JOIN s_district ON s_dot.DisID=s_district.DisID LEFT JOIN s_city
+		ON s_district.CityID=s_city.CityID LEFT JOIN s_province ON
+		s_city.ProID=s_province.ProID where 1=1
+		<include refid="dotSql" />
+		limit
+		#{startIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+
+	<select id="getTotalRow" resultType="java.lang.Integer">
+		SELECT COUNT(s_dot.DotID)
+		FROM s_dot LEFT JOIN b_user ON
+		s_dot.DotAdministratorID=b_user.UserID
+		LEFT JOIN s_district ON
+		s_dot.DisID=s_district.DisID LEFT JOIN s_city
+		ON
+		s_district.CityID=s_city.CityID LEFT JOIN s_province ON
+		s_city.ProID=s_province.ProID
+		where 1=1
+		<include refid="dotSql" />
+	</select>
+
+
+	<sql id="Base_Column_List">
+		DotID, DotName, Adress, Tlephone, DotAdministratorID,
+		Milbox, DisID
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from s_dot
+		where DotID = #{dotid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from s_dot
+		where DotID = #{dotid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Dot">
+		insert into s_dot (DotID,
+		DotName, Adress,
+		Tlephone, DotAdministratorID, Milbox,
+		DisID)
+		values
+		(#{dotid,jdbcType=INTEGER}, #{dotname,jdbcType=VARCHAR},
+		#{adress,jdbcType=VARCHAR},
+		#{tlephone,jdbcType=VARCHAR},
+		#{dotadministratorid,jdbcType=INTEGER}, #{milbox,jdbcType=VARCHAR},
+		#{disid,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Dot">
+		insert into s_dot
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="dotid != null">
+				DotID,
+			</if>
+			<if test="dotname != null">
+				DotName,
+			</if>
+			<if test="adress != null">
+				Adress,
+			</if>
+			<if test="tlephone != null">
+				Tlephone,
+			</if>
+			<if test="dotadministratorid != null">
+				DotAdministratorID,
+			</if>
+			<if test="milbox != null">
+				Milbox,
+			</if>
+			<if test="disid != null">
+				DisID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="dotid != null">
+				#{dotid,jdbcType=INTEGER},
+			</if>
+			<if test="dotname != null">
+				#{dotname,jdbcType=VARCHAR},
+			</if>
+			<if test="adress != null">
+				#{adress,jdbcType=VARCHAR},
+			</if>
+			<if test="tlephone != null">
+				#{tlephone,jdbcType=VARCHAR},
+			</if>
+			<if test="dotadministratorid != null">
+				#{dotadministratorid,jdbcType=INTEGER},
+			</if>
+			<if test="milbox != null">
+				#{milbox,jdbcType=VARCHAR},
+			</if>
+			<if test="disid != null">
+				#{disid,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Dot">
+		update s_dot
+		<set>
+			<if test="dotname != null">
+				DotName = #{dotname,jdbcType=VARCHAR},
+			</if>
+			<if test="adress != null">
+				Adress = #{adress,jdbcType=VARCHAR},
+			</if>
+			<if test="tlephone != null">
+				Tlephone = #{tlephone,jdbcType=VARCHAR},
+			</if>
+			<if test="dotadministratorid != null">
+				DotAdministratorID =
+				#{dotadministratorid,jdbcType=INTEGER},
+			</if>
+			<if test="milbox != null">
+				Milbox = #{milbox,jdbcType=VARCHAR},
+			</if>
+			<if test="disid != null">
+				DisID = #{disid,jdbcType=INTEGER},
+			</if>
+		</set>
+		where DotID = #{dotid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Dot">
+		update s_dot
+		set
+		DotName = #{dotname,jdbcType=VARCHAR},
+		Adress =
+		#{adress,jdbcType=VARCHAR},
+		Tlephone = #{tlephone,jdbcType=VARCHAR},
+		DotAdministratorID = #{dotadministratorid,jdbcType=INTEGER},
+		Milbox =
+		#{milbox,jdbcType=VARCHAR},
+		DisID = #{disid,jdbcType=INTEGER}
+		where
+		DotID = #{dotid,jdbcType=INTEGER}
+	</update>
+</mapper>

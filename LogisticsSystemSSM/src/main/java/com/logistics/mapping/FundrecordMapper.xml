@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.FundrecordMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Fundrecord">
+		<id column="FundRecordID" jdbcType="INTEGER" property="fundrecordid" />
+		<result column="UserID" jdbcType="INTEGER" property="userid" />
+		<result column="AuditorID" jdbcType="INTEGER" property="auditorid" />
+		<result column="ExtractMoney" jdbcType="REAL" property="extractmoney" />
+		<result column="IsAudit" jdbcType="BIT" property="isaudit" />
+		<result column="OperationLog" jdbcType="VARCHAR" property="operationlog" />
+		<result column="ApplicationTime" jdbcType="TIMESTAMP" property="applicationtime" />
+		<result column="Remark" jdbcType="VARCHAR" property="remark" />
+		<result column="AuditTime" jdbcType="TIMESTAMP" property="audittime" />
+	</resultMap>
+	<resultMap type="com.logistics.vo.FundRecordVo" id="FundRecordVo"
+		extends="BaseResultMap">
+		<result column="auditorname" jdbcType="VARCHAR" property="auditorname" />
+
+	</resultMap>
+
+	<sql id="fundSql">
+
+		<if test="IsAudit!=null">
+			and b_fundrecord.IsAudit=#{IsAudit}
+
+		</if>
+
+		<if test="userid!=null and userid!=''">
+			and b_fundrecord.UserID=#{userid}
+		</if>
+		<if test="startTime!=null and startTime!=''">
+		 <![CDATA[and  b_fundrecord.ApplicationTime>= CONCAT(#{startTime},' 00:00:00')]]>
+		</if>
+		<if test="endTime!=null and endTime!=''">
+		 <![CDATA[and  b_fundrecord.ApplicationTime<= CONCAT(#{endTime},' 23:59:59')]]>
+		</if>
+	</sql>
+
+	<select id="findPage" resultMap="FundRecordVo">
+		SELECT b_fundrecord.*,b_user.UserName AS auditorname FROM b_fundrecord
+		LEFT JOIN b_user ON
+		b_fundrecord.AuditorID=b_user.UserID WHERE 1=1
+
+		<include refid="fundSql" />
+
+		ORDER BY b_fundrecord.FundRecordID DESC
+
+		LIMIT #{startIndex},#{pageSize}
+	</select>
+	<select id="getTotalRows" resultType="java.lang.Integer">
+		SELECT count(b_fundrecord.FundRecordID) FROM b_fundrecord
+		LEFT JOIN
+		b_user ON b_fundrecord.AuditorID=b_user.UserID where 1=1
+		<include refid="fundSql" />
+
+	</select>
+
+	<sql id="Base_Column_List">
+		FundRecordID, UserID, AuditorID, ExtractMoney, IsAudit,
+		OperationLog,
+		ApplicationTime,
+		Remark, AuditTime
+	</sql>
+	<select id="findAllByUserID" resultMap="BaseResultMap">
+		SELECT b_fundrecord.*
+		FROM b_fundrecord where b_fundrecord.UserID=#{userid}
+
+		ORDER BY
+		b_fundrecord.FundRecordID DESC
+
+	</select>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_fundrecord
+		where FundRecordID = #{fundrecordid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		b_fundrecord
+		where FundRecordID = #{fundrecordid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Fundrecord">
+		insert into b_fundrecord
+		(FundRecordID, UserID, AuditorID,
+		ExtractMoney, IsAudit, OperationLog,
+		ApplicationTime, Remark, AuditTime
+		)
+		values
+		(#{fundrecordid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER},
+		#{auditorid,jdbcType=INTEGER},
+		#{extractmoney,jdbcType=REAL},
+		#{isaudit,jdbcType=BIT}, #{operationlog,jdbcType=VARCHAR},
+		#{applicationtime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR},
+		#{audittime,jdbcType=TIMESTAMP}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Fundrecord">
+		insert into b_fundrecord
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="fundrecordid != null">
+				FundRecordID,
+			</if>
+			<if test="userid != null">
+				UserID,
+			</if>
+			<if test="auditorid != null">
+				AuditorID,
+			</if>
+			<if test="extractmoney != null">
+				ExtractMoney,
+			</if>
+			<if test="isaudit != null">
+				IsAudit,
+			</if>
+			<if test="operationlog != null">
+				OperationLog,
+			</if>
+			<if test="applicationtime != null">
+				ApplicationTime,
+			</if>
+			<if test="remark != null">
+				Remark,
+			</if>
+			<if test="audittime != null">
+				AuditTime,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="fundrecordid != null">
+				#{fundrecordid,jdbcType=INTEGER},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=INTEGER},
+			</if>
+			<if test="auditorid != null">
+				#{auditorid,jdbcType=INTEGER},
+			</if>
+			<if test="extractmoney != null">
+				#{extractmoney,jdbcType=REAL},
+			</if>
+			<if test="isaudit != null">
+				#{isaudit,jdbcType=BIT},
+			</if>
+			<if test="operationlog != null">
+				#{operationlog,jdbcType=VARCHAR},
+			</if>
+			<if test="applicationtime != null">
+				#{applicationtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="audittime != null">
+				#{audittime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Fundrecord">
+		update b_fundrecord
+		<set>
+			<if test="userid != null">
+				UserID = #{userid,jdbcType=INTEGER},
+			</if>
+			<if test="auditorid != null">
+				AuditorID = #{auditorid,jdbcType=INTEGER},
+			</if>
+			<if test="extractmoney != null">
+				ExtractMoney = #{extractmoney,jdbcType=REAL},
+			</if>
+			<if test="isaudit != null">
+				IsAudit = #{isaudit,jdbcType=BIT},
+			</if>
+			<if test="operationlog != null">
+				OperationLog = #{operationlog,jdbcType=VARCHAR},
+			</if>
+			<if test="applicationtime != null">
+				ApplicationTime = #{applicationtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				Remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="audittime != null">
+				AuditTime = #{audittime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where FundRecordID = #{fundrecordid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Fundrecord">
+		update
+		b_fundrecord
+		set UserID = #{userid,jdbcType=INTEGER},
+		AuditorID =
+		#{auditorid,jdbcType=INTEGER},
+		ExtractMoney =
+		#{extractmoney,jdbcType=REAL},
+		IsAudit = #{isaudit,jdbcType=BIT},
+		OperationLog = #{operationlog,jdbcType=VARCHAR},
+		ApplicationTime =
+		#{applicationtime,jdbcType=TIMESTAMP},
+		Remark =
+		#{remark,jdbcType=VARCHAR},
+		AuditTime = #{audittime,jdbcType=TIMESTAMP}
+		where FundRecordID = #{fundrecordid,jdbcType=INTEGER}
+	</update>
+</mapper>

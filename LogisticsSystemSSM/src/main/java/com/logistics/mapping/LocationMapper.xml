@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.LocationMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Location">
+		<id column="LocationID" jdbcType="INTEGER" property="locationid" />
+		<result column="UserID" jdbcType="INTEGER" property="userid" />
+		<result column="CarLocation" jdbcType="VARCHAR" property="carlocation" />
+		<result column="UploadTime" jdbcType="TIMESTAMP" property="uploadtime" />
+	</resultMap>
+	<resultMap type="com.logistics.vo.LocationVo" id="LocationVo">
+		<result column="username" jdbcType="VARCHAR" property="username" />
+		<result column="platenumber" jdbcType="VARCHAR" property="platenumber" />
+
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		LocationID, UserID, CarLocation, UploadTime
+	</sql>
+
+	<sql id="locationSQL">
+		<if test="userid!=null and userid!=''">
+			and b_user.UserID=#{userid}
+		</if>
+	</sql>
+
+	<select id="findPage" resultMap="LocationVo">
+		SELECT
+		b_location.*,b_user.UserName,b_car.PlateNumber FROM b_location INNER
+		JOIN b_user ON b_location.UserID=b_user.UserID INNER JOIN b_car ON
+		b_user.UserID=b_car.UserID
+		where 1=1 LIMIT #{startIndex},#{pageSize}
+	</select>
+	<select id="getRowTotal" resultType="java.lang.Integer">
+		SELECT COUNT(
+		b_location.LocationID) FROM b_location
+		INNER JOIN b_user ON
+		b_location.UserID=b_user.UserID INNER JOIN b_car
+		ON
+		b_user.UserID=b_car.UserID
+
+	</select>
+
+	<select id="findLocationSQL" resultMap="BaseResultMap">
+		SELECT
+		b_location.*,b_user.UserName,b_car.PlateNumber FROM b_location
+		INNER
+		JOIN b_user ON b_location.UserID=b_user.UserID INNER JOIN b_car
+		ON
+		b_user.UserID=b_car.UserID
+		where 1=1
+		<include refid="locationSQL" />
+	</select>
+
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_location
+		where LocationID = #{locationid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		b_location
+		where LocationID = #{locationid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Location">
+		insert into b_location
+		(LocationID, UserID, CarLocation,
+		UploadTime)
+		values
+		(#{locationid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER},
+		#{carlocation,jdbcType=VARCHAR},
+		#{uploadtime,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Location">
+		insert into b_location
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="locationid != null">
+				LocationID,
+			</if>
+			<if test="userid != null">
+				UserID,
+			</if>
+			<if test="carlocation != null">
+				CarLocation,
+			</if>
+			<if test="uploadtime != null">
+				UploadTime,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="locationid != null">
+				#{locationid,jdbcType=INTEGER},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=INTEGER},
+			</if>
+			<if test="carlocation != null">
+				#{carlocation,jdbcType=VARCHAR},
+			</if>
+			<if test="uploadtime != null">
+				#{uploadtime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Location">
+		update b_location
+		<set>
+			<if test="userid != null">
+				UserID = #{userid,jdbcType=INTEGER},
+			</if>
+			<if test="carlocation != null">
+				CarLocation = #{carlocation,jdbcType=VARCHAR},
+			</if>
+			<if test="uploadtime != null">
+				UploadTime = #{uploadtime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where LocationID = #{locationid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Location">
+		update b_location
+		set UserID = #{userid,jdbcType=INTEGER},
+		CarLocation =
+		#{carlocation,jdbcType=VARCHAR},
+		UploadTime =
+		#{uploadtime,jdbcType=TIMESTAMP}
+		where LocationID =
+		#{locationid,jdbcType=INTEGER}
+	</update>
+</mapper>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.TransportmodeMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Transportmode">
+		<id column="TransportModeID" jdbcType="INTEGER" property="transportmodeid" />
+		<result column="TransportModeName" jdbcType="VARCHAR" property="transportmodename" />
+		<result column="FirstCharge" jdbcType="REAL" property="firstcharge" />
+		<result column="RenewalFee" jdbcType="REAL" property="renewalfee" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		TransportModeID, TransportModeName, FirstCharge, RenewalFee
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from s_transportmode
+		where TransportModeID =
+		#{transportmodeid,jdbcType=INTEGER}
+	</select>
+	<select id="findAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from s_transportmode
+	</select>
+
+
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		s_transportmode
+		where TransportModeID =
+		#{transportmodeid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Transportmode">
+		insert into s_transportmode
+		(TransportModeID, TransportModeName,
+		FirstCharge, RenewalFee)
+		values
+		(#{transportmodeid,jdbcType=INTEGER},
+		#{transportmodename,jdbcType=VARCHAR},
+		#{firstcharge,jdbcType=REAL},
+		#{renewalfee,jdbcType=REAL})
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Transportmode">
+		insert into s_transportmode
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="transportmodeid != null">
+				TransportModeID,
+			</if>
+			<if test="transportmodename != null">
+				TransportModeName,
+			</if>
+			<if test="firstcharge != null">
+				FirstCharge,
+			</if>
+			<if test="renewalfee != null">
+				RenewalFee,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="transportmodeid != null">
+				#{transportmodeid,jdbcType=INTEGER},
+			</if>
+			<if test="transportmodename != null">
+				#{transportmodename,jdbcType=VARCHAR},
+			</if>
+			<if test="firstcharge != null">
+				#{firstcharge,jdbcType=REAL},
+			</if>
+			<if test="renewalfee != null">
+				#{renewalfee,jdbcType=REAL},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Transportmode">
+		update s_transportmode
+		<set>
+			<if test="transportmodename != null">
+				TransportModeName =
+				#{transportmodename,jdbcType=VARCHAR},
+			</if>
+			<if test="firstcharge != null">
+				FirstCharge = #{firstcharge,jdbcType=REAL},
+			</if>
+			<if test="renewalfee != null">
+				RenewalFee = #{renewalfee,jdbcType=REAL},
+			</if>
+		</set>
+		where TransportModeID = #{transportmodeid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Transportmode">
+		update
+		s_transportmode
+		set TransportModeName =
+		#{transportmodename,jdbcType=VARCHAR},
+		FirstCharge =
+		#{firstcharge,jdbcType=REAL},
+		RenewalFee = #{renewalfee,jdbcType=REAL}
+		where TransportModeID = #{transportmodeid,jdbcType=INTEGER}
+	</update>
+</mapper>

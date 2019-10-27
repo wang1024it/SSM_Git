@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.ApprovalrecordMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Approvalrecord">
+		<id column="ApprovalRecordID" jdbcType="INTEGER" property="approvalrecordid" />
+		<result column="OrderFormID" jdbcType="INTEGER" property="orderformid" />
+		<result column="ApproverID" jdbcType="INTEGER" property="approverid" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ApprovalRecordID, OrderFormID, ApproverID
+	</sql>
+
+
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_approvalrecord
+		where ApprovalRecordID =
+		#{approvalrecordid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		b_approvalrecord
+		where ApprovalRecordID =
+		#{approvalrecordid,jdbcType=INTEGER}
+	</delete>
+
+	<delete id="deleteByPrimaryorderID" parameterType="java.lang.Integer">
+		delete from
+		b_approvalrecord
+		where ApprovalRecordID =
+		#{orderformid,jdbcType=INTEGER}
+	</delete>
+
+
+	<insert id="insert" parameterType="com.logistics.po.Approvalrecord">
+		insert into b_approvalrecord
+		(ApprovalRecordID, OrderFormID, ApproverID
+		)
+		values
+		(#{approvalrecordid,jdbcType=INTEGER},
+		#{orderformid,jdbcType=INTEGER}, #{approverid,jdbcType=INTEGER}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Approvalrecord">
+		insert into b_approvalrecord
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="approvalrecordid != null">
+				ApprovalRecordID,
+			</if>
+			<if test="orderformid != null">
+				OrderFormID,
+			</if>
+			<if test="approverid != null">
+				ApproverID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="approvalrecordid != null">
+				#{approvalrecordid,jdbcType=INTEGER},
+			</if>
+			<if test="orderformid != null">
+				#{orderformid,jdbcType=INTEGER},
+			</if>
+			<if test="approverid != null">
+				#{approverid,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Approvalrecord">
+		update b_approvalrecord
+		<set>
+			<if test="orderformid != null">
+				OrderFormID = #{orderformid,jdbcType=INTEGER},
+			</if>
+			<if test="approverid != null">
+				ApproverID = #{approverid,jdbcType=INTEGER},
+			</if>
+		</set>
+		where ApprovalRecordID = #{approvalrecordid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Approvalrecord">
+		update
+		b_approvalrecord
+		set OrderFormID = #{orderformid,jdbcType=INTEGER},
+		ApproverID = #{approverid,jdbcType=INTEGER}
+		where ApprovalRecordID =
+		#{approvalrecordid,jdbcType=INTEGER}
+	</update>
+</mapper>

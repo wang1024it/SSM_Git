@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.lj.po.User;
+import com.logistics.po.User;
 
 /**
  * 日志过滤器 打印servlet日志

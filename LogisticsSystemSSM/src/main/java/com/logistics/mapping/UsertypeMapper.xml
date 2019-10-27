@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.UsertypeMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Usertype">
+		<id column="UserTypeID" jdbcType="INTEGER" property="usertypeid" />
+		<result column="UserTypeName" jdbcType="CHAR" property="usertypename" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		UserTypeID, UserTypeName
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from s_usertype
+		where UserTypeID = #{usertypeid,jdbcType=INTEGER}
+	</select>
+
+	<select id="findAll" resultMap="BaseResultMap">
+		SELECT s_usertype.* FROM
+		s_usertype
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		s_usertype
+		where UserTypeID = #{usertypeid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Usertype">
+		insert into s_usertype
+		(UserTypeID, UserTypeName)
+		values (#{usertypeid,jdbcType=INTEGER},
+		#{usertypename,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Usertype">
+		insert into s_usertype
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="usertypeid != null">
+				UserTypeID,
+			</if>
+			<if test="usertypename != null">
+				UserTypeName,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="usertypeid != null">
+				#{usertypeid,jdbcType=INTEGER},
+			</if>
+			<if test="usertypename != null">
+				#{usertypename,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Usertype">
+		update s_usertype
+		<set>
+			<if test="usertypename != null">
+				UserTypeName = #{usertypename,jdbcType=CHAR},
+			</if>
+		</set>
+		where UserTypeID = #{usertypeid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Usertype">
+		update s_usertype
+		set UserTypeName = #{usertypename,jdbcType=CHAR}
+		where UserTypeID =
+		#{usertypeid,jdbcType=INTEGER}
+	</update>
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.ProvinceMapper">
+  <resultMap id="BaseResultMap" type="com.logistics.po.Province">
+    <id column="ProID" jdbcType="INTEGER" property="proid" />
+    <result column="ProName" jdbcType="VARCHAR" property="proname" />
+    <result column="ProSort" jdbcType="INTEGER" property="prosort" />
+    <result column="ProRemark" jdbcType="VARCHAR" property="proremark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ProID, ProName, ProSort, ProRemark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from s_province
+    where ProID = #{proid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from s_province
+    where ProID = #{proid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.logistics.po.Province">
+    insert into s_province (ProID, ProName, ProSort, 
+      ProRemark)
+    values (#{proid,jdbcType=INTEGER}, #{proname,jdbcType=VARCHAR}, #{prosort,jdbcType=INTEGER}, 
+      #{proremark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.logistics.po.Province">
+    insert into s_province
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="proid != null">
+        ProID,
+      </if>
+      <if test="proname != null">
+        ProName,
+      </if>
+      <if test="prosort != null">
+        ProSort,
+      </if>
+      <if test="proremark != null">
+        ProRemark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="proid != null">
+        #{proid,jdbcType=INTEGER},
+      </if>
+      <if test="proname != null">
+        #{proname,jdbcType=VARCHAR},
+      </if>
+      <if test="prosort != null">
+        #{prosort,jdbcType=INTEGER},
+      </if>
+      <if test="proremark != null">
+        #{proremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Province">
+    update s_province
+    <set>
+      <if test="proname != null">
+        ProName = #{proname,jdbcType=VARCHAR},
+      </if>
+      <if test="prosort != null">
+        ProSort = #{prosort,jdbcType=INTEGER},
+      </if>
+      <if test="proremark != null">
+        ProRemark = #{proremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ProID = #{proid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.logistics.po.Province">
+    update s_province
+    set ProName = #{proname,jdbcType=VARCHAR},
+      ProSort = #{prosort,jdbcType=INTEGER},
+      ProRemark = #{proremark,jdbcType=VARCHAR}
+    where ProID = #{proid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.MotorcadeMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Motorcade">
+		<id column="MotorcadeID" jdbcType="INTEGER" property="motorcadeid" />
+		<result column="MotorcadeName" jdbcType="VARCHAR" property="motorcadename" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		MotorcadeID, MotorcadeName
+	</sql>
+	<sql id="motoSql">
+		<if test="MotorcadeName!=null and MotorcadeName!=''">
+			and b_motorcade.MotorcadeName=#{MotorcadeName}
+		</if>
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_motorcade
+		where MotorcadeID = #{motorcadeid,jdbcType=INTEGER}
+	</select>
+
+	<select id="findAll" resultMap="BaseResultMap">
+
+		SELECT b_motorcade.* FROM
+		b_motorcade
+	</select>
+	<select id="findBySQL" resultMap="BaseResultMap">
+		SELECT b_motorcade.* FROM
+		b_motorcade
+		where 1=1
+		<include refid="motoSql" />
+
+	</select>
+
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		b_motorcade
+		where MotorcadeID = #{motorcadeid,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert" parameterType="com.logistics.po.Motorcade">
+		insert into b_motorcade
+		(MotorcadeID, MotorcadeName)
+		values (#{motorcadeid,jdbcType=INTEGER},
+		#{motorcadename,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.logistics.po.Motorcade">
+		insert into b_motorcade
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="motorcadeid != null">
+				MotorcadeID,
+			</if>
+			<if test="motorcadename != null">
+				MotorcadeName,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="motorcadeid != null">
+				#{motorcadeid,jdbcType=INTEGER},
+			</if>
+			<if test="motorcadename != null">
+				#{motorcadename,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Motorcade">
+		update b_motorcade
+		<set>
+			<if test="motorcadename != null">
+				MotorcadeName = #{motorcadename,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where MotorcadeID = #{motorcadeid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Motorcade">
+		update b_motorcade
+		set MotorcadeName = #{motorcadename,jdbcType=VARCHAR}
+		where MotorcadeID
+		= #{motorcadeid,jdbcType=INTEGER}
+	</update>
+</mapper>

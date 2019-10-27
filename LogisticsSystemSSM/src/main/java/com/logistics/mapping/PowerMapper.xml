@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.PowerMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Power">
+		<id column="PowerID" jdbcType="INTEGER" property="powerid" />
+		<result column="UserTypeID" jdbcType="INTEGER" property="usertypeid" />
+		<result column="ModuleID" jdbcType="INTEGER" property="moduleid" />
+	</resultMap>
+	<resultMap type="com.logistics.vo.PowerVo" id="PowerVo" extends="BaseResultMap">
+		<result column="modulename" jdbcType="VARCHAR" property="modulename" />
+		<result column="moduleurl" jdbcType="VARCHAR" property="moduleurl" />
+		<result column="userid" jdbcType="INTEGER" property="userid" />
+	</resultMap>
+
+	<sql id="powerSql">
+		<if test="userid != null and userid != ''">
+			and b_usertypedetail.UserID =#{userid}
+		</if>
+		<if test="usertypeid!=null and usertypeid!=''">
+			and b_power.UserTypeID=#{usertypeid}
+		</if>
+		<if test="moduleid!=null and moduleid!=''">
+			and b_power.ModuleID=#{moduleid}
+		</if>
+	</sql>
+
+
+
+	<select id="findPower" resultMap="PowerVo">
+		SELECT b_power.*,b_usertypedetail.UserID,s_module.*
+		FROM b_power INNER
+		JOIN b_usertypedetail ON
+		b_power.UserTypeID=b_usertypedetail.UserTypeID
+		INNER JOIN s_module ON
+		b_power.ModuleID=s_module.ModuleID
+		where
+		1=1
+		<include refid="powerSql" />
+	</select>
+
+	<delete id="deleteBySql" parameterType="java.lang.Integer">
+		delete from
+		b_power where 1=1
+		<include refid="powerSql" />
+
+	</delete>
+
+
+	<sql id="Base_Column_List">
+		PowerID, UserTypeID, ModuleID
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_power
+		where PowerID = #{powerid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		b_power
+		where PowerID = #{powerid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Power">
+		insert into b_power (PowerID,
+		UserTypeID, ModuleID
+		)
+		values (#{powerid,jdbcType=INTEGER},
+		#{usertypeid,jdbcType=INTEGER},
+		#{moduleid,jdbcType=INTEGER}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Power">
+		insert into b_power
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="powerid != null">
+				PowerID,
+			</if>
+			<if test="usertypeid != null">
+				UserTypeID,
+			</if>
+			<if test="moduleid != null">
+				ModuleID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="powerid != null">
+				#{powerid,jdbcType=INTEGER},
+			</if>
+			<if test="usertypeid != null">
+				#{usertypeid,jdbcType=INTEGER},
+			</if>
+			<if test="moduleid != null">
+				#{moduleid,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Power">
+		update b_power
+		<set>
+			<if test="usertypeid != null">
+				UserTypeID = #{usertypeid,jdbcType=INTEGER},
+			</if>
+			<if test="moduleid != null">
+				ModuleID = #{moduleid,jdbcType=INTEGER},
+			</if>
+		</set>
+		where PowerID = #{powerid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Power">
+		update b_power
+		set
+		UserTypeID = #{usertypeid,jdbcType=INTEGER},
+		ModuleID =
+		#{moduleid,jdbcType=INTEGER}
+		where PowerID =
+		#{powerid,jdbcType=INTEGER}
+	</update>
+</mapper>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.ReceivablesMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Receivables">
+		<id column="ReceivablesID" jdbcType="INTEGER" property="receivablesid" />
+		<result column="OrderFormID" jdbcType="INTEGER" property="orderformid" />
+		<result column="PaymentTypeID" jdbcType="INTEGER" property="paymenttypeid" />
+		<result column="ReceivablesContent" jdbcType="VARCHAR"
+			property="receivablescontent" />
+		<result column="Money" jdbcType="REAL" property="money" />
+		<result column="ReceivablesTime" jdbcType="TIMESTAMP" property="receivablestime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ReceivablesID, OrderFormID, PaymentTypeID,
+		ReceivablesContent, Money,
+		ReceivablesTime
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_receivables
+		where ReceivablesID =
+		#{receivablesid,jdbcType=INTEGER}
+	</select>
+
+	<sql id="receSql">
+		<if test="orderformid!=null and orderformid!=''">
+			and b_receivables.OrderFormID=#{orderformid}
+		</if>
+	</sql>
+
+	<select id="findAllSQL" resultMap="BaseResultMap">
+		SELECT b_receivables.*,s_paymenttype.PaymentTypeName
+		FROM
+		b_receivables
+		LEFT JOIN s_paymenttype ON
+		b_receivables.PaymentTypeID=s_paymenttype.PaymentTypeID where 1=1
+		<include refid="receSql" />
+	</select>
+
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		b_receivables
+		where ReceivablesID = #{receivablesid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Receivables">
+		insert into b_receivables
+		(ReceivablesID, OrderFormID, PaymentTypeID,
+		ReceivablesContent, Money,
+		ReceivablesTime
+		)
+		values (#{receivablesid,jdbcType=INTEGER},
+		#{orderformid,jdbcType=INTEGER},
+		#{paymenttypeid,jdbcType=INTEGER},
+		#{receivablescontent,jdbcType=VARCHAR}, #{money,jdbcType=REAL},
+		#{receivablestime,jdbcType=TIMESTAMP}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Receivables">
+		insert into b_receivables
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="receivablesid != null">
+				ReceivablesID,
+			</if>
+			<if test="orderformid != null">
+				OrderFormID,
+			</if>
+			<if test="paymenttypeid != null">
+				PaymentTypeID,
+			</if>
+			<if test="receivablescontent != null">
+				ReceivablesContent,
+			</if>
+			<if test="money != null">
+				Money,
+			</if>
+			<if test="receivablestime != null">
+				ReceivablesTime,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="receivablesid != null">
+				#{receivablesid,jdbcType=INTEGER},
+			</if>
+			<if test="orderformid != null">
+				#{orderformid,jdbcType=INTEGER},
+			</if>
+			<if test="paymenttypeid != null">
+				#{paymenttypeid,jdbcType=INTEGER},
+			</if>
+			<if test="receivablescontent != null">
+				#{receivablescontent,jdbcType=VARCHAR},
+			</if>
+			<if test="money != null">
+				#{money,jdbcType=REAL},
+			</if>
+			<if test="receivablestime != null">
+				#{receivablestime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Receivables">
+		update b_receivables
+		<set>
+			<if test="orderformid != null">
+				OrderFormID = #{orderformid,jdbcType=INTEGER},
+			</if>
+			<if test="paymenttypeid != null">
+				PaymentTypeID = #{paymenttypeid,jdbcType=INTEGER},
+			</if>
+			<if test="receivablescontent != null">
+				ReceivablesContent =
+				#{receivablescontent,jdbcType=VARCHAR},
+			</if>
+			<if test="money != null">
+				Money = #{money,jdbcType=REAL},
+			</if>
+			<if test="receivablestime != null">
+				ReceivablesTime = #{receivablestime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where ReceivablesID = #{receivablesid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Receivables">
+		update
+		b_receivables
+		set OrderFormID = #{orderformid,jdbcType=INTEGER},
+		PaymentTypeID = #{paymenttypeid,jdbcType=INTEGER},
+		ReceivablesContent =
+		#{receivablescontent,jdbcType=VARCHAR},
+		Money = #{money,jdbcType=REAL},
+		ReceivablesTime = #{receivablestime,jdbcType=TIMESTAMP}
+		where
+		ReceivablesID = #{receivablesid,jdbcType=INTEGER}
+	</update>
+</mapper>

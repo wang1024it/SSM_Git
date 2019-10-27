@@ -26,7 +26,7 @@ public class RMessage {
 		JSONObject jsonObject = null;
 		JSONArray jsonArray = null;
 		
-		if (com.lj.util.Tools.isNotNull(Json)) {
+		if (com.logistics.util.Tools.isNotNull(Json)) {
 			jsonObject = JSONObject.fromObject(Json);
 		} else if (object != null) {
 
@@ -36,7 +36,7 @@ public class RMessage {
 
 		}
 
-		if (com.lj.util.Tools.isNotNull(String.valueOf(jsonObject))) {
+		if (com.logistics.util.Tools.isNotNull(String.valueOf(jsonObject))) {
 
 			out.write(String.valueOf(jsonObject));
 		} else {

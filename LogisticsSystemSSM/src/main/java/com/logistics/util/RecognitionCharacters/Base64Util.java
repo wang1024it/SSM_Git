@@ -1,4 +1,4 @@
-package com.lj.util.RecognitionCharacters;
+package com.logistics.util.RecognitionCharacters;
 
 public class Base64Util {
 	private static final char last2byte = (char) Integer

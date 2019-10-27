@@ -26,9 +26,9 @@ public class Server {// 自定义一个服务端 名字随便
 	public void open(Session session, @PathParam("loginName") String loginName)
 			throws ServletException {
 		this.session = session;
-		if (com.lj.util.Tools.isNotNull(loginName)) {
+		if (com.logistics.util.Tools.isNotNull(loginName)) {
 
-			com.lj.util.UserChat.user.put(loginName, this);// 保存当前的对象，用于发送或接收消息
+			com.logistics.util.UserChat.user.put(loginName, this);// 保存当前的对象，用于发送或接收消息
 
 		}
 
@@ -49,15 +49,15 @@ public class Server {// 自定义一个服务端 名字随便
 			if (message.split("▂")[0] != "") {
 				String msg = "私聊▍" + message;
 
-				com.lj.util.UserChat.user.get(message.split("▂")[1]).session
+				com.logistics.util.UserChat.user.get(message.split("▂")[1]).session
 						.getBasicRemote().sendText(msg);
-				com.lj.util.UserChat.user.get(message.split("▂")[0]).session
+				com.logistics.util.UserChat.user.get(message.split("▂")[0]).session
 						.getBasicRemote().sendText(msg);
 			}
 
 		} catch (Exception e) {
 			// 发送给全部人
-			for (Server server : com.lj.util.UserChat.user.values()) {
+			for (Server server : com.logistics.util.UserChat.user.values()) {
 				// 全部发送消息
 				server.session.getBasicRemote().sendText(message);
 				// server.session.getBasicRemote().sendText(LoginName);

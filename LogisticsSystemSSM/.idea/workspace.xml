@@ -2,173 +2,414 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f951430f-e27f-4227-ba2f-ca0ae7366168" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/artifacts/LogisticsSystemSSM_war.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/artifacts/LogisticsSystemSSM_war_exploded.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/libraries/Maven__junit_junit_4_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/LogisticsSystemSSM_war.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/LogisticsSystemSSM_war_exploded.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_5_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_virtuald_curvesapi_1_04.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_lmax_disruptor_3_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_8_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_3_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_4_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jstl_jstl_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_44.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ehcache_ehcache_2_10_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ehcache_ehcache_core_2_6_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ezmorph_ezmorph_1_0_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_json_lib_json_lib_2_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_dbcp2_2_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_4_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_9_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_9_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_slf4j_impl_2_9_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_web_2_9_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_3_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_3_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_schemas_3_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_core_1_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_spring_1_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_web_1_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_el_api_8_0_47.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_jsp_api_8_0_47.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_servlet_api_8_0_47.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_2_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_java_websocket_Java_WebSocket_1_3_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_caches_mybatis_ehcache_1_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_4_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_1_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_1_12_1_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_keyvalue_1_1_1_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_redis_1_7_1_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_5_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_5_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_5_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_oxm_4_2_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_0_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_2_9_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__stax_stax_api_1_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__taglibs_standard_1_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_0_b2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LogisticsSystemSSM.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/alipay/config/AlipayConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/filter/AjaxEncodeFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/filter/LogFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/filter/SetCharacterEncodingFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/Bsgrid.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/ChangeUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/CookieUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/DatatablesViewPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/DateConvertUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/ExportImportUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/FormListObjectUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/GetSetSession.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/GetTimeUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/JsonReturn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/JudgingStringSimilarityUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/MD5Util.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/RMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/ReadFileUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/RecognitionCharacters/Base64Util.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/RecognitionCharacters/FileUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/RecognitionCharacters/HttpUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/RecognitionCharacters/Recognition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/SendMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/Tools.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/UserChat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/ValiPhoto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/ValidateIDCardPhotoUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/ValidateImage/Encoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/ValidateImage/GifCaptcha.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/ValidateImage/GifDecoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/ValidateImage/GifEncoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/ValidateImage/Quant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/ValidateImage/Randoms.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/ValidateImage/Streams.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/ValidateImage/pngCaptcha.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/jdbc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis.config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/spring-mybatis.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/LogisticsSystemSSM.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/aip-java-sdk-4.2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/alipay-sdk-java-3.1.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/commons-io-2.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/commons-lang-2.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/commons-logging-1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/dom4j-1.6.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/druid-1.0.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/ezmorph-1.0.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/fastjson-1.2.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jackson-core-asl-1.9.13.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jackson-mapper-asl-1.9.13.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/json-20160810.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/json-lib-2.4-jdk15.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/log4j-1.2.17.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/log4jdbc4-1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/mybatis-3.3.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/mybatis-spring-1.3.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/mysql-connector-java-5.1.22-bin.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/poi-3.8-20120326.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/poi-examples-3.8-20120326.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/poi-excelant-3.8-20120326.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/poi-ooxml-3.8-20120326.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/slf4j-api-1.5.10.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/slf4j-log4j12-1.5.10.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/websocket-api.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-form.tld" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring.tld" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../logistics_system2019master/logistics_system2019master.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../logistics_system2019master/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_1_1_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baidu_aip_java_sdk_4_6_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_gplatform_Sdk4J_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_27.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_27.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_annotations_api_9_0_27.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_json_json_20160810.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/AboutUsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/AdministratorsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/ChatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/ClientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/CustomController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/CustomerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/DataStatisticsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/DriverManagementController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/EmployeeInformationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/FundRecordController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/InformationManagementController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/MotorcadeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/OrderFormDisposeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/OrderformController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/PersonalDataController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/PersonalManageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/PowerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SignController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/controller/TransportController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/ApprovalrecordMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/AttendanceMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BankcardinformationMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BillingmethodMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/CancelMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/CarMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/CartypeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/CityMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/CustomMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/CustomertypeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/DistrictMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/DotMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/FundrecordMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/InformationMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/InstitutionalorganizationMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/LocationMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/LogisticstrackingMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/ModuleMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/ModuledetailMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/MotorcadeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/MrchandiseMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/MrchandisetypeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/OperateMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/OrderformMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/OrderformdetailMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/OrderproblemMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/PaymentMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/PaymenttypeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/PowerMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/ProcuratoryMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/ProvinceMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/ReceivablesMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/RouteMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/StatusMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/TeammembersMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/TransportmodeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/UsertypeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/dao/UsertypedetailMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/interceptor/Authority.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/ApprovalrecordMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/AttendanceMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/BankcardinformationMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/BillingmethodMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/CancelMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/CarMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/CartypeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/CityMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/CustomMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/CustomertypeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/DistrictMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/DotMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/FundrecordMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/InformationMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/InstitutionalorganizationMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/LocationMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/LogisticstrackingMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/ModuleMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/ModuledetailMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/MotorcadeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/MrchandiseMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/MrchandisetypeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/OperateMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/OrderformMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/OrderformdetailMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/OrderproblemMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/PaymentMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/PaymenttypeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/PowerMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/ProcuratoryMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/ProvinceMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/ReceivablesMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/RouteMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/StatusMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/TeammembersMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/TransportmodeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/UserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/UsertypeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/mapping/UsertypedetailMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Car.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/DriverLocationInformation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Orderformdetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IApprovalrecordService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IAttendanceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IBankcardinformationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IBillingmethodService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/ICancelService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/ICarService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/ICartypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/ICityService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/ICustomService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/ICustomertypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IDotService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IFundrecordService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IInformationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IInstitutionalorganizationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/ILocationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/ILogisticsTrackingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IMotorcadeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IMrchandiseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IMrchandisetypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IOrderformService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IOrderformdetailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IOrderproblemService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IPaymentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IPowerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IProcuratoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IReceivablesService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IRouteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/ITeammembersService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/ITransportModeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IUsertypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/IUsertypedetailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/ApprovalrecordServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/AttendanceServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BankcardinformationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BillingmethodServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/CancelServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/CarServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/CartypeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/CityServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/CustomServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/CustomertypeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/DotServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/FundrecordServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/InformationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/InstitutionalorganizationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/LocationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/LogisticsTrackingServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/MotorcadeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/MrchaandiseServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/MrchandisetypeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/OrderformServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/OrderformdetailServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/OrderprobleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/PaymentServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/PowerServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/ProcuratoryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/ReceivablesServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/RouteServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/TeammembersServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/TransportModeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/UsertypeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/UsertypedetailServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/vo/AttendanceVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/vo/CancelVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/vo/CarVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/vo/CustomVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/vo/DotVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/vo/FundRecordVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/vo/LocationVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/vo/OrderformDetailVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/vo/OrderformVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/vo/OrderproblemVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/vo/PowerVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/vo/ProcuratoryVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/vo/RouteVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/logistics/vo/UserVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/SSM_Git.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/SSM_Git.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../sss/src/com/wyy/git/demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../sss/src/com/wyy/git/demo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/LogisticsSystemSSM_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/LogisticsSystemSSM_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_10.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_json_lib_json_lib_2_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_json_lib_json_lib_jdk15_2_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_10.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LogisticsSystemSSM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LogisticsSystemSSM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BApprovalrecordController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BAttendanceController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BBankcardinformationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BCancelController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BCarController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BCustomController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BFundrecordController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BInformationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BLocationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BLogisticstrackingController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BMotorcadeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BMrchandiseController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BOrderformController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BOrderformdetailController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BOrderproblemController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BPowerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BProcuratoryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BReceivablesController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BTeammembersController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BUserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/BUsertypedetailController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SBillingmethodController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SCartypeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SCityController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SCustomertypeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SDistrictController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SDotController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SInstitutionalorganizationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SModuleController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SModuledetailController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SMrchandisetypeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SOperateController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SPaymentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SPaymenttypeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SProvinceController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SRouteController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SStatusController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/STransportmodeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/controller/SUsertypeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BApprovalrecordDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BAttendanceDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BBankcardinformationDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BCancelDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BCarDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BCustomDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BFundrecordDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BInformationDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BLocationDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BLogisticstrackingDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BMotorcadeDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BMrchandiseDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BOrderformDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BOrderformdetailDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BOrderproblemDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BPowerDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BProcuratoryDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BReceivablesDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BTeammembersDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BUserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/BUsertypedetailDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/SBillingmethodDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/SCartypeDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/SCityDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/SCustomertypeDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/SDistrictDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/SDotDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/SInstitutionalorganizationDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/SModuleDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/SModuledetailDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/SMrchandisetypeDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/SOperateDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/SPaymentDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/SPaymenttypeDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/SProvinceDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/SRouteDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/SStatusDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/STransportmodeDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/dao/SUsertypeDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BApprovalrecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Approvalrecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BAttendance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Attendance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BBankcardinformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Bankcardinformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BCancel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Cancel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BCar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Custom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BFundrecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Fundrecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Information.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BLogisticstracking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Logisticstracking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BMotorcade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Motorcade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BMrchandise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Mrchandise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BOrderform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Orderform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BOrderformdetail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BOrderproblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Orderproblem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BPower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Power.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BProcuratory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Procuratory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BReceivables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Receivables.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BTeammembers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Teammembers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/BUsertypedetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Usertypedetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/SBillingmethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Billingmethod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/SCartype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Cartype.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/SCity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/City.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/SCustomertype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Customertype.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/SDistrict.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/District.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/SDot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Dot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/SInstitutionalorganization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Institutionalorganization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/SModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Module.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/SModuledetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Moduledetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/SMrchandisetype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Mrchandisetype.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/SOperate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Operate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/SPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Payment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/SPaymenttype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Paymenttype.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/SProvince.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Province.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/SRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Route.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/SStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/STransportmode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Transportmode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/entity/SUsertype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/po/Usertype.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/filter/LogFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/filter/LogFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BApprovalrecordService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BAttendanceService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BBankcardinformationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BCancelService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BCarService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BCustomService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BFundrecordService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BInformationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BLocationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BLogisticstrackingService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BMotorcadeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BMrchandiseService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BOrderformService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BOrderformdetailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BOrderproblemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BPowerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BProcuratoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BReceivablesService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BTeammembersService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/BUsertypedetailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/SBillingmethodService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/SCartypeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/SCityService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/SCustomertypeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/SDistrictService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/SDotService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/SInstitutionalorganizationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/SModuleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/SModuledetailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/SMrchandisetypeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/SOperateService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/SPaymentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/SPaymenttypeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/SProvinceService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/SRouteService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/SStatusService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/STransportmodeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/SUsertypeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BApprovalrecordServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BAttendanceServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BBankcardinformationServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BCancelServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BCarServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BCustomServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BFundrecordServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BInformationServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BLocationServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BLogisticstrackingServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BMotorcadeServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BMrchandiseServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BOrderformServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BOrderformdetailServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BOrderproblemServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BPowerServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BProcuratoryServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BReceivablesServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BTeammembersServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BUserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BUsertypedetailServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/SBillingmethodServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/SCartypeServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/SCityServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/SCustomertypeServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/SDistrictServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/SDotServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/SInstitutionalorganizationServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/SModuleServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/SModuledetailServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/SMrchandisetypeServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/SOperateServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/SPaymentServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/SPaymenttypeServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/SProvinceServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/SRouteServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/SStatusServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/STransportmodeServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/service/impl/SUsertypeServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/util/ExportImportUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/ExportImportUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/util/RMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/RMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/util/RecognitionCharacters/Base64Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/RecognitionCharacters/Base64Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/util/RecognitionCharacters/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/RecognitionCharacters/FileUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/util/RecognitionCharacters/HttpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/RecognitionCharacters/HttpUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/util/RecognitionCharacters/Recognition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/RecognitionCharacters/Recognition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/util/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/logistics/util/ValidateIDCardPhotoUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/logistics/util/ValidateIDCardPhotoUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-mybatis.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring-mybatis.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -209,111 +450,83 @@
     <select />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/RMessage.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/ClientController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="191">
+              <caret line="401" column="43" lean-forward="true" selection-start-line="401" selection-start-column="43" selection-end-line="401" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#24609#24622#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/SendMessage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/Server.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="14" selection-start-line="14" selection-end-line="15" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/ExportImportUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1475">
-              <caret line="19" column="50" lean-forward="true" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-214">
+              <caret line="364" column="16" selection-start-line="364" selection-start-column="16" selection-end-line="364" selection-end-column="16" />
+            </state>
+          </provider>
           <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="328" selection-start-line="328" selection-end-line="328" />
-            </state>
-          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/Tools.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="21" selection-start-column="21" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/ValidateIDCardPhotoUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-700">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/dao/BLogisticstrackingDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/ValiPhoto.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LogisticsSystemSSM.iml">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis.config.xml">
           <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-600">
+              <caret line="27" column="97" selection-start-line="27" selection-start-column="97" selection-end-line="27" selection-end-column="97" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mybatis.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="127" column="4" selection-start-line="127" selection-start-column="4" selection-end-line="127" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/LogisticsSystemSSM.iml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring.tld">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-form.tld">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="800">
+              <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -332,6 +545,7 @@
     </findStrings>
     <replaceStrings>
       <replace>BMrchandise</replace>
+      <replace>logistics</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -340,30 +554,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/filter/AjaxEncodeFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/DatatablesViewPage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/Bsgrid.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/ChangeUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/CookieUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/DateConvertUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/ExportImportUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/FormListObjectUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/GetSetSession.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/GetTimeUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/JsonReturn.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/JudgingStringSimilarityUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/MD5Util.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/ReadFileUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/RMessage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/SendMessage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/Server.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/UserChat.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/Tools.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/ValiPhoto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/ICityService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/ICustomertypeService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/ICustomService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IDotService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IFundrecordService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IInformationService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IInstitutionalorganizationService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/ILocationService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/ILogisticsTrackingService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IMotorcadeService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IMrchandiseService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IMrchandisetypeService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IOrderformdetailService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IOrderformService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IOrderproblemService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IPaymentService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IPowerService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IProcuratoryService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IReceivablesService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IRouteService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/ITeammembersService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/ITransportModeService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IUserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IUsertypedetailService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/service/IUsertypeService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/AboutUsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/AdministratorsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/ChatController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/CustomController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/CustomerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/DataStatisticsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/DriverManagementController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/EmployeeInformationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/FundRecordController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/InformationManagementController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/MainController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/MotorcadeController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/OrderformController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/OrderFormDisposeController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/PersonalDataController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/PersonalManageController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/PowerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/SignController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/TransportController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/logistics/controller/ClientController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/ValidateIDCardPhotoUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/logistics/util/JSONObject.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring-mybatis.xml" />
       </list>
     </option>
   </component>
@@ -374,10 +615,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="347" />
-    <option name="y" value="492" />
-    <option name="width" value="1578" />
-    <option name="height" value="598" />
+    <option name="x" value="346" />
+    <option name="y" value="491" />
+    <option name="width" value="1579" />
+    <option name="height" value="599" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -386,52 +627,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="LogisticsSystemSSM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LogisticsSystemSSM" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LogisticsSystemSSM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LogisticsSystemSSM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LogisticsSystemSSM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LogisticsSystemSSM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LogisticsSystemSSM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LogisticsSystemSSM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LogisticsSystemSSM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LogisticsSystemSSM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LogisticsSystemSSM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LogisticsSystemSSM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="logistics" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -440,7 +636,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="E:/kfapp/idea/ideaFile/SSM" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -455,14 +651,18 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.logistics.util" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\ExploitInstall\Git\git_repository\wyy\git_idea\LogisticsSystemSSM\src\main\java\com\logistics\filter" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\ExploitInstall\Git\git_repository\wyy\git_idea\LogisticsSystemSSM\src\main\webapp" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\SSM_Git\LogisticsSystemSSM\src\main\java\com\logistics\controller" />
+      <recent name="E:\SSM_Git\LogisticsSystemSSM\src\main\java\com\logistics" />
+      <recent name="E:\SSM_Git\LogisticsSystemSSM\src\main\java\com\logistics\dao" />
+      <recent name="E:\SSM_Git\LogisticsSystemSSM\src\main\java\com\logistics\mapping" />
+      <recent name="E:\SSM_Git\LogisticsSystemSSM\src\main\java\com\logistics\po" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.logistics.util" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -489,15 +689,15 @@
       <updated>1571748420237</updated>
       <workItem from="1571748423304" duration="3298000" />
       <workItem from="1571812216990" duration="5100000" />
+      <workItem from="1572141019268" duration="6552000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8398000" />
+    <option name="totallyTimeSpent" value="14950000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="278" y="394" width="1262" height="478" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="JRebel" order="1" side_tool="true" />
@@ -507,10 +707,10 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Web" order="6" side_tool="true" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="8" visible="true" weight="0.3114618" />
+      <window_info active="true" content_ui="combo" id="Project" order="8" visible="true" weight="0.31568363" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5008306" side_tool="true" visible="true" weight="0.73913044" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5008306" side_tool="true" visible="true" weight="0.13434903" />
       <window_info anchor="bottom" id="Java Enterprise" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="4" />
       <window_info anchor="bottom" id="Version Control" order="5" />
@@ -540,357 +740,393 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.idea/modules.xml" />
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alipay/config/AlipayConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/IMotorcadeService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="50">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/75417d88-4166-43c2-a009-92f60832b11d/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/entity/BApprovalrecord.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/IMrchandiseService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        <state relative-caret-position="50">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/entity/BAttendance.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/IMrchandisetypeService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="100">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/entity/BBankcardinformation.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/IOrderformdetailService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="150">
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/entity/BCancel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/IOrderformService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="148">
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/BApprovalrecordService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/IOrderproblemService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        <state relative-caret-position="150">
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/impl/BApprovalrecordServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/IPaymentService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        <state relative-caret-position="100">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/dao/BApprovalrecordDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/IPowerService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        <state relative-caret-position="50">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/IProcuratoryService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/dao/BAttendanceDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/IReceivablesService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55">
-          <caret line="3" column="24" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="24" />
+        <state relative-caret-position="125">
+          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/IRouteService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/ITeammembersService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/ITransportModeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/IUserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/IUsertypedetailService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/service/IUsertypeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/BApprovalrecordController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/mapping/FundrecordMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/AboutUsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-25">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/AdministratorsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+          <folding>
+            <element signature="e#3178#3192#0" expanded="true" />
+            <element signature="e#5992#6006#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/ChatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/DataStatisticsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#2088#2101#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/CustomController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-275">
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2393#2403#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/CustomerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1499#1511#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/DriverManagementController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7">
+          <caret line="127" selection-start-line="127" selection-end-line="127" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2820#2828#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/EmployeeInformationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+          <folding>
+            <element signature="e#3137#3145#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/FundRecordController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+          <folding>
+            <element signature="e#1841#1855#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/InformationManagementController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+          <folding>
+            <element signature="e#2071#2084#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+          <folding>
+            <element signature="e#6835#6847#0" expanded="true" />
+            <element signature="e#6899#6913#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/MotorcadeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="747">
+          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+          <folding>
+            <element signature="e#2670#2677#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/OrderformController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1147">
+          <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
+          <folding>
+            <element signature="e#4680#4693#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/PersonalDataController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="597">
+          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/PowerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/SignController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+          <folding>
+            <element signature="e#3665#3679#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/TransportController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+          <folding>
+            <element signature="e#3333#3348#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/OrderFormDisposeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4816">
+          <caret line="315" column="36" selection-start-line="315" selection-start-column="36" selection-end-line="315" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5957#5970#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/PersonalManageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="17" column="73" selection-start-line="17" selection-start-column="73" selection-end-line="17" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis.config.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-600">
+          <caret line="27" column="97" selection-start-line="27" selection-start-column="97" selection-end-line="27" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-214">
+          <caret line="364" column="16" selection-start-line="364" selection-start-column="16" selection-end-line="364" selection-end-column="16" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/LogisticsSystemSSM.iml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring.tld">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-form.tld">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring.tld">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+        <state relative-caret-position="800">
+          <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/filter/AjaxEncodeFilter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mybatis.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+        <state relative-caret-position="273">
+          <caret line="127" column="4" selection-start-line="127" selection-start-column="4" selection-end-line="127" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/Bsgrid.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/controller/ClientController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/ChangeUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/CookieUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/DatatablesViewPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/DateConvertUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/entity/BCar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/entity/BCustom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/entity/BFundrecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="11" selection-start-line="11" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/entity/BInformation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/entity/BLogisticstracking.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/entity/BMotorcade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/entity/BOrderform.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/entity/SPayment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/entity/BLocation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="12" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/FormListObjectUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="26" column="33" lean-forward="true" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+        <state relative-caret-position="191">
+          <caret line="401" column="43" lean-forward="true" selection-start-line="401" selection-start-column="43" selection-end-line="401" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/GetSetSession.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/GetTimeUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/JsonReturn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/JudgingStringSimilarityUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/MD5Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/ReadFileUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/UserChat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#171#187#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/Tools.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LogisticsSystemSSM.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/ValiPhoto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="328" selection-start-line="328" selection-end-line="328" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="14" selection-start-line="14" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/SendMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/ExportImportUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1475">
-          <caret line="19" column="50" lean-forward="true" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/RMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/JSONObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/util/ValidateIDCardPhotoUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-700">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/logistics/dao/BLogisticstrackingDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#24609#24622#0" expanded="true" />
           </folding>
         </state>
       </provider>

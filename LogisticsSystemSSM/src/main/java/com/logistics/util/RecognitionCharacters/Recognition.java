@@ -1,4 +1,4 @@
-package com.lj.util.RecognitionCharacters;
+package com.logistics.util.RecognitionCharacters;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

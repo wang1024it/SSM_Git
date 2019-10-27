@@ -14,7 +14,7 @@
 		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="converters">
 			<set>
-				<bean class="com.lj.util.DateConvertUtil">
+				<bean class="com.logistics.util.DateConvertUtil">
 					<!-- 自定义日期格式 -->
 					<property name="pattern" value="yyyy-MM-dd" />
 				</bean>
@@ -25,13 +25,13 @@
 
 	<!-- 日期转换 必须放在<mvc:annotation-driven />前面 -->
 	<bean
-		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"></bean>
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>
 
 	<!-- 拦截器 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<bean class="com.lj.interceptor.Authority">
+			<bean class="com.logistics.interceptor.Authority">
 				<!-- 不需要权限验证的地址 -->
 				<property name="excludeUrls">
 					<list>
@@ -53,14 +53,15 @@
 	<mvc:annotation-driven></mvc:annotation-driven>
 
 	<!-- 自动扫描且只扫描@Controller -->
-	<context:component-scan base-package="com.lj.web">
+	<context:component-scan base-package="com.logistics.controller">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
 	<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
 	<bean
-		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
+
 	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
