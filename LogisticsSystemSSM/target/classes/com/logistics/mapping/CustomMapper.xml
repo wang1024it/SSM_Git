@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.CustomMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Custom">
+		<id column="CustomID" jdbcType="INTEGER" property="customid" />
+		<result column="CustomerTypeID" jdbcType="INTEGER" property="customertypeid" />
+		<result column="CustomName" jdbcType="VARCHAR" property="customname" />
+		<result column="CustomPassword" jdbcType="VARCHAR" property="custompassword" />
+		<result column="CustomPhoneNumber" jdbcType="VARCHAR" property="customphonenumber" />
+		<result column="Sex" jdbcType="VARCHAR" property="sex" />
+		<result column="CustomIDNumber" jdbcType="VARCHAR" property="customidnumber" />
+		<result column="CustomIDPhoto" jdbcType="VARCHAR" property="customidphoto" />
+		<result column="CustomerUsername" jdbcType="VARCHAR" property="customerusername" />
+		<result column="QQ" jdbcType="VARCHAR" property="qq" />
+		<result column="Mailbox" jdbcType="VARCHAR" property="mailbox" />
+		<result column="RegistrationDate" jdbcType="TIMESTAMP"
+			property="registrationdate" />
+		<result column="TelephoneNumber" jdbcType="VARCHAR" property="telephonenumber" />
+		<result column="BusinessLicense" jdbcType="VARCHAR" property="businesslicense" />
+		<result column="BusinessLicenseNumber" jdbcType="VARCHAR"
+			property="businesslicensenumber" />
+		<result column="CorporateRepresentative" jdbcType="VARCHAR"
+			property="corporaterepresentative" />
+		<result column="CompanyAdress" jdbcType="VARCHAR" property="companyadress" />
+	</resultMap>
+	<resultMap type="com.logistics.vo.CustomVo" id="CustomVo" extends="BaseResultMap">
+		<result column="customername" jdbcType="VARCHAR" property="customername" />
+
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		CustomID, CustomerTypeID, CustomName, CustomPassword,
+		CustomPhoneNumber, Sex,
+		CustomIDNumber,
+		CustomIDPhoto, CustomerUsername,
+		QQ, Mailbox, RegistrationDate, TelephoneNumber,
+		BusinessLicense,
+		BusinessLicenseNumber, CorporateRepresentative,
+		CompanyAdress
+	</sql>
+	<sql id="customSql">
+		<if test="customname!=null and customname!=''">
+			and b_custom.customname like concat
+			('%',#{customname},'%')
+		</if>
+	</sql>
+
+
+
+
+
+	<select id="findAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_custom
+	</select>
+
+	<select id="findPage" resultMap="CustomVo">
+		SELECT b_custom.*,s_customertype.CustomerName FROM b_custom LEFT JOIN
+		s_customertype ON
+		b_custom.CustomerTypeID=s_customertype.CustomerTypeID
+
+		where 1=1
+		<include refid="customSql" />
+
+		LIMIT
+		#{startIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+
+	</select>
+	<select id="getTotalRow" resultType="java.lang.Integer">
+		SELECT COUNT(b_custom.CustomID) FROM b_custom LEFT JOIN
+		s_customertype
+		ON
+		b_custom.CustomerTypeID=s_customertype.CustomerTypeID
+		<include refid="customSql" />
+
+	</select>
+
+
+
+	<select id="findCustomInformation" resultMap="CustomVo">
+
+		SELECT b_custom.*,s_customertype.CustomerName FROM
+		b_custom LEFT JOIN
+		s_customertype ON
+		b_custom.CustomerTypeID=s_customertype.CustomerTypeID
+		where 1=1
+		<include refid="customSQL" />
+	</select>
+	<select id="findCustomBySQL" resultMap="BaseResultMap">
+		SELECT b_custom.* FROM b_custom
+		where 1=1
+		<include refid="customSQL" />
+	</select>
+
+	<select id="login" resultMap="BaseResultMap">
+
+		SELECT b_custom.*
+		FROM
+		b_custom WHERE
+		b_custom.CustomPhoneNumber=#{phonenumber} and
+		b_custom.CustomPassword=#{loginpassword}
+	</select>
+
+	<sql id="customSQL">
+		<if test="CustomUserName!=null and CustomUserName!=''">
+			and b_custom.CustomerUsername=#{CustomUserName}
+		</if>
+		<if test="CustomPhoneNumber!=null and CustomPhoneNumber!=''">
+			and b_custom.CustomPhoneNumber=#{CustomPhoneNumber}
+		</if>
+		<if test="CustomIDNumber !=null and CustomIDNumber!=''">
+			and b_custom.CustomIDNumber=#{CustomIDNumber}
+		</if>
+		<if test="customid!=null and customid!=''">
+			and b_custom.CustomID=#{customid}
+		</if>
+		<if test="unequal !=null and unequal!=''">
+			and b_custom.CustomID!=#{unequal}
+		</if>
+		<if test="Customname!=null and Customname!=''">
+			and b_custom.CustomName=#{Customname}
+		</if>
+		<if test="CustomIDNumber!=null and CustomIDNumber!=''">
+			and b_custom.CustomIDNumber=#{CustomIDNumber}
+		</if>
+		<if test="businesslicensenumber!=null and businesslicensenumber!=''">
+			and
+			b_custom.BusinessLicenseNumber=#{businesslicensenumber}
+		</if>
+	</sql>
+
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_custom
+		where CustomID = #{customid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		b_custom
+		where CustomID = #{customid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Custom">
+		insert into b_custom
+		(CustomID, CustomerTypeID, CustomName,
+		CustomPassword,
+		CustomPhoneNumber, Sex,
+		CustomIDNumber, CustomIDPhoto,
+		CustomerUsername,
+		QQ, Mailbox, RegistrationDate,
+		TelephoneNumber,
+		BusinessLicense, BusinessLicenseNumber,
+		CorporateRepresentative,
+		CompanyAdress)
+		values (#{customid,jdbcType=INTEGER},
+		#{customertypeid,jdbcType=INTEGER},
+		#{customname,jdbcType=VARCHAR},
+		#{custompassword,jdbcType=VARCHAR},
+		#{customphonenumber,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR},
+		#{customidnumber,jdbcType=VARCHAR}, #{customidphoto,jdbcType=VARCHAR},
+		#{customerusername,jdbcType=VARCHAR},
+		#{qq,jdbcType=VARCHAR},
+		#{mailbox,jdbcType=VARCHAR}, #{registrationdate,jdbcType=TIMESTAMP},
+		#{telephonenumber,jdbcType=VARCHAR},
+		#{businesslicense,jdbcType=VARCHAR},
+		#{businesslicensenumber,jdbcType=VARCHAR},
+		#{corporaterepresentative,jdbcType=VARCHAR},
+		#{companyadress,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Custom">
+		insert into b_custom
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="customid != null">
+				CustomID,
+			</if>
+			<if test="customertypeid != null">
+				CustomerTypeID,
+			</if>
+			<if test="customname != null">
+				CustomName,
+			</if>
+			<if test="custompassword != null">
+				CustomPassword,
+			</if>
+			<if test="customphonenumber != null">
+				CustomPhoneNumber,
+			</if>
+			<if test="sex != null">
+				Sex,
+			</if>
+			<if test="customidnumber != null">
+				CustomIDNumber,
+			</if>
+			<if test="customidphoto != null">
+				CustomIDPhoto,
+			</if>
+			<if test="customerusername != null">
+				CustomerUsername,
+			</if>
+			<if test="qq != null">
+				QQ,
+			</if>
+			<if test="mailbox != null">
+				Mailbox,
+			</if>
+			<if test="registrationdate != null">
+				RegistrationDate,
+			</if>
+			<if test="telephonenumber != null">
+				TelephoneNumber,
+			</if>
+			<if test="businesslicense != null">
+				BusinessLicense,
+			</if>
+			<if test="businesslicensenumber != null">
+				BusinessLicenseNumber,
+			</if>
+			<if test="corporaterepresentative != null">
+				CorporateRepresentative,
+			</if>
+			<if test="companyadress != null">
+				CompanyAdress,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="customid != null">
+				#{customid,jdbcType=INTEGER},
+			</if>
+			<if test="customertypeid != null">
+				#{customertypeid,jdbcType=INTEGER},
+			</if>
+			<if test="customname != null">
+				#{customname,jdbcType=VARCHAR},
+			</if>
+			<if test="custompassword != null">
+				#{custompassword,jdbcType=VARCHAR},
+			</if>
+			<if test="customphonenumber != null">
+				#{customphonenumber,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="customidnumber != null">
+				#{customidnumber,jdbcType=VARCHAR},
+			</if>
+			<if test="customidphoto != null">
+				#{customidphoto,jdbcType=VARCHAR},
+			</if>
+			<if test="customerusername != null">
+				#{customerusername,jdbcType=VARCHAR},
+			</if>
+			<if test="qq != null">
+				#{qq,jdbcType=VARCHAR},
+			</if>
+			<if test="mailbox != null">
+				#{mailbox,jdbcType=VARCHAR},
+			</if>
+			<if test="registrationdate != null">
+				#{registrationdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="telephonenumber != null">
+				#{telephonenumber,jdbcType=VARCHAR},
+			</if>
+			<if test="businesslicense != null">
+				#{businesslicense,jdbcType=VARCHAR},
+			</if>
+			<if test="businesslicensenumber != null">
+				#{businesslicensenumber,jdbcType=VARCHAR},
+			</if>
+			<if test="corporaterepresentative != null">
+				#{corporaterepresentative,jdbcType=VARCHAR},
+			</if>
+			<if test="companyadress != null">
+				#{companyadress,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Custom">
+		update b_custom
+		<set>
+			<if test="customertypeid != null">
+				CustomerTypeID = #{customertypeid,jdbcType=INTEGER},
+			</if>
+			<if test="customname != null">
+				CustomName = #{customname,jdbcType=VARCHAR},
+			</if>
+			<if test="custompassword != null">
+				CustomPassword = #{custompassword,jdbcType=VARCHAR},
+			</if>
+			<if test="customphonenumber != null">
+				CustomPhoneNumber =
+				#{customphonenumber,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				Sex = #{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="customidnumber != null">
+				CustomIDNumber = #{customidnumber,jdbcType=VARCHAR},
+			</if>
+			<if test="customidphoto != null">
+				CustomIDPhoto = #{customidphoto,jdbcType=VARCHAR},
+			</if>
+			<if test="customerusername != null">
+				CustomerUsername = #{customerusername,jdbcType=VARCHAR},
+			</if>
+			<if test="qq != null">
+				QQ = #{qq,jdbcType=VARCHAR},
+			</if>
+			<if test="mailbox != null">
+				Mailbox = #{mailbox,jdbcType=VARCHAR},
+			</if>
+			<if test="registrationdate != null">
+				RegistrationDate =
+				#{registrationdate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="telephonenumber != null">
+				TelephoneNumber = #{telephonenumber,jdbcType=VARCHAR},
+			</if>
+			<if test="businesslicense != null">
+				BusinessLicense = #{businesslicense,jdbcType=VARCHAR},
+			</if>
+			<if test="businesslicensenumber != null">
+				BusinessLicenseNumber =
+				#{businesslicensenumber,jdbcType=VARCHAR},
+			</if>
+			<if test="corporaterepresentative != null">
+				CorporateRepresentative =
+				#{corporaterepresentative,jdbcType=VARCHAR},
+			</if>
+			<if test="companyadress != null">
+				CompanyAdress = #{companyadress,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where CustomID = #{customid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Custom">
+		update b_custom
+		set CustomerTypeID = #{customertypeid,jdbcType=INTEGER},
+		CustomName =
+		#{customname,jdbcType=VARCHAR},
+		CustomPassword =
+		#{custompassword,jdbcType=VARCHAR},
+		CustomPhoneNumber =
+		#{customphonenumber,jdbcType=VARCHAR},
+		Sex = #{sex,jdbcType=VARCHAR},
+		CustomIDNumber = #{customidnumber,jdbcType=VARCHAR},
+		CustomIDPhoto =
+		#{customidphoto,jdbcType=VARCHAR},
+		CustomerUsername =
+		#{customerusername,jdbcType=VARCHAR},
+		QQ = #{qq,jdbcType=VARCHAR},
+		Mailbox = #{mailbox,jdbcType=VARCHAR},
+		RegistrationDate =
+		#{registrationdate,jdbcType=TIMESTAMP},
+		TelephoneNumber =
+		#{telephonenumber,jdbcType=VARCHAR},
+		BusinessLicense =
+		#{businesslicense,jdbcType=VARCHAR},
+		BusinessLicenseNumber =
+		#{businesslicensenumber,jdbcType=VARCHAR},
+		CorporateRepresentative =
+		#{corporaterepresentative,jdbcType=VARCHAR},
+		CompanyAdress =
+		#{companyadress,jdbcType=VARCHAR}
+		where CustomID =
+		#{customid,jdbcType=INTEGER}
+	</update>
+</mapper>

@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.logistics.entity.BMrchandise;
-import com.logistics.entity.BOrderformdetail;
+import com.logistics.po.Mrchandise;
+import com.logistics.po.Orderformdetail;
 
 public class FormListObjectUtil implements Serializable {
 
@@ -18,22 +18,22 @@ public class FormListObjectUtil implements Serializable {
 
 	private List<String> contentList;
 
-	private ArrayList<BMrchandise> Mrchlist;
+	private ArrayList<Mrchandise> Mrchlist;
 
-	private List<BOrderformdetail> orderformdetaillist;
+	private List<Orderformdetail> orderformdetaillist;
 
 	private List<String> filelist;
 
 	public FormListObjectUtil() {
 
-		Mrchlist = new ArrayList<BMrchandise>();
-		orderformdetaillist = new ArrayList<BOrderformdetail>();
+		Mrchlist = new ArrayList<Mrchandise>();
+		orderformdetaillist = new ArrayList<Orderformdetail>();
 	}
 
 	/**
 	 * @return the mrchlist
 	 */
-	public ArrayList<BMrchandise> getMrchlist() {
+	public ArrayList<Mrchandise> getMrchlist() {
 		return Mrchlist;
 	}
 
@@ -41,14 +41,14 @@ public class FormListObjectUtil implements Serializable {
 	 * @param mrchlist
 	 *            the mrchlist to set
 	 */
-	public void setMrchlist(ArrayList<BMrchandise> mrchlist) {
+	public void setMrchlist(ArrayList<Mrchandise> mrchlist) {
 		Mrchlist = mrchlist;
 	}
 
 	/**
 	 * @return the orderformdetaillist
 	 */
-	public List<BOrderformdetail> getOrderformdetaillist() {
+	public List<Orderformdetail> getOrderformdetaillist() {
 		return orderformdetaillist;
 	}
 
@@ -56,7 +56,7 @@ public class FormListObjectUtil implements Serializable {
 	 * @param orderformdetaillist
 	 *            the orderformdetaillist to set
 	 */
-	public void setOrderformdetaillist(List<BOrderformdetail> orderformdetaillist) {
+	public void setOrderformdetaillist(List<Orderformdetail> orderformdetaillist) {
 		this.orderformdetaillist = orderformdetaillist;
 	}
 

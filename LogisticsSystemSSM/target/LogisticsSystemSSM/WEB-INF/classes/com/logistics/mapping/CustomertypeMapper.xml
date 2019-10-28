@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.CustomertypeMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Customertype">
+		<id column="CustomerTypeID" jdbcType="INTEGER" property="customertypeid" />
+		<result column="CustomerName" jdbcType="VARCHAR" property="customername" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		CustomerTypeID, CustomerName
+	</sql>
+
+	<select id="findAll" resultMap="BaseResultMap">
+	
+SELECT 	s_customertype.*
+	 
+	FROM 
+s_customertype
+	
+	</select>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from s_customertype
+		where CustomerTypeID =
+		#{customertypeid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		s_customertype
+		where CustomerTypeID =
+		#{customertypeid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Customertype">
+		insert into s_customertype
+		(CustomerTypeID, CustomerName)
+		values
+		(#{customertypeid,jdbcType=INTEGER},
+		#{customername,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Customertype">
+		insert into s_customertype
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="customertypeid != null">
+				CustomerTypeID,
+			</if>
+			<if test="customername != null">
+				CustomerName,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="customertypeid != null">
+				#{customertypeid,jdbcType=INTEGER},
+			</if>
+			<if test="customername != null">
+				#{customername,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Customertype">
+		update s_customertype
+		<set>
+			<if test="customername != null">
+				CustomerName = #{customername,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where CustomerTypeID = #{customertypeid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Customertype">
+		update
+		s_customertype
+		set CustomerName = #{customername,jdbcType=VARCHAR}
+		where CustomerTypeID = #{customertypeid,jdbcType=INTEGER}
+	</update>
+</mapper>

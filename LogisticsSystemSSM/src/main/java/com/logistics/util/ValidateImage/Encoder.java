@@ -1,4 +1,4 @@
-package com.lj.util.ValidateImage;
+package com.logistics.util.ValidateImage;
 
 import java.io.IOException;
 import java.io.OutputStream;

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.OperateMapper">
+  <resultMap id="BaseResultMap" type="com.logistics.po.Operate">
+    <id column="OperateID" jdbcType="INTEGER" property="operateid" />
+    <result column="OperateName" jdbcType="VARCHAR" property="operatename" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    OperateID, OperateName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from s_operate
+    where OperateID = #{operateid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from s_operate
+    where OperateID = #{operateid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.logistics.po.Operate">
+    insert into s_operate (OperateID, OperateName)
+    values (#{operateid,jdbcType=INTEGER}, #{operatename,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.logistics.po.Operate">
+    insert into s_operate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="operateid != null">
+        OperateID,
+      </if>
+      <if test="operatename != null">
+        OperateName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="operateid != null">
+        #{operateid,jdbcType=INTEGER},
+      </if>
+      <if test="operatename != null">
+        #{operatename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Operate">
+    update s_operate
+    <set>
+      <if test="operatename != null">
+        OperateName = #{operatename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where OperateID = #{operateid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.logistics.po.Operate">
+    update s_operate
+    set OperateName = #{operatename,jdbcType=VARCHAR}
+    where OperateID = #{operateid,jdbcType=INTEGER}
+  </update>
+</mapper>

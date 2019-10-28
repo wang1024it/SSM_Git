@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.InformationMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Information">
+		<id column="InformationID" jdbcType="INTEGER" property="informationid" />
+		<result column="InformationPicture" jdbcType="VARCHAR"
+			property="informationpicture" />
+		<result column="InformationContent" jdbcType="VARCHAR"
+			property="informationcontent" />
+		<result column="IsEnableNo" jdbcType="BIT" property="isenableno" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		InformationID, InformationPicture, InformationContent,
+		IsEnableNo
+	</sql>
+
+	<sql id="inforSql">
+		<if test=""></if>
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_information
+		where InformationID =
+		#{informationid,jdbcType=INTEGER}
+	</select>
+	<select id="findBySQL" resultMap="BaseResultMap"></select>
+
+
+	<select id="findInformation" resultMap="BaseResultMap">
+		SELECT b_information.*
+		FROM b_information WHERE b_information.IsEnableNo=1
+	</select>
+
+	<select id="findPage" resultMap="BaseResultMap">
+		SELECT b_information.* FROM
+		b_information
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="getTotalRow" resultType="java.lang.Integer">
+		SELECT count(
+		b_information.InformationID) FROM
+		b_information
+
+
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		b_information
+		where InformationID = #{informationid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Information">
+		insert into b_information
+		(InformationID, InformationPicture,
+		InformationContent, IsEnableNo)
+		values (#{informationid,jdbcType=INTEGER},
+		#{informationpicture,jdbcType=VARCHAR},
+		#{informationcontent,jdbcType=VARCHAR}, #{isenableno,jdbcType=BIT})
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Information">
+		insert into b_information
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="informationid != null">
+				InformationID,
+			</if>
+			<if test="informationpicture != null">
+				InformationPicture,
+			</if>
+			<if test="informationcontent != null">
+				InformationContent,
+			</if>
+			<if test="isenableno != null">
+				IsEnableNo,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="informationid != null">
+				#{informationid,jdbcType=INTEGER},
+			</if>
+			<if test="informationpicture != null">
+				#{informationpicture,jdbcType=VARCHAR},
+			</if>
+			<if test="informationcontent != null">
+				#{informationcontent,jdbcType=VARCHAR},
+			</if>
+			<if test="isenableno != null">
+				#{isenableno,jdbcType=BIT},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Information">
+		update b_information
+		<set>
+			<if test="informationpicture != null">
+				InformationPicture =
+				#{informationpicture,jdbcType=VARCHAR},
+			</if>
+			<if test="informationcontent != null">
+				InformationContent =
+				#{informationcontent,jdbcType=VARCHAR},
+			</if>
+			<if test="isenableno != null">
+				IsEnableNo = #{isenableno,jdbcType=BIT},
+			</if>
+		</set>
+		where InformationID = #{informationid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Information">
+		update
+		b_information
+		set InformationPicture =
+		#{informationpicture,jdbcType=VARCHAR},
+		InformationContent =
+		#{informationcontent,jdbcType=VARCHAR},
+		IsEnableNo =
+		#{isenableno,jdbcType=BIT}
+		where InformationID =
+		#{informationid,jdbcType=INTEGER}
+	</update>
+</mapper>

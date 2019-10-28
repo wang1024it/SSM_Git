@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.LogisticstrackingMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Logisticstracking">
+		<id column="LogisticsTrackingID" jdbcType="INTEGER" property="logisticstrackingid" />
+		<result column="OrderFormID" jdbcType="INTEGER" property="orderformid" />
+		<result column="SpecificInformation" jdbcType="VARCHAR"
+			property="specificinformation" />
+		<result column="UploadLogisticsTime" jdbcType="TIMESTAMP"
+			property="uploadlogisticstime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		LogisticsTrackingID, OrderFormID, SpecificInformation,
+		UploadLogisticsTime
+	</sql>
+
+	<sql id="logSQl">
+		<if test="orderformid!=null and orderformid!=''">
+			and b_logisticstracking.OrderFormID=#{orderformid}
+		</if>
+		<if test="specificinformation!=null and specificinformation!=''">
+			and
+			b_logisticstracking.SpecificInformation=#{specificinformation}
+		</if>
+
+	</sql>
+
+	<select id="findLogBySQL" resultMap="BaseResultMap">
+		SELECT b_logisticstracking.*
+		FROM b_logisticstracking where 1=1
+		<include refid="logSQl" />
+
+	</select>
+
+
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_logisticstracking
+		where LogisticsTrackingID =
+		#{logisticstrackingid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		b_logisticstracking
+		where LogisticsTrackingID =
+		#{logisticstrackingid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Logisticstracking"
+		keyProperty="logisticstrackingid" useGeneratedKeys="true">
+		insert into
+		b_logisticstracking (LogisticsTrackingID, OrderFormID,
+		SpecificInformation, UploadLogisticsTime
+		)
+		values
+		(#{logisticstrackingid,jdbcType=INTEGER},
+		#{orderformid,jdbcType=INTEGER},
+		#{specificinformation,jdbcType=VARCHAR},
+		#{uploadlogisticstime,jdbcType=TIMESTAMP}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Logisticstracking">
+		insert into b_logisticstracking
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="logisticstrackingid != null">
+				LogisticsTrackingID,
+			</if>
+			<if test="orderformid != null">
+				OrderFormID,
+			</if>
+			<if test="specificinformation != null">
+				SpecificInformation,
+			</if>
+			<if test="uploadlogisticstime != null">
+				UploadLogisticsTime,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="logisticstrackingid != null">
+				#{logisticstrackingid,jdbcType=INTEGER},
+			</if>
+			<if test="orderformid != null">
+				#{orderformid,jdbcType=INTEGER},
+			</if>
+			<if test="specificinformation != null">
+				#{specificinformation,jdbcType=VARCHAR},
+			</if>
+			<if test="uploadlogisticstime != null">
+				#{uploadlogisticstime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Logisticstracking">
+		update b_logisticstracking
+		<set>
+			<if test="orderformid != null">
+				OrderFormID = #{orderformid,jdbcType=INTEGER},
+			</if>
+			<if test="specificinformation != null">
+				SpecificInformation =
+				#{specificinformation,jdbcType=VARCHAR},
+			</if>
+			<if test="uploadlogisticstime != null">
+				UploadLogisticsTime =
+				#{uploadlogisticstime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where LogisticsTrackingID = #{logisticstrackingid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Logisticstracking">
+		update
+		b_logisticstracking
+		set OrderFormID = #{orderformid,jdbcType=INTEGER},
+		SpecificInformation = #{specificinformation,jdbcType=VARCHAR},
+		UploadLogisticsTime = #{uploadlogisticstime,jdbcType=TIMESTAMP}
+		where
+		LogisticsTrackingID = #{logisticstrackingid,jdbcType=INTEGER}
+	</update>
+</mapper>

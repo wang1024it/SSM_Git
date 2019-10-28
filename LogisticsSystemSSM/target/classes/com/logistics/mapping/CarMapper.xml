@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.CarMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Car">
+		<id column="CarID" jdbcType="INTEGER" property="carid" />
+		<result column="UserID" jdbcType="INTEGER" property="userid" />
+		<result column="StatusID" jdbcType="INTEGER" property="statusid" />
+		<result column="CarTypeID" jdbcType="INTEGER" property="cartypeid" />
+		<result column="PlateNumber" jdbcType="VARCHAR" property="platenumber" />
+		<result column="CarDrivingLicensePhoto" jdbcType="VARCHAR"
+			property="cardrivinglicensephoto" />
+		<result column="MaxLoad" jdbcType="VARCHAR" property="maxload" />
+		<result column="CarriageSpecification" jdbcType="VARCHAR"
+			property="carriagespecification" />
+		<result column="IsPrivate" jdbcType="BIT" property="isprivate" />
+	</resultMap>
+	<resultMap type="com.logistics.vo.CarVo" id="CarVo" extends="BaseResultMap">
+		<result column="cartypename" jdbcType="VARCHAR" property="cartypename" />
+		<result column="userid" jdbcType="INTEGER" property="userid" />
+		<result column="teammembersid" jdbcType="INTEGER" property="teammembersid" />
+		<result column="motorcadeid" jdbcType="INTEGER" property="motorcadeid" />
+		<result column="username" jdbcType="VARCHAR" property="username" />
+		<result column="motorcadename" jdbcType="VARCHAR" property="motorcadename" />
+		<result column="carmatching" jdbcType="VARCHAR" property="carmatching" />
+		<result column="statusname" jdbcType="VARCHAR" property="statusname" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		CarID, UserID, StatusID, CarTypeID, PlateNumber,
+		CarDrivingLicensePhoto,
+		MaxLoad,
+		CarriageSpecification, IsPrivate
+
+	</sql>
+	<sql id="carSQL">
+		<if test="CarCondition!=null and CarCondition!=''">
+			and ( b_car.PlateNumber like
+			concat('%',#{CarCondition},'%') or b_car.CarriageSpecification like
+			concat('%',#{CarCondition},'%') or b_car.MaxLoad like
+			concat('%',#{CarCondition},'%'))
+		</if>
+		<if
+			test="InstitutionalOrganizationID!=null and InstitutionalOrganizationID!=''">
+			and
+			b_user.InstitutionalOrganizationID=#{InstitutionalOrganizationID}
+		</if>
+		<if test="MotorcadeID!= null and MotorcadeID!=''">
+			and b_teammembers.MotorcadeID=#{MotorcadeID}
+		</if>
+
+		<if test="platenumber!=null and platenumber!=''">
+			and b_car.PlateNumber=#{platenumber}
+		</if>
+		<if test="Distinguish!=null and Distinguish!=''">
+			and b_car.CarID!=#{Distinguish}
+		</if>
+		<if test="carid!=null and carid!=''">
+			and b_car.CarID=#{carid}
+		</if>
+
+
+	</sql>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_car
+		where CarID = #{carid,jdbcType=INTEGER}
+	</select>
+
+	<select id="findAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_car 
+		WHERE b_car.UserID=0
+	</select>
+	<select id="findCarSql" resultMap="CarVo">
+		SELECT b_car.*,s_cartype.CarTypeName FROM b_car LEFT JOIN
+		s_cartype ON
+		b_car.CarTypeID=s_cartype.CarTypeID
+		where 1=1
+		<include refid="carSQL" />
+	</select>
+
+	<select id="findByUserID" parameterType="java.lang.Integer"
+		resultMap="CarVo">
+		SELECT b_car.*,s_cartype.CarTypeName FROM b_car LEFT JOIN
+		s_cartype ON b_car.CarTypeID=s_cartype.CarTypeID
+		where UserID =
+		#{UserID,jdbcType=INTEGER}
+	</select>
+	<select id="findPageBySQL" resultMap="CarVo">
+		SELECT
+		b_user.UserName,b_user.UserID,b_motorcade.MotorcadeName,s_status.StatusName,b_car.*,s.StatusName
+		AS carstatusname,CASE WHEN
+		b_car.CarID IS NULL THEN '未配' ELSE
+		'已配'
+		END AS
+		carmatching,b_teammembers.* FROM b_user LEFT JOIN b_teammembers ON
+		b_user.UserID=b_teammembers.UserID LEFT JOIN b_motorcade ON
+		b_teammembers.MotorcadeID=b_motorcade.MotorcadeID LEFT JOIN s_status
+		ON b_user.StatusID=s_status.StatusID LEFT JOIN b_car ON
+		b_user.UserID=b_car.UserID LEFT JOIN s_status AS S ON
+		b_car.StatusID=S.StatusID
+		where 1=1
+		<include refid="carSQL" />
+		limit #{startIndex},#{pageSize}
+	</select>
+	<select id="getTotalRowBySQL" resultType="java.lang.Integer">
+		SELECT
+		count( b_user.UserID) FROM b_user LEFT JOIN b_teammembers ON
+		b_user.UserID=b_teammembers.UserID LEFT JOIN b_motorcade ON
+		b_teammembers.MotorcadeID=b_motorcade.MotorcadeID LEFT JOIN s_status
+		ON b_user.StatusID=s_status.StatusID LEFT JOIN b_car ON
+		b_user.UserID=b_car.UserID LEFT JOIN s_status AS S ON
+		b_car.StatusID=S.StatusID
+		where 1=1
+		<include refid="carSQL" />
+
+	</select>
+	<select id="findCar" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_car
+		where 1=1
+		<include refid="carSQL" />
+	</select>
+	<select id="findPage" resultMap="BaseResultMap">
+		SELECT b_car.*,s_status.StatusName FROM b_car LEFT JOIN s_status ON
+		b_car.StatusID=s_status.StatusID
+		where 1=1
+		<include refid="carSQL" />
+		limit #{startIndex},#{pageSize}
+
+	</select>
+	<select id="getTotalRow" resultType="java.lang.Integer">
+		select count(*) from b_car
+		where 1=1
+		<include refid="carSQL" />
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from b_car
+		where CarID = #{carid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Car">
+		insert into b_car (CarID,
+		UserID, StatusID,
+		CarTypeID, PlateNumber, CarDrivingLicensePhoto,
+		MaxLoad, CarriageSpecification, IsPrivate
+		)
+		values
+		(#{carid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER},
+		#{statusid,jdbcType=INTEGER},
+		#{cartypeid,jdbcType=INTEGER},
+		#{platenumber,jdbcType=VARCHAR},
+		#{cardrivinglicensephoto,jdbcType=VARCHAR},
+		#{maxload,jdbcType=VARCHAR},
+		#{carriagespecification,jdbcType=VARCHAR}, #{isprivate,jdbcType=BIT}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Car">
+		insert into b_car
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="carid != null">
+				CarID,
+			</if>
+			<if test="userid != null">
+				UserID,
+			</if>
+			<if test="statusid != null">
+				StatusID,
+			</if>
+			<if test="cartypeid != null">
+				CarTypeID,
+			</if>
+			<if test="platenumber != null">
+				PlateNumber,
+			</if>
+			<if test="cardrivinglicensephoto != null">
+				CarDrivingLicensePhoto,
+			</if>
+			<if test="maxload != null">
+				MaxLoad,
+			</if>
+			<if test="carriagespecification != null">
+				CarriageSpecification,
+			</if>
+			<if test="isprivate != null">
+				IsPrivate,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="carid != null">
+				#{carid,jdbcType=INTEGER},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=INTEGER},
+			</if>
+			<if test="statusid != null">
+				#{statusid,jdbcType=INTEGER},
+			</if>
+			<if test="cartypeid != null">
+				#{cartypeid,jdbcType=INTEGER},
+			</if>
+			<if test="platenumber != null">
+				#{platenumber,jdbcType=VARCHAR},
+			</if>
+			<if test="cardrivinglicensephoto != null">
+				#{cardrivinglicensephoto,jdbcType=VARCHAR},
+			</if>
+			<if test="maxload != null">
+				#{maxload,jdbcType=VARCHAR},
+			</if>
+			<if test="carriagespecification != null">
+				#{carriagespecification,jdbcType=VARCHAR},
+			</if>
+			<if test="isprivate != null">
+				#{isprivate,jdbcType=BIT},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Car">
+		update b_car
+		<set>
+			<if test="userid != null">
+				UserID = #{userid,jdbcType=INTEGER},
+			</if>
+			<if test="statusid != null">
+				StatusID = #{statusid,jdbcType=INTEGER},
+			</if>
+			<if test="cartypeid != null">
+				CarTypeID = #{cartypeid,jdbcType=INTEGER},
+			</if>
+			<if test="platenumber != null">
+				PlateNumber = #{platenumber,jdbcType=VARCHAR},
+			</if>
+			<if test="cardrivinglicensephoto != null">
+				CarDrivingLicensePhoto =
+				#{cardrivinglicensephoto,jdbcType=VARCHAR},
+			</if>
+			<if test="maxload != null">
+				MaxLoad = #{maxload,jdbcType=VARCHAR},
+			</if>
+			<if test="carriagespecification != null">
+				CarriageSpecification =
+				#{carriagespecification,jdbcType=VARCHAR},
+			</if>
+			<if test="isprivate != null">
+				IsPrivate = #{isprivate,jdbcType=BIT},
+			</if>
+		</set>
+		where CarID = #{carid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Car">
+		update b_car
+		set
+		UserID = #{userid,jdbcType=INTEGER},
+		StatusID =
+		#{statusid,jdbcType=INTEGER},
+		CarTypeID =
+		#{cartypeid,jdbcType=INTEGER},
+		PlateNumber =
+		#{platenumber,jdbcType=VARCHAR},
+		CarDrivingLicensePhoto =
+		#{cardrivinglicensephoto,jdbcType=VARCHAR},
+		MaxLoad =
+		#{maxload,jdbcType=VARCHAR},
+		CarriageSpecification =
+		#{carriagespecification,jdbcType=VARCHAR},
+		IsPrivate =
+		#{isprivate,jdbcType=BIT}
+		where CarID = #{carid,jdbcType=INTEGER}
+	</update>
+</mapper>

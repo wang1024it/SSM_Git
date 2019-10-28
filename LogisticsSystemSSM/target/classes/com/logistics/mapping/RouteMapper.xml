@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.RouteMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Route">
+		<id column="RouteID" jdbcType="INTEGER" property="routeid" />
+		<result column="RouteStartID" jdbcType="INTEGER" property="routestartid" />
+		<result column="RouteEndID" jdbcType="INTEGER" property="routeendid" />
+		<result column="ContactID" jdbcType="INTEGER" property="contactid" />
+		<result column="FreightRate" jdbcType="VARCHAR" property="freightrate" />
+		<result column="Prescription" jdbcType="VARCHAR" property="prescription" />
+	</resultMap>
+	<resultMap type="com.logistics.vo.RouteVo" id="RouteVo" extends="BaseResultMap">
+		<result column="startcityname" jdbcType="VARCHAR" property="startcityname" />
+		<result column="startdisname" jdbcType="VARCHAR" property="startdisname" />
+
+		<result column="startproname" jdbcType="VARCHAR" property="startproname" />
+		<result column="endcityname" jdbcType="VARCHAR" property="endcityname" />
+		<result column="enddisname" jdbcType="VARCHAR" property="enddisname" />
+		<result column="endproname" jdbcType="VARCHAR" property="endproname" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="phonenumber" jdbcType="VARCHAR" property="phonenumber" />
+
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		RouteID, RouteStartID, RouteEndID, ContactID, FreightRate,
+		Prescription
+	</sql>
+	<sql id="RouteSQL">
+		<if test="endName!=null and endName!=''">
+			and (startdis.DisName=#{startName}
+			or
+			startCity.CityName=#{startName} )
+		</if>
+		<if test="startName!=null and startName!=''">
+			and ( enddis.DisName=#{endName} or
+			endCity.CityName=#{endName})
+		</if>
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from s_route
+		where RouteID = #{routeid,jdbcType=INTEGER}
+	</select>
+	<select id="findPage" resultMap="RouteVo">
+		SELECT
+		s_route.*,startdis.DisName AS startDisName,enddis.DisName AS
+		endDisName,startCity.CityName AS startCityName ,startProvince.ProName
+		AS startProName,endCity.CityName AS endCityName,endProvince.ProName AS
+		endProName,b_user.UserName AS NAME,b_user.PhoneNumber FROM
+		s_route LEFT
+		JOIN s_district AS
+		startdis ON
+		s_route.RouteStartID=startdis.DisID LEFT
+		JOIN s_district AS
+		enddis ON
+		s_route.RouteEndID =enddis.DisID LEFT JOIN
+		s_city AS
+		startCity ON
+		startdis.CityID=startCity.CityID LEFT JOIN
+		s_province AS
+		startProvince
+		ON startCity.ProID=startProvince.ProID LEFT
+		JOIN s_city
+		AS endCity ON
+		enddis.CityID=endCity.CityID LEFT JOIN
+		s_province AS
+		endProvince ON
+		endCity.ProID=endProvince.ProID LEFT JOIN
+		b_user ON
+		s_route.ContactID=b_user.UserID
+		where 1=1
+		<include refid="RouteSQL" />
+		limit
+		#{startIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+
+	<select id="getTatolRow" resultType="java.lang.Integer">
+		SELECT
+		COUNT(s_route.RouteID) FROM
+		s_route LEFT JOIN s_district AS
+		startdis ON
+		s_route.RouteStartID=startdis.DisID LEFT JOIN s_district AS
+		enddis ON
+		s_route.RouteEndID =enddis.DisID LEFT JOIN s_city AS
+		startCity ON
+		startdis.CityID=startCity.CityID LEFT JOIN s_province AS
+		startProvince
+		ON startCity.ProID=startProvince.ProID LEFT JOIN s_city
+		AS endCity ON
+		enddis.CityID=endCity.CityID LEFT JOIN s_province AS
+		endProvince ON
+		endCity.ProID=endProvince.ProID LEFT JOIN b_user ON
+		s_route.ContactID=b_user.UserID
+		where 1=1
+		<include refid="RouteSQL" />
+	</select>
+
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		s_route
+		where RouteID = #{routeid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Route">
+		insert into s_route (RouteID,
+		RouteStartID, RouteEndID,
+		ContactID, FreightRate, Prescription
+		)
+		values
+		(#{routeid,jdbcType=INTEGER}, #{routestartid,jdbcType=INTEGER},
+		#{routeendid,jdbcType=INTEGER},
+		#{contactid,jdbcType=INTEGER},
+		#{freightrate,jdbcType=VARCHAR}, #{prescription,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Route">
+		insert into s_route
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="routeid != null">
+				RouteID,
+			</if>
+			<if test="routestartid != null">
+				RouteStartID,
+			</if>
+			<if test="routeendid != null">
+				RouteEndID,
+			</if>
+			<if test="contactid != null">
+				ContactID,
+			</if>
+			<if test="freightrate != null">
+				FreightRate,
+			</if>
+			<if test="prescription != null">
+				Prescription,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="routeid != null">
+				#{routeid,jdbcType=INTEGER},
+			</if>
+			<if test="routestartid != null">
+				#{routestartid,jdbcType=INTEGER},
+			</if>
+			<if test="routeendid != null">
+				#{routeendid,jdbcType=INTEGER},
+			</if>
+			<if test="contactid != null">
+				#{contactid,jdbcType=INTEGER},
+			</if>
+			<if test="freightrate != null">
+				#{freightrate,jdbcType=VARCHAR},
+			</if>
+			<if test="prescription != null">
+				#{prescription,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Route">
+		update s_route
+		<set>
+			<if test="routestartid != null">
+				RouteStartID = #{routestartid,jdbcType=INTEGER},
+			</if>
+			<if test="routeendid != null">
+				RouteEndID = #{routeendid,jdbcType=INTEGER},
+			</if>
+			<if test="contactid != null">
+				ContactID = #{contactid,jdbcType=INTEGER},
+			</if>
+			<if test="freightrate != null">
+				FreightRate = #{freightrate,jdbcType=VARCHAR},
+			</if>
+			<if test="prescription != null">
+				Prescription = #{prescription,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where RouteID = #{routeid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Route">
+		update s_route
+		set
+		RouteStartID = #{routestartid,jdbcType=INTEGER},
+		RouteEndID =
+		#{routeendid,jdbcType=INTEGER},
+		ContactID =
+		#{contactid,jdbcType=INTEGER},
+		FreightRate =
+		#{freightrate,jdbcType=VARCHAR},
+		Prescription =
+		#{prescription,jdbcType=VARCHAR}
+		where RouteID =
+		#{routeid,jdbcType=INTEGER}
+	</update>
+</mapper>

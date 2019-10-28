@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.UserMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.User">
+		<id column="UserID" jdbcType="INTEGER" property="userid" />
+		<result column="InstitutionalOrganizationID" jdbcType="INTEGER"
+			property="institutionalorganizationid" />
+		<result column="StatusID" jdbcType="INTEGER" property="statusid" />
+		<result column="UserName" jdbcType="VARCHAR" property="username" />
+		<result column="PhoneNumber" jdbcType="VARCHAR" property="phonenumber" />
+		<result column="LoginPassword" jdbcType="VARCHAR" property="loginpassword" />
+		<result column="PaymentPassword" jdbcType="VARCHAR" property="paymentpassword" />
+		<result column="IDNumber" jdbcType="VARCHAR" property="idnumber" />
+		<result column="IDPhoto" jdbcType="VARCHAR" property="idphoto" />
+		<result column="Photo" jdbcType="VARCHAR" property="photo" />
+		<result column="Sex" jdbcType="VARCHAR" property="sex" />
+		<result column="DrivingLicencePhoto" jdbcType="VARCHAR"
+			property="drivinglicencephoto" />
+		<result column="ManCarPhoto" jdbcType="VARCHAR" property="mancarphoto" />
+		<result column="IsHaveCar" jdbcType="BIT" property="ishavecar" />
+		<result column="RemainingSum" jdbcType="REAL" property="remainingsum" />
+		<result column="EntryTime" jdbcType="TIMESTAMP" property="entrytime" />
+		<result column="DepartureTime" jdbcType="TIMESTAMP" property="departuretime" />
+		<result column="Address" jdbcType="VARCHAR" property="address" />
+		<result column="EnableNo" jdbcType="BIT" property="enableno" />
+		<result column="OnLineTime" jdbcType="TIMESTAMP" property="onlinetime" />
+	</resultMap>
+	<resultMap type="com.logistics.vo.UserVo" id="UserVo" extends="BaseResultMap">
+		<result column="institutionalorganizationname" jdbcType="VARCHAR"
+			property="institutionalorganizationname" />
+		<result column="usertypename" jdbcType="VARCHAR" property="usertypename" />
+		<result column="statusname" jdbcType="VARCHAR" property="statusname" />
+		<result column="usertypeid" jdbcType="INTEGER" property="usertypeid" />
+		<result column="carid" jdbcType="INTEGER" property="carid" />
+		<result column="usertypedetailid" jdbcType="INTEGER" property="usertypedetailid" />
+
+
+	</resultMap>
+
+	<sql id="userSQL">
+		<if test="userid!=null and userid!=''">
+			and b_user.UserID=#{userid}
+		</if>
+
+		<if test="MotorcadeID!= null and MotorcadeID!=''">
+			and b_teammembers.MotorcadeID=#{MotorcadeID}
+		</if>
+		<if
+			test="InstitutionalOrganizationID!=null and InstitutionalOrganizationID!=''">
+			and
+			b_user.InstitutionalOrganizationID=#{InstitutionalOrganizationID}
+		</if>
+		<if test="UserCondition!=null and UserCondition!=''">
+			and (b_user.UserName LIKE concat('%',#{UserCondition},'%')
+			or b_user.Address LIKE concat ('%',#{UserCondition},'%')or
+			b_user.IDNumber LIKE concat ('%',#{UserCondition},'%')or
+			b_user.PhoneNumber LIKE concat ('%',#{UserCondition},'%')or
+			b_user.Sex LIKE concat ('%',#{UserCondition},'%') )
+		</if>
+		<if test="phonenumber!=null and phonenumber!=''">
+			and b_user.PhoneNumber=#{phonenumber}
+		</if>
+		<if test="idnumber!=null and idnumber!=''">
+			and b_user.IDNumber=#{idnumber}
+		</if>
+		<if test="noequalsid!=null and noequalsid!=''">
+			and b_user.UserID!=#{noequalsid}
+		</if>
+		<if test="ishavecar!=null and ishavecar!=''">
+			and b_user.IsHaveCar=#{ishavecar}
+		</if>
+	</sql>
+	<select id="findUserCar" resultMap="UserVo">
+		SELECT b_user.* ,b_car.CarID
+		FROM b_user LEFT JOIN b_car ON
+		b_user.UserID=b_car.UserID
+		where 1=1
+		<include refid="userSQL" />
+	</select>
+
+	<select id="findUserInFor" resultMap="UserVo">
+
+		SELECT b_user.*,b_usertypedetail.*
+		FROM
+		b_user LEFT JOIN
+		b_usertypedetail ON b_user.UserID=b_usertypedetail.UserID
+		where 1=1
+		<include refid="userSQL" />
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap">
+		select
+		*
+		from b_user
+		where b_user.UserID=#{userid}
+	</select>
+
+	<select id="findUserBySQL" resultMap="UserVo">
+		SELECT
+		b_user.*,s_status.StatusName,s_usertype.UserTypeName,s_institutionalorganization.InstitutionalOrganizationName
+		FROM b_user LEFT JOIN s_institutionalorganization ON
+		b_user.InstitutionalOrganizationID=s_institutionalorganization.InstitutionalOrganizationID
+		LEFT JOIN s_status ON b_user.StatusID=s_status.StatusID LEFT JOIN
+		b_usertypedetail ON b_user.UserID=b_usertypedetail.UserID LEFT JOIN
+		s_usertype ON b_usertypedetail.UserTypeID=s_usertype.UserTypeID
+		where
+		1=1
+		<include refid="userSQL" />
+	</select>
+	<select id="findAllBySql" resultMap="BaseResultMap">
+		SELECT b_user.* FROM b_user
+		LEFT JOIN b_car ON
+		b_user.UserID=b_car.UserID
+		LEFT JOIN b_teammembers
+		ON
+		b_user.UserID=b_teammembers.UserID
+		where b_user.StatusID=2 AND
+		b_car.StatusID=1 AND b_user.InstitutionalOrganizationID=3
+		<include refid="userSQL" />
+	</select>
+	<select id="findAll" resultMap="BaseResultMap">
+		SELECT b_user.* FROM b_user where 1=1
+		<include refid="userSQL" />
+	</select>
+	<select id="findPageUserVo" resultMap="UserVo">
+		SELECT
+		b_user.*,s_status.StatusName,s_usertype.*,b_usertypedetail.*,s_institutionalorganization.InstitutionalOrganizationName
+		FROM b_user LEFT JOIN s_institutionalorganization ON
+		b_user.InstitutionalOrganizationID=s_institutionalorganization.InstitutionalOrganizationID
+		LEFT JOIN b_usertypedetail ON b_user.UserID=b_usertypedetail.UserID
+		LEFT JOIN s_usertype ON
+		b_usertypedetail.UserTypeID=s_usertype.UserTypeID
+		LEFT JOIN s_status ON
+		b_user.StatusID=s_status.StatusID WHERE 1=1
+		<include refid="userSQL" />
+		LIMIT
+		#{startIndex},#{pageSize}
+
+	</select>
+	<select id="getTotalRowUserVo" resultType="java.lang.Integer">
+		select
+		count(*)
+		from
+		b_user where 1=1
+		<include refid="userSQL" />
+	</select>
+
+
+
+
+	<sql id="Base_Column_List">
+		UserID, InstitutionalOrganizationID, StatusID, UserName,
+		PhoneNumber,
+		LoginPassword,
+		PaymentPassword, IDNumber, IDPhoto, Photo,
+		Sex, DrivingLicencePhoto, ManCarPhoto,
+		IsHaveCar, RemainingSum,
+		EntryTime, DepartureTime, Address, EnableNo,
+		OnLineTime
+	</sql>
+
+
+	<select id="login" resultMap="BaseResultMap">
+		select
+		*
+		from b_user
+		where
+		phonenumber=#{phonenumber,jdbcType=INTEGER} and
+		loginpassword=
+		#{loginpassword,jdbcType=INTEGER}
+	</select>
+
+	<select id="findPage" resultMap="BaseResultMap">
+
+		SELECT b_user.*,s_status.StatusName FROM b_user LEFT JOIN s_status ON
+		b_user.StatusID=s_status.StatusID
+		where 1=1
+		<include refid="userSQL" />
+		limit
+		#{startIndex},#{pageSize}
+
+	</select>
+	<select id="getTotalRow" resultType="java.lang.Integer">
+		select
+		count(*)
+		from b_user where 1=1
+		<include refid="userSQL" />
+	</select>
+
+	<insert id="insertReturnID" parameterType="com.logistics.po.User"
+		keyProperty="userid" useGeneratedKeys="true">
+		insert into b_user (UserID,
+		InstitutionalOrganizationID,
+		StatusID, UserName,
+		PhoneNumber,
+		LoginPassword, PaymentPassword, IDNumber,
+		IDPhoto, Photo,
+		Sex,
+		DrivingLicencePhoto, ManCarPhoto, IsHaveCar,
+		RemainingSum,
+		EntryTime,
+		DepartureTime,
+		Address, EnableNo, OnLineTime
+		)
+		values
+		(#{userid,jdbcType=INTEGER},
+		#{institutionalorganizationid,jdbcType=INTEGER},
+		#{statusid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR},
+		#{phonenumber,jdbcType=VARCHAR},
+		#{loginpassword,jdbcType=VARCHAR},
+		#{paymentpassword,jdbcType=VARCHAR}, #{idnumber,jdbcType=VARCHAR},
+		#{idphoto,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR},
+		#{sex,jdbcType=VARCHAR},
+		#{drivinglicencephoto,jdbcType=VARCHAR},
+		#{mancarphoto,jdbcType=VARCHAR}, #{ishavecar,jdbcType=BIT},
+		#{remainingsum,jdbcType=REAL}, #{entrytime,jdbcType=TIMESTAMP},
+		#{departuretime,jdbcType=TIMESTAMP},
+		#{address,jdbcType=VARCHAR},
+		#{enableno,jdbcType=BIT}, #{onlinetime,jdbcType=TIMESTAMP}
+		)
+
+	</insert>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from b_user
+		where UserID = #{userid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.User">
+		insert into b_user (UserID,
+		InstitutionalOrganizationID,
+		StatusID, UserName, PhoneNumber,
+		LoginPassword, PaymentPassword, IDNumber,
+		IDPhoto, Photo, Sex,
+		DrivingLicencePhoto, ManCarPhoto, IsHaveCar,
+		RemainingSum, EntryTime,
+		DepartureTime,
+		Address, EnableNo, OnLineTime
+		)
+		values
+		(#{userid,jdbcType=INTEGER},
+		#{institutionalorganizationid,jdbcType=INTEGER},
+		#{statusid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR},
+		#{phonenumber,jdbcType=VARCHAR},
+		#{loginpassword,jdbcType=VARCHAR},
+		#{paymentpassword,jdbcType=VARCHAR}, #{idnumber,jdbcType=VARCHAR},
+		#{idphoto,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR},
+		#{sex,jdbcType=VARCHAR},
+		#{drivinglicencephoto,jdbcType=VARCHAR},
+		#{mancarphoto,jdbcType=VARCHAR}, #{ishavecar,jdbcType=BIT},
+		#{remainingsum,jdbcType=REAL}, #{entrytime,jdbcType=TIMESTAMP},
+		#{departuretime,jdbcType=TIMESTAMP},
+		#{address,jdbcType=VARCHAR},
+		#{enableno,jdbcType=BIT}, #{onlinetime,jdbcType=TIMESTAMP}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.User">
+		insert into b_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userid != null">
+				UserID,
+			</if>
+			<if test="institutionalorganizationid != null">
+				InstitutionalOrganizationID,
+			</if>
+			<if test="statusid != null">
+				StatusID,
+			</if>
+			<if test="username != null">
+				UserName,
+			</if>
+			<if test="phonenumber != null">
+				PhoneNumber,
+			</if>
+			<if test="loginpassword != null">
+				LoginPassword,
+			</if>
+			<if test="paymentpassword != null">
+				PaymentPassword,
+			</if>
+			<if test="idnumber != null">
+				IDNumber,
+			</if>
+			<if test="idphoto != null">
+				IDPhoto,
+			</if>
+			<if test="photo != null">
+				Photo,
+			</if>
+			<if test="sex != null">
+				Sex,
+			</if>
+			<if test="drivinglicencephoto != null">
+				DrivingLicencePhoto,
+			</if>
+			<if test="mancarphoto != null">
+				ManCarPhoto,
+			</if>
+			<if test="ishavecar != null">
+				IsHaveCar,
+			</if>
+			<if test="remainingsum != null">
+				RemainingSum,
+			</if>
+			<if test="entrytime != null">
+				EntryTime,
+			</if>
+			<if test="departuretime != null">
+				DepartureTime,
+			</if>
+			<if test="address != null">
+				Address,
+			</if>
+			<if test="enableno != null">
+				EnableNo,
+			</if>
+			<if test="onlinetime != null">
+				OnLineTime,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userid != null">
+				#{userid,jdbcType=INTEGER},
+			</if>
+			<if test="institutionalorganizationid != null">
+				#{institutionalorganizationid,jdbcType=INTEGER},
+			</if>
+			<if test="statusid != null">
+				#{statusid,jdbcType=INTEGER},
+			</if>
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="phonenumber != null">
+				#{phonenumber,jdbcType=VARCHAR},
+			</if>
+			<if test="loginpassword != null">
+				#{loginpassword,jdbcType=VARCHAR},
+			</if>
+			<if test="paymentpassword != null">
+				#{paymentpassword,jdbcType=VARCHAR},
+			</if>
+			<if test="idnumber != null">
+				#{idnumber,jdbcType=VARCHAR},
+			</if>
+			<if test="idphoto != null">
+				#{idphoto,jdbcType=VARCHAR},
+			</if>
+			<if test="photo != null">
+				#{photo,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="drivinglicencephoto != null">
+				#{drivinglicencephoto,jdbcType=VARCHAR},
+			</if>
+			<if test="mancarphoto != null">
+				#{mancarphoto,jdbcType=VARCHAR},
+			</if>
+			<if test="ishavecar != null">
+				#{ishavecar,jdbcType=BIT},
+			</if>
+			<if test="remainingsum != null">
+				#{remainingsum,jdbcType=REAL},
+			</if>
+			<if test="entrytime != null">
+				#{entrytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="departuretime != null">
+				#{departuretime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="enableno != null">
+				#{enableno,jdbcType=BIT},
+			</if>
+			<if test="onlinetime != null">
+				#{onlinetime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.User">
+		update b_user
+		<set>
+			<if test="institutionalorganizationid != null">
+				InstitutionalOrganizationID =
+				#{institutionalorganizationid,jdbcType=INTEGER},
+			</if>
+			<if test="statusid != null">
+				StatusID = #{statusid,jdbcType=INTEGER},
+			</if>
+			<if test="username != null">
+				UserName = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="phonenumber != null">
+				PhoneNumber = #{phonenumber,jdbcType=VARCHAR},
+			</if>
+			<if test="loginpassword != null">
+				LoginPassword = #{loginpassword,jdbcType=VARCHAR},
+			</if>
+			<if test="paymentpassword != null">
+				PaymentPassword = #{paymentpassword,jdbcType=VARCHAR},
+			</if>
+			<if test="idnumber != null">
+				IDNumber = #{idnumber,jdbcType=VARCHAR},
+			</if>
+			<if test="idphoto != null">
+				IDPhoto = #{idphoto,jdbcType=VARCHAR},
+			</if>
+			<if test="photo != null">
+				Photo = #{photo,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				Sex = #{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="drivinglicencephoto != null">
+				DrivingLicencePhoto =
+				#{drivinglicencephoto,jdbcType=VARCHAR},
+			</if>
+			<if test="mancarphoto != null">
+				ManCarPhoto = #{mancarphoto,jdbcType=VARCHAR},
+			</if>
+			<if test="ishavecar != null">
+				IsHaveCar = #{ishavecar,jdbcType=BIT},
+			</if>
+			<if test="remainingsum != null">
+				RemainingSum = #{remainingsum,jdbcType=REAL},
+			</if>
+			<if test="entrytime != null">
+				EntryTime = #{entrytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="departuretime != null">
+				DepartureTime = #{departuretime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="address != null">
+				Address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="enableno != null">
+				EnableNo = #{enableno,jdbcType=BIT},
+			</if>
+			<if test="onlinetime != null">
+				OnLineTime = #{onlinetime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where UserID = #{userid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.User">
+		update b_user
+		set
+		InstitutionalOrganizationID =
+		#{institutionalorganizationid,jdbcType=INTEGER},
+		StatusID =
+		#{statusid,jdbcType=INTEGER},
+		UserName = #{username,jdbcType=VARCHAR},
+		PhoneNumber = #{phonenumber,jdbcType=VARCHAR},
+		LoginPassword =
+		#{loginpassword,jdbcType=VARCHAR},
+		PaymentPassword =
+		#{paymentpassword,jdbcType=VARCHAR},
+		IDNumber =
+		#{idnumber,jdbcType=VARCHAR},
+		IDPhoto = #{idphoto,jdbcType=VARCHAR},
+		Photo = #{photo,jdbcType=VARCHAR},
+		Sex = #{sex,jdbcType=VARCHAR},
+		DrivingLicencePhoto = #{drivinglicencephoto,jdbcType=VARCHAR},
+		ManCarPhoto = #{mancarphoto,jdbcType=VARCHAR},
+		IsHaveCar =
+		#{ishavecar,jdbcType=BIT},
+		RemainingSum =
+		#{remainingsum,jdbcType=REAL},
+		EntryTime =
+		#{entrytime,jdbcType=TIMESTAMP},
+		DepartureTime =
+		#{departuretime,jdbcType=TIMESTAMP},
+		Address =
+		#{address,jdbcType=VARCHAR},
+		EnableNo = #{enableno,jdbcType=BIT},
+		OnLineTime = #{onlinetime,jdbcType=TIMESTAMP}
+		where UserID =
+		#{userid,jdbcType=INTEGER}
+	</update>
+</mapper>

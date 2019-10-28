@@ -24,38 +24,39 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.CellRangeAddress;
 
 @SuppressWarnings("deprecation")
 public class ExportImportUtil {
 
-//	/**
-//	 * 导出Excel
-//	 *
-//	 * @param TitleName
-//	 *            excel的名称
-//	 * @param columnNumber
-//	 *            株数
-//	 * @param columnWidth
-//	 *            每个单元格的宽度 例如{10,20,30 }
-//	 * @param columnName
-//	 *            每个单元格的名称 例如{"订单号","收货人名称"，"...",...}
-//	 * @param dataList
-//	 *            导出的内容{{"00001","张三"},{"0002","李四"}}
-//	 * @param response
-//	 * @throws Exception
-//	 */
-//	public static void Export(String TitleName, int columnNumber,
-//			int[] columnWidth, String[] columnName, String[][] dataList,
-//			HttpServletResponse response) throws Exception {
-//		ExportWithResponse(TitleName, TitleName, TitleName, columnNumber,
-//				columnWidth, columnName, dataList, response);
-//
-//	}
-//
-//	private static void ExportWithResponse(String sheetName, String titleName,
-//			String fileName, int columnNumber, int[] columnWidth,
-//			String[] columnName, String[][] dataList,
-//			HttpServletResponse response) throws Exception {
+	/**
+	 * 导出Excel
+	 *
+	 * @param TitleName
+	 *            excel的名称
+	 * @param columnNumber
+	 *            株数
+	 * @param columnWidth
+	 *            每个单元格的宽度 例如{10,20,30 }
+	 * @param columnName
+	 *            每个单元格的名称 例如{"订单号","收货人名称"，"...",...}
+	 * @param dataList
+	 *            导出的内容{{"00001","张三"},{"0002","李四"}}
+	 * @param response
+	 * @throws Exception
+	 */
+	public static void Export(String TitleName, int columnNumber,
+			int[] columnWidth, String[] columnName, String[][] dataList,
+			HttpServletResponse response) throws Exception {
+		ExportWithResponse(TitleName, TitleName, TitleName, columnNumber,
+				columnWidth, columnName, dataList, response);
+
+	}
+
+	private static void ExportWithResponse(String sheetName, String titleName,
+			String fileName, int columnNumber, int[] columnWidth,
+			String[] columnName, String[][] dataList,
+			HttpServletResponse response) throws Exception {
 //		if (columnNumber == columnWidth.length
 //				&& columnWidth.length == columnName.length) {
 //			// 第一步，创建一个webbook，对应一个Excel文件
@@ -177,138 +178,138 @@ public class ExportImportUtil {
 //		} else {
 //			System.out.println("列数目长度名称三个数组长度要一致");
 //		}
-//
-//	}
-//
-//	/*
-//	 * ================================================导入========================
-//	 */
-//
-//	/**
-//	 *
-//	 * @param in
-//	 *            InputStream 流 例如 InputStream inputStream=new InputStream(new
-//	 *            file( 文件的路径))
-//	 * @param column
-//	 *            有多少列
-//	 * @param field
-//	 *            Excel文档的每列的title 例如 { "序号", "订单编号",......}
-//	 * @return
-//	 * @throws Exception
-//	 */
-//	public static Object Import(InputStream in, int column, String[] field)
-//			throws Exception {
-//		return getDataFromExcel(in, column, field);
-//
-//	}
-//
-//	private static Object getDataFromExcel(InputStream in, int column,
-//			String[] field) {
-//
-//		Workbook wookbook = null;
-//		try {
-//
-//			wookbook = new HSSFWorkbook(in);// 得到工作簿
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		int flag = 0;
-//		// 得到一个工作表
-//		Sheet sheet = wookbook.getSheetAt(0);
-//
-//		// 获得表头
-//		Row rowHead = sheet.getRow(0);
-//
-//		// 根据不同的data放置不同的表头
-//		Map<Object, Integer> headMap = new HashMap<Object, Integer>();
-//		int i = 1;
-//		if (rowHead.getPhysicalNumberOfCells() == column) {
-//			rowHead = sheet.getRow(0);
-//		} else {
-//			rowHead = sheet.getRow(1);
-//			i = 2;
-//		}
-//
-//		try {
-//			// ----------------这里根据你的表格有多少列
-//			while (flag < column) {
-//
-//				Cell cell = rowHead.getCell(flag);
-//				if (getCellValue(cell).toString().equals(field[flag])) {
-//					headMap.put(field[flag], flag);
-//				}
-//
-//				flag++;
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//
-//		}
-//
-//		// 获得数据的总行数
-//		int totalRowNum = sheet.getLastRowNum();
-//
-//		if (0 == totalRowNum) {
-//			return "Excel内没有数据！";
-//
-//		}
-//
-//		List<Object> list = new ArrayList<Object>();
-//
-//		// 获得所有数据
-//		for (; i <= totalRowNum; i++) {
-//
-//			// 获得第i行对象
-//			Row row = sheet.getRow(i);
-//			Map<String, Object> map = new HashMap<String, Object>();
-//			for (int j = 0; j < field.length; j++) {
-//				map.put(field[j], row.getCell(headMap.get(field[j])));
-//			}
-//
-//			list.add(map);
-//
-//		}
-//		return list;
-//
-//	}
-//
-//	/**
-//	 * 描述：对表格中数值进行格式化
-//	 *
-//	 * @param cell
-//	 * @return
-//	 */
-//	private static Object getCellValue(Cell cell) {
-//		Object value = null;
-//		DecimalFormat df = new DecimalFormat("0"); // 格式化number String字符
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd"); // 日期格式化
-//		DecimalFormat df2 = new DecimalFormat("0"); // 格式化数字
-//
-//		switch (cell.getCellType()) {
-//		case Cell.CELL_TYPE_STRING:
-//			value = cell.getRichStringCellValue().getString();
-//			break;
-//		case Cell.CELL_TYPE_NUMERIC:
-//			if ("General".equals(cell.getCellStyle().getDataFormatString())) {
-//				value = df.format(cell.getNumericCellValue());
-//			} else if ("m/d/yy".equals(cell.getCellStyle()
-//					.getDataFormatString())) {
-//				value = sdf.format(cell.getDateCellValue());
-//			} else {
-//				value = df2.format(cell.getNumericCellValue());
-//			}
-//			break;
-//		case Cell.CELL_TYPE_BOOLEAN:
-//			value = cell.getBooleanCellValue();
-//			break;
-//		case Cell.CELL_TYPE_BLANK:
-//			value = "";
-//			break;
-//		default:
-//			break;
-//		}
-//		return value;
-//	}
+
+	}
+
+	/*
+	 * ================================================导入========================
+	 */
+
+	/**
+	 *
+	 * @param in
+	 *            InputStream 流 例如 InputStream inputStream=new InputStream(new
+	 *            file( 文件的路径))
+	 * @param column
+	 *            有多少列
+	 * @param field
+	 *            Excel文档的每列的title 例如 { "序号", "订单编号",......}
+	 * @return
+	 * @throws Exception
+	 */
+	public static Object Import(InputStream in, int column, String[] field)
+			throws Exception {
+		return getDataFromExcel(in, column, field);
+
+	}
+
+	private static Object getDataFromExcel(InputStream in, int column,
+			String[] field) {
+
+		Workbook wookbook = null;
+		try {
+
+			wookbook = new HSSFWorkbook(in);// 得到工作簿
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		int flag = 0;
+		// 得到一个工作表
+		Sheet sheet = wookbook.getSheetAt(0);
+
+		// 获得表头
+		Row rowHead = sheet.getRow(0);
+
+		// 根据不同的data放置不同的表头
+		Map<Object, Integer> headMap = new HashMap<Object, Integer>();
+		int i = 1;
+		if (rowHead.getPhysicalNumberOfCells() == column) {
+			rowHead = sheet.getRow(0);
+		} else {
+			rowHead = sheet.getRow(1);
+			i = 2;
+		}
+
+		try {
+			// ----------------这里根据你的表格有多少列
+			while (flag < column) {
+
+				Cell cell = rowHead.getCell(flag);
+				if (getCellValue(cell).toString().equals(field[flag])) {
+					headMap.put(field[flag], flag);
+				}
+
+				flag++;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
+		// 获得数据的总行数
+		int totalRowNum = sheet.getLastRowNum();
+
+		if (0 == totalRowNum) {
+			return "Excel内没有数据！";
+
+		}
+
+		List<Object> list = new ArrayList<Object>();
+
+		// 获得所有数据
+		for (; i <= totalRowNum; i++) {
+
+			// 获得第i行对象
+			Row row = sheet.getRow(i);
+			Map<String, Object> map = new HashMap<String, Object>();
+			for (int j = 0; j < field.length; j++) {
+				map.put(field[j], row.getCell(headMap.get(field[j])));
+			}
+
+			list.add(map);
+
+		}
+		return list;
+
+	}
+
+	/**
+	 * 描述：对表格中数值进行格式化
+	 *
+	 * @param cell
+	 * @return
+	 */
+	private static Object getCellValue(Cell cell) {
+		Object value = null;
+		DecimalFormat df = new DecimalFormat("0"); // 格式化number String字符
+		SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd"); // 日期格式化
+		DecimalFormat df2 = new DecimalFormat("0"); // 格式化数字
+
+		switch (cell.getCellType()) {
+		case Cell.CELL_TYPE_STRING:
+			value = cell.getRichStringCellValue().getString();
+			break;
+		case Cell.CELL_TYPE_NUMERIC:
+			if ("General".equals(cell.getCellStyle().getDataFormatString())) {
+				value = df.format(cell.getNumericCellValue());
+			} else if ("m/d/yy".equals(cell.getCellStyle()
+					.getDataFormatString())) {
+				value = sdf.format(cell.getDateCellValue());
+			} else {
+				value = df2.format(cell.getNumericCellValue());
+			}
+			break;
+		case Cell.CELL_TYPE_BOOLEAN:
+			value = cell.getBooleanCellValue();
+			break;
+		case Cell.CELL_TYPE_BLANK:
+			value = "";
+			break;
+		default:
+			break;
+		}
+		return value;
+	}
 
 }

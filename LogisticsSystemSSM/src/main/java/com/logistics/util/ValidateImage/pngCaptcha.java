@@ -1,4 +1,6 @@
-package com.lj.util.ValidateImage;
+package com.logistics.util.ValidateImage;
+
+import com.logistics.util.ValidateImage.Streams;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -6,9 +8,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import static com.lj.util.ValidateImage.Randoms.alpha;
-import static com.lj.util.ValidateImage.Randoms.num;
-import com.lj.util.ValidateImage.Streams;
+import static com.logistics.util.ValidateImage.Randoms.alpha;
+import static com.logistics.util.ValidateImage.Randoms.num;
 
 /**
  * <p>

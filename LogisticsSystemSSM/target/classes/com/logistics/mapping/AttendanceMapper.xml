@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.AttendanceMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Attendance">
+		<id column="AttendanceID" jdbcType="INTEGER" property="attendanceid" />
+		<result column="AuditorID" jdbcType="INTEGER" property="auditorid" />
+		<result column="UserID" jdbcType="INTEGER" property="userid" />
+		<result column="CarID" jdbcType="INTEGER" property="carid" />
+		<result column="IsRatification" jdbcType="BIT" property="isratification" />
+		<result column="StartWorkTime" jdbcType="TIMESTAMP" property="startworktime" />
+		<result column="OffWork" jdbcType="TIMESTAMP" property="offwork" />
+		<result column="Remark" jdbcType="VARCHAR" property="remark" />
+		<result column="Mark" jdbcType="VARCHAR" property="mark" />
+		<result column="IsAudit" jdbcType="BIT" property="isaudit" />
+		<result column="AuditTime" jdbcType="TIMESTAMP" property="audittime" />
+		<result column="ApplicationTime" jdbcType="TIMESTAMP" property="applicationtime" />
+		<result column="Reason" jdbcType="VARCHAR" property="reason" />
+		<result column="LeaveDay" jdbcType="VARCHAR" property="leaveday" />
+		<result column="StartMileage" jdbcType="REAL" property="startmileage" />
+		<result column="StartOilMass" jdbcType="REAL" property="startoilmass" />
+		<result column="StartLocation" jdbcType="VARCHAR" property="startlocation" />
+		<result column="OffMileage" jdbcType="REAL" property="offmileage" />
+		<result column="OffOilMass" jdbcType="REAL" property="offoilmass" />
+		<result column="OffLocation" jdbcType="VARCHAR" property="offlocation" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		AttendanceID, AuditorID, UserID, CarID, IsRatification,
+		StartWorkTime, OffWork,
+		Remark,
+		Mark, IsAudit, AuditTime,
+		ApplicationTime, Reason, LeaveDay, StartMileage,
+		StartOilMass,
+		StartLocation, OffMileage, OffOilMass, OffLocation
+	</sql>
+	<resultMap type="com.logistics.vo.AttendanceVo" id="AttendanceVo"
+		extends="BaseResultMap">
+		<result column="userName" jdbcType="VARCHAR" property="userName" />
+		<result column="auditorName" jdbcType="VARCHAR" property="auditorName" />
+	</resultMap>
+
+
+	<select id="findBySQL" resultMap="AttendanceVo">
+		SELECT b_user.UserName,
+		b_attendance.*,Auditor.UserName FROM
+		b_attendance
+		LEFT JOIN b_user ON
+		b_attendance.UserID=b_user.UserID LEFT
+		JOIN b_user
+		AS Auditor ON
+		b_attendance.AuditorID=Auditor.UserID WHERE
+		1=1
+		<include refid="attendaceSql" />
+
+	</select>
+	<sql id="attendaceSql">
+		<if test="userid != null and userid != ''">
+			and b_attendance.UserID =#{userid}
+		</if>
+		<if test="startWorkTime!=null and startWorkTime!=''">
+		<![CDATA[and  b_attendance.StartWorkTime>= CONCAT(#{startWorkTime},' 07:00:00')]]>
+		</if>
+		<if test="offWork!=null and offWork!=''">
+		<![CDATA[and  b_attendance.OffWork<= CONCAT(#{offWork},' 23:59:59')]]>
+		</if>
+		<if test="IsRatification!=null ">
+			and b_attendance.IsRatification=#{IsRatification}
+		</if>
+		<if test="isaudit!=null">
+			and b_attendance.IsAudit=#{isaudit}
+		</if>
+
+		<if test="startTime!=null and startTime!=''">
+		 <![CDATA[and  b_attendance.ApplicationTime>= CONCAT(#{startTime},' 00:00:00')]]>
+		</if>
+		<if test="endTime!=null and endTime!=''">
+		 <![CDATA[and  b_attendance.ApplicationTime<= CONCAT(#{endTime},' 23:59:59')]]>
+		</if>
+
+		<if test="Reason!=null ">
+			and b_attendance.Reason !=#{Reason}
+		</if>
+		<if test="empty!=null and empty!=''">
+			and b_attendance.Reason !=''
+		</if>
+		<if test="Reverse!=null and Reverse!=''">
+			ORDER BY b_attendance.AttendanceID DESC LIMIT 0,1
+		</if>
+	</sql>
+
+
+	<select id="findAttendance" resultMap="BaseResultMap">
+		SELECT b_attendance.* FROM b_attendance where 1=1
+		<include refid="attendaceSql" />
+
+	</select>
+
+	<select id="findPage" resultMap="AttendanceVo">
+		SELECT b_user.UserName,
+		b_attendance.*,Auditor.UserName as auditorName
+		FROM
+		b_attendance
+		LEFT JOIN b_user ON
+		b_attendance.UserID=b_user.UserID
+		LEFT
+		JOIN b_user
+		AS Auditor ON
+		b_attendance.AuditorID=Auditor.UserID
+		where 1=1
+		<include refid="attendaceSql" />
+		ORDER BY b_attendance.AttendanceID DESC
+		LIMIT
+		#{startIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+
+	</select>
+	<select id="getTotalRow" resultType="java.lang.Integer">
+		SELECT
+		COUNT(b_attendance.AttendanceID)
+		FROM b_attendance
+		LEFT JOIN
+		b_user ON
+		b_attendance.UserID=b_user.UserID
+		LEFT JOIN b_user
+		AS Auditor
+		ON
+		b_attendance.AuditorID=Auditor.UserID where 1=1
+		<include refid="attendaceSql" />
+
+
+
+	</select>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_attendance
+		where AttendanceID = #{attendanceid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		b_attendance
+		where AttendanceID = #{attendanceid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Attendance">
+		insert into b_attendance
+		(AttendanceID, AuditorID, UserID,
+		CarID, IsRatification, StartWorkTime,
+		OffWork, Remark, Mark,
+		IsAudit, AuditTime, ApplicationTime,
+		Reason,
+		LeaveDay, StartMileage,
+		StartOilMass, StartLocation, OffMileage,
+		OffOilMass, OffLocation)
+		values (#{attendanceid,jdbcType=INTEGER},
+		#{auditorid,jdbcType=INTEGER},
+		#{userid,jdbcType=INTEGER},
+		#{carid,jdbcType=INTEGER}, #{isratification,jdbcType=BIT},
+		#{startworktime,jdbcType=TIMESTAMP},
+		#{offwork,jdbcType=TIMESTAMP},
+		#{remark,jdbcType=VARCHAR},
+		#{mark,jdbcType=VARCHAR},
+		#{isaudit,jdbcType=BIT}, #{audittime,jdbcType=TIMESTAMP},
+		#{applicationtime,jdbcType=TIMESTAMP},
+		#{reason,jdbcType=VARCHAR},
+		#{leaveday,jdbcType=VARCHAR}, #{startmileage,jdbcType=REAL},
+		#{startoilmass,jdbcType=REAL}, #{startlocation,jdbcType=VARCHAR},
+		#{offmileage,jdbcType=REAL},
+		#{offoilmass,jdbcType=REAL},
+		#{offlocation,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Attendance">
+		insert into b_attendance
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="attendanceid != null">
+				AttendanceID,
+			</if>
+			<if test="auditorid != null">
+				AuditorID,
+			</if>
+			<if test="userid != null">
+				UserID,
+			</if>
+			<if test="carid != null">
+				CarID,
+			</if>
+			<if test="isratification != null">
+				IsRatification,
+			</if>
+			<if test="startworktime != null">
+				StartWorkTime,
+			</if>
+			<if test="offwork != null">
+				OffWork,
+			</if>
+			<if test="remark != null">
+				Remark,
+			</if>
+			<if test="mark != null">
+				Mark,
+			</if>
+			<if test="isaudit != null">
+				IsAudit,
+			</if>
+			<if test="audittime != null">
+				AuditTime,
+			</if>
+			<if test="applicationtime != null">
+				ApplicationTime,
+			</if>
+			<if test="reason != null">
+				Reason,
+			</if>
+			<if test="leaveday != null">
+				LeaveDay,
+			</if>
+			<if test="startmileage != null">
+				StartMileage,
+			</if>
+			<if test="startoilmass != null">
+				StartOilMass,
+			</if>
+			<if test="startlocation != null">
+				StartLocation,
+			</if>
+			<if test="offmileage != null">
+				OffMileage,
+			</if>
+			<if test="offoilmass != null">
+				OffOilMass,
+			</if>
+			<if test="offlocation != null">
+				OffLocation,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="attendanceid != null">
+				#{attendanceid,jdbcType=INTEGER},
+			</if>
+			<if test="auditorid != null">
+				#{auditorid,jdbcType=INTEGER},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=INTEGER},
+			</if>
+			<if test="carid != null">
+				#{carid,jdbcType=INTEGER},
+			</if>
+			<if test="isratification != null">
+				#{isratification,jdbcType=BIT},
+			</if>
+			<if test="startworktime != null">
+				#{startworktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="offwork != null">
+				#{offwork,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="mark != null">
+				#{mark,jdbcType=VARCHAR},
+			</if>
+			<if test="isaudit != null">
+				#{isaudit,jdbcType=BIT},
+			</if>
+			<if test="audittime != null">
+				#{audittime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applicationtime != null">
+				#{applicationtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="reason != null">
+				#{reason,jdbcType=VARCHAR},
+			</if>
+			<if test="leaveday != null">
+				#{leaveday,jdbcType=VARCHAR},
+			</if>
+			<if test="startmileage != null">
+				#{startmileage,jdbcType=REAL},
+			</if>
+			<if test="startoilmass != null">
+				#{startoilmass,jdbcType=REAL},
+			</if>
+			<if test="startlocation != null">
+				#{startlocation,jdbcType=VARCHAR},
+			</if>
+			<if test="offmileage != null">
+				#{offmileage,jdbcType=REAL},
+			</if>
+			<if test="offoilmass != null">
+				#{offoilmass,jdbcType=REAL},
+			</if>
+			<if test="offlocation != null">
+				#{offlocation,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Attendance">
+		update b_attendance
+		<set>
+			<if test="auditorid != null">
+				AuditorID = #{auditorid,jdbcType=INTEGER},
+			</if>
+			<if test="userid != null">
+				UserID = #{userid,jdbcType=INTEGER},
+			</if>
+			<if test="carid != null">
+				CarID = #{carid,jdbcType=INTEGER},
+			</if>
+			<if test="isratification != null">
+				IsRatification = #{isratification,jdbcType=BIT},
+			</if>
+			<if test="startworktime != null">
+				StartWorkTime = #{startworktime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="offwork != null">
+				OffWork = #{offwork,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				Remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="mark != null">
+				Mark = #{mark,jdbcType=VARCHAR},
+			</if>
+			<if test="isaudit != null">
+				IsAudit = #{isaudit,jdbcType=BIT},
+			</if>
+			<if test="audittime != null">
+				AuditTime = #{audittime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applicationtime != null">
+				ApplicationTime = #{applicationtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="reason != null">
+				Reason = #{reason,jdbcType=VARCHAR},
+			</if>
+			<if test="leaveday != null">
+				LeaveDay = #{leaveday,jdbcType=VARCHAR},
+			</if>
+			<if test="startmileage != null">
+				StartMileage = #{startmileage,jdbcType=REAL},
+			</if>
+			<if test="startoilmass != null">
+				StartOilMass = #{startoilmass,jdbcType=REAL},
+			</if>
+			<if test="startlocation != null">
+				StartLocation = #{startlocation,jdbcType=VARCHAR},
+			</if>
+			<if test="offmileage != null">
+				OffMileage = #{offmileage,jdbcType=REAL},
+			</if>
+			<if test="offoilmass != null">
+				OffOilMass = #{offoilmass,jdbcType=REAL},
+			</if>
+			<if test="offlocation != null">
+				OffLocation = #{offlocation,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where AttendanceID = #{attendanceid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Attendance">
+		update
+		b_attendance
+		set AuditorID = #{auditorid,jdbcType=INTEGER},
+		UserID =
+		#{userid,jdbcType=INTEGER},
+		CarID = #{carid,jdbcType=INTEGER},
+		IsRatification = #{isratification,jdbcType=BIT},
+		StartWorkTime =
+		#{startworktime,jdbcType=TIMESTAMP},
+		OffWork =
+		#{offwork,jdbcType=TIMESTAMP},
+		Remark = #{remark,jdbcType=VARCHAR},
+		Mark = #{mark,jdbcType=VARCHAR},
+		IsAudit = #{isaudit,jdbcType=BIT},
+		AuditTime = #{audittime,jdbcType=TIMESTAMP},
+		ApplicationTime =
+		#{applicationtime,jdbcType=TIMESTAMP},
+		Reason =
+		#{reason,jdbcType=VARCHAR},
+		LeaveDay = #{leaveday,jdbcType=VARCHAR},
+		StartMileage = #{startmileage,jdbcType=REAL},
+		StartOilMass =
+		#{startoilmass,jdbcType=REAL},
+		StartLocation =
+		#{startlocation,jdbcType=VARCHAR},
+		OffMileage =
+		#{offmileage,jdbcType=REAL},
+		OffOilMass = #{offoilmass,jdbcType=REAL},
+		OffLocation = #{offlocation,jdbcType=VARCHAR}
+		where AttendanceID =
+		#{attendanceid,jdbcType=INTEGER}
+	</update>
+</mapper>

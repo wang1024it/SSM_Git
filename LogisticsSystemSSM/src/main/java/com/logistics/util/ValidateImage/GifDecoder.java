@@ -1,4 +1,4 @@
-package com.lj.util.ValidateImage;
+package com.logistics.util.ValidateImage;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -270,7 +270,7 @@ public class GifDecoder
             }
         }finally
         {
-            Streams.close(is);
+            com.logistics.util.ValidateImage.Streams.close(is);
         }
         return status;
     }
@@ -300,7 +300,7 @@ public class GifDecoder
             }
         }finally
         {
-            Streams.close(is);
+            com.logistics.util.ValidateImage.Streams.close(is);
         }
         return status;
     }

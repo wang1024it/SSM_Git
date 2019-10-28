@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.BankcardinformationMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Bankcardinformation">
+		<id column="BankCardInformationID" jdbcType="INTEGER" property="bankcardinformationid" />
+		<result column="UserID" jdbcType="INTEGER" property="userid" />
+		<result column="BankCardNumber" jdbcType="VARCHAR" property="bankcardnumber" />
+		<result column="BankCardReservedPhoneNumber" jdbcType="VARCHAR"
+			property="bankcardreservedphonenumber" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		BankCardInformationID, UserID, BankCardNumber,
+		BankCardReservedPhoneNumber
+	</sql>
+
+
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_bankcardinformation
+		where BankCardInformationID =
+		#{bankcardinformationid,jdbcType=INTEGER}
+	</select>
+
+
+	<select id="findAllBankCard" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		SELECT
+		b_bankcardinformation.* FROM b_bankcardinformation
+		where
+		b_bankcardinformation.UserID=#{userid,jdbcType=INTEGER}
+	</select>
+
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		b_bankcardinformation
+		where BankCardInformationID =
+		#{bankcardinformationid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Bankcardinformation">
+		insert into
+		b_bankcardinformation (BankCardInformationID, UserID,
+		BankCardNumber,
+		BankCardReservedPhoneNumber)
+		values
+		(#{bankcardinformationid,jdbcType=INTEGER},
+		#{userid,jdbcType=INTEGER}, #{bankcardnumber,jdbcType=VARCHAR},
+		#{bankcardreservedphonenumber,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Bankcardinformation">
+		insert into b_bankcardinformation
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bankcardinformationid != null">
+				BankCardInformationID,
+			</if>
+			<if test="userid != null">
+				UserID,
+			</if>
+			<if test="bankcardnumber != null">
+				BankCardNumber,
+			</if>
+			<if test="bankcardreservedphonenumber != null">
+				BankCardReservedPhoneNumber,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bankcardinformationid != null">
+				#{bankcardinformationid,jdbcType=INTEGER},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=INTEGER},
+			</if>
+			<if test="bankcardnumber != null">
+				#{bankcardnumber,jdbcType=VARCHAR},
+			</if>
+			<if test="bankcardreservedphonenumber != null">
+				#{bankcardreservedphonenumber,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Bankcardinformation">
+		update b_bankcardinformation
+		<set>
+			<if test="userid != null">
+				UserID = #{userid,jdbcType=INTEGER},
+			</if>
+			<if test="bankcardnumber != null">
+				BankCardNumber = #{bankcardnumber,jdbcType=VARCHAR},
+			</if>
+			<if test="bankcardreservedphonenumber != null">
+				BankCardReservedPhoneNumber =
+				#{bankcardreservedphonenumber,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where BankCardInformationID =
+		#{bankcardinformationid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Bankcardinformation">
+		update
+		b_bankcardinformation
+		set UserID = #{userid,jdbcType=INTEGER},
+		BankCardNumber = #{bankcardnumber,jdbcType=VARCHAR},
+		BankCardReservedPhoneNumber =
+		#{bankcardreservedphonenumber,jdbcType=VARCHAR}
+		where
+		BankCardInformationID = #{bankcardinformationid,jdbcType=INTEGER}
+	</update>
+</mapper>

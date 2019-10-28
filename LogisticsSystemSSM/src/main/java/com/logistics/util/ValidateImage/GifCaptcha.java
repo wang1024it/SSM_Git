@@ -1,14 +1,14 @@
-package com.lj.util.ValidateImage;
+package com.logistics.util.ValidateImage;
 
-import com.lj.util.ValidateImage.GifEncoder;
-import com.lj.util.ValidateImage.Streams;
+import com.logistics.util.ValidateImage.GifEncoder;
+import com.logistics.util.ValidateImage.Streams;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.OutputStream;
 
-import static com.lj.util.ValidateImage.Randoms.alpha;
-
-import static com.lj.util.ValidateImage.Randoms.num;
+import static com.logistics.util.ValidateImage.Randoms.alpha;
+import static com.logistics.util.ValidateImage.Randoms.num;
 
 /**
  * <p>

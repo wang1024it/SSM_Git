@@ -1,17 +1,11 @@
-package com.lj.util.ValidateImage;
+package com.logistics.util.ValidateImage;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
+import com.logistics.util.ValidateImage.Quant;
+
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-
-import com.lj.util.ValidateImage.Encoder;
-import com.lj.util.ValidateImage.Quant;
+import java.io.*;
 
 /**
  * Class AnimatedGifEncoder - Encodes a GIF file consisting of one or more

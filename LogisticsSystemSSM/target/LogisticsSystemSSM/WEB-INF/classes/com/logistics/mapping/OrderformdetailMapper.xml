@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.OrderformdetailMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Orderformdetail">
+		<id column="OrderFormDetailID" jdbcType="INTEGER" property="orderformdetailid" />
+
+		<result column="MrchandiseID" jdbcType="INTEGER" property="mrchandiseid" />
+		<result column="OrderFormID" jdbcType="INTEGER" property="orderformid" />
+		<result column="Weight" jdbcType="REAL" property="weight" />
+		<result column="Volume" jdbcType="REAL" property="volume" />
+		<result column="Quantity" jdbcType="INTEGER" property="quantity" />
+	</resultMap>
+	<resultMap type="com.logistics.vo.OrderformDetailVo" id="OrderformDetailVo"
+		extends="BaseResultMap">
+		<result column="mrchandisetypeid" jdbcType="INTEGER" property="mrchandisetypeid" />
+		<result column="mrchandisename" jdbcType="VARCHAR" property="mrchandisename" />
+	</resultMap>
+
+	<sql id="orderfromdetailSQL">
+
+		<if test="orderformid!=null and orderformid!=''">
+
+			and b_orderformdetail.OrderFormID=#{orderformid}
+		</if>
+	</sql>
+
+	<sql id="Base_Column_List">
+		OrderFormDetailID, MrchandiseID, OrderFormID, Weight,
+		Volume, Quantity
+	</sql>
+	<select id="findBySQL" resultMap="OrderformDetailVo">
+		SELECT
+		b_orderformdetail.*,b_mrchandise.* FROM b_orderformdetail LEFT
+		JOIN
+		b_mrchandise ON
+		b_orderformdetail.MrchandiseID=b_mrchandise.MrchandiseID
+		where 1=1
+		<include refid="orderfromdetailSQL" />
+	</select>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_orderformdetail
+		where OrderFormDetailID =
+		#{orderformdetailid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		b_orderformdetail
+		where OrderFormDetailID =
+		#{orderformdetailid,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteByOrderformID" parameterType="java.lang.Integer">
+		delete from
+		b_orderformdetail
+		where OrderFormID =
+		#{orderformID,jdbcType=INTEGER}
+	</delete>
+
+
+	<insert id="insert" parameterType="com.logistics.po.Orderformdetail">
+		insert into b_orderformdetail
+		(OrderFormDetailID,
+		MrchandiseID, OrderFormID, Weight,
+		Volume, Quantity)
+		values (#{orderformdetailid,jdbcType=INTEGER}, #{ jdbcType=INTEGER},
+		#{mrchandiseid,jdbcType=INTEGER}, #{orderformid,jdbcType=INTEGER},
+		#{weight,jdbcType=REAL},
+		#{volume,jdbcType=REAL},
+		#{quantity,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Orderformdetail">
+		insert into b_orderformdetail
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="orderformdetailid != null">
+				OrderFormDetailID,
+			</if>
+
+			<if test="mrchandiseid != null">
+				MrchandiseID,
+			</if>
+			<if test="orderformid != null">
+				OrderFormID,
+			</if>
+			<if test="weight != null">
+				Weight,
+			</if>
+			<if test="volume != null">
+				Volume,
+			</if>
+			<if test="quantity != null">
+				Quantity,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="orderformdetailid != null">
+				#{orderformdetailid,jdbcType=INTEGER},
+			</if>
+
+			<if test="mrchandiseid != null">
+				#{mrchandiseid,jdbcType=INTEGER},
+			</if>
+			<if test="orderformid != null">
+				#{orderformid,jdbcType=INTEGER},
+			</if>
+			<if test="weight != null">
+				#{weight,jdbcType=REAL},
+			</if>
+			<if test="volume != null">
+				#{volume,jdbcType=REAL},
+			</if>
+			<if test="quantity != null">
+				#{quantity,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Orderformdetail">
+		update b_orderformdetail
+		<set>
+
+			<if test="mrchandiseid != null">
+				MrchandiseID = #{mrchandiseid,jdbcType=INTEGER},
+			</if>
+			<if test="orderformid != null">
+				OrderFormID = #{orderformid,jdbcType=INTEGER},
+			</if>
+			<if test="weight != null">
+				Weight = #{weight,jdbcType=REAL},
+			</if>
+			<if test="volume != null">
+				Volume = #{volume,jdbcType=REAL},
+			</if>
+			<if test="quantity != null">
+				Quantity = #{quantity,jdbcType=INTEGER},
+			</if>
+		</set>
+		where OrderFormDetailID = #{orderformdetailid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Orderformdetail">
+		update
+		b_orderformdetail
+		set
+		MrchandiseID = #{mrchandiseid,jdbcType=INTEGER},
+		OrderFormID =
+		#{orderformid,jdbcType=INTEGER},
+		Weight =
+		#{weight,jdbcType=REAL},
+		Volume = #{volume,jdbcType=REAL},
+		Quantity =
+		#{quantity,jdbcType=INTEGER}
+		where OrderFormDetailID =
+		#{orderformdetailid,jdbcType=INTEGER}
+	</update>
+</mapper>

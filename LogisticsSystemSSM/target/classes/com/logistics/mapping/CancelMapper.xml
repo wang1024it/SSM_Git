@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.CancelMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Cancel">
+		<id column="CancelID" jdbcType="INTEGER" property="cancelid" />
+		<result column="OrderFormID" jdbcType="INTEGER" property="orderformid" />
+		<result column="IsAudit" jdbcType="BIT" property="isaudit" />
+		<result column="OperatorID" jdbcType="INTEGER" property="operatorid" />
+		<result column="CancelReason" jdbcType="VARCHAR" property="cancelreason" />
+		<result column="ApplicationCancelTime" jdbcType="TIMESTAMP"
+			property="applicationcanceltime" />
+		<result column="AuditCancelTime" jdbcType="TIMESTAMP" property="auditcanceltime" />
+		<result column="DefaultMoney" jdbcType="REAL" property="defaultmoney" />
+		<result column="CancelRemark" jdbcType="VARCHAR" property="cancelremark" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		CancelID, OrderFormID, IsAudit, OperatorID, CancelReason,
+		ApplicationCancelTime,
+		AuditCancelTime, DefaultMoney, CancelRemark
+	</sql>
+	<resultMap type="com.logistics.vo.CancelVo" id="CancelVo" extends="BaseResultMap">
+
+		<result column="operatorname" jdbcType="VARCHAR" property="operatorname" />
+	</resultMap>
+	<sql id="cancelSql">
+		<if test="orderformid!=null and orderformid!=''">
+			and b_cancel.orderformid=#{orderformid}
+		</if>
+	</sql>
+
+	<select id="findCancelBySQL" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_cancel
+		where 1=1
+		<include refid="cancelSql" />
+	</select>
+	<select id="findCancelVo" resultMap="CancelVo">
+		SELECT b_cancel.*,b_user.UserName as operatorname FROM b_cancel LEFT
+		JOIN b_user ON
+		b_cancel.OperatorID=b_user.UserID
+		where 1=1
+		<include refid="cancelSql" />
+	</select>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_cancel
+		where CancelID = #{cancelid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		b_cancel
+		where CancelID = #{cancelid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Cancel">
+		insert into b_cancel
+		(CancelID, OrderFormID, IsAudit,
+		OperatorID, CancelReason,
+		ApplicationCancelTime,
+		AuditCancelTime, DefaultMoney, CancelRemark
+		)
+		values (#{cancelid,jdbcType=INTEGER}, #{orderformid,jdbcType=INTEGER},
+		#{isaudit,jdbcType=BIT},
+		#{operatorid,jdbcType=INTEGER},
+		#{cancelreason,jdbcType=VARCHAR},
+		#{applicationcanceltime,jdbcType=TIMESTAMP},
+		#{auditcanceltime,jdbcType=TIMESTAMP}, #{defaultmoney,jdbcType=REAL},
+		#{cancelremark,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Cancel">
+		insert into b_cancel
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="cancelid != null">
+				CancelID,
+			</if>
+			<if test="orderformid != null">
+				OrderFormID,
+			</if>
+			<if test="isaudit != null">
+				IsAudit,
+			</if>
+			<if test="operatorid != null">
+				OperatorID,
+			</if>
+			<if test="cancelreason != null">
+				CancelReason,
+			</if>
+			<if test="applicationcanceltime != null">
+				ApplicationCancelTime,
+			</if>
+			<if test="auditcanceltime != null">
+				AuditCancelTime,
+			</if>
+			<if test="defaultmoney != null">
+				DefaultMoney,
+			</if>
+			<if test="cancelremark != null">
+				CancelRemark,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="cancelid != null">
+				#{cancelid,jdbcType=INTEGER},
+			</if>
+			<if test="orderformid != null">
+				#{orderformid,jdbcType=INTEGER},
+			</if>
+			<if test="isaudit != null">
+				#{isaudit,jdbcType=BIT},
+			</if>
+			<if test="operatorid != null">
+				#{operatorid,jdbcType=INTEGER},
+			</if>
+			<if test="cancelreason != null">
+				#{cancelreason,jdbcType=VARCHAR},
+			</if>
+			<if test="applicationcanceltime != null">
+				#{applicationcanceltime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="auditcanceltime != null">
+				#{auditcanceltime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="defaultmoney != null">
+				#{defaultmoney,jdbcType=REAL},
+			</if>
+			<if test="cancelremark != null">
+				#{cancelremark,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Cancel">
+		update b_cancel
+		<set>
+			<if test="orderformid != null">
+				OrderFormID = #{orderformid,jdbcType=INTEGER},
+			</if>
+			<if test="isaudit != null">
+				IsAudit = #{isaudit,jdbcType=BIT},
+			</if>
+			<if test="operatorid != null">
+				OperatorID = #{operatorid,jdbcType=INTEGER},
+			</if>
+			<if test="cancelreason != null">
+				CancelReason = #{cancelreason,jdbcType=VARCHAR},
+			</if>
+			<if test="applicationcanceltime != null">
+				ApplicationCancelTime =
+				#{applicationcanceltime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="auditcanceltime != null">
+				AuditCancelTime = #{auditcanceltime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="defaultmoney != null">
+				DefaultMoney = #{defaultmoney,jdbcType=REAL},
+			</if>
+			<if test="cancelremark != null">
+				CancelRemark = #{cancelremark,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where CancelID = #{cancelid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Cancel">
+		update b_cancel
+		set OrderFormID = #{orderformid,jdbcType=INTEGER},
+		IsAudit =
+		#{isaudit,jdbcType=BIT},
+		OperatorID = #{operatorid,jdbcType=INTEGER},
+		CancelReason = #{cancelreason,jdbcType=VARCHAR},
+		ApplicationCancelTime
+		= #{applicationcanceltime,jdbcType=TIMESTAMP},
+		AuditCancelTime =
+		#{auditcanceltime,jdbcType=TIMESTAMP},
+		DefaultMoney =
+		#{defaultmoney,jdbcType=REAL},
+		CancelRemark =
+		#{cancelremark,jdbcType=VARCHAR}
+		where CancelID =
+		#{cancelid,jdbcType=INTEGER}
+	</update>
+</mapper>

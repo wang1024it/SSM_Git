@@ -350,7 +350,7 @@ public class ClientController {
      * 查询客户是否存在
      *
      * @param pw
-     * @param CustomUserName
+     * @param 'CustomUserName
      * @param txtCode
      */
     @SuppressWarnings({"rawtypes", "unchecked"})
@@ -437,7 +437,7 @@ public class ClientController {
      * 设置新密码
      *
      * @param pw
-     * @param passWord
+     * @param password
      * @param confirmPassword
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
@@ -625,16 +625,12 @@ public class ClientController {
                                 if (list.getMrchlist().size() > 0) {
                                     for (int i = 0; i < list.getMrchlist()
                                             .size(); i++) {
-                                        if (!Tools.isNotNull(list.getMrchlist()
-                                                .get(i).getMrchandisename())) {
+                                        if (!Tools.isNotNull(list.getMrchlist().get(i).getMrchandisename())) {
                                             list.getMrchlist().remove(i);
-                                            list.getOrderformdetaillist()
-                                                    .remove(i);
+                                            list.getOrderformdetaillist().remove(i);
                                             i--;
                                         }
-
                                     }
-
                                     int r = iOrderformService
                                             .insertReturnID(orderform);
                                     orderformID = orderform.getOrderformid();
@@ -642,14 +638,10 @@ public class ClientController {
                                         Orderformdetail orderformdetail = null;
                                         Mrchandise mrchandise = null;
                                         if (list.getMrchlist().size() > 0) {
-
-                                            for (int i = 0; i < list
-                                                    .getMrchlist().size(); i++) {
+                                            for (int i = 0; i < list.getMrchlist().size(); i++) {
                                                 orderformdetail = new Orderformdetail();
                                                 mrchandise = new Mrchandise();
-                                                if (Tools
-                                                        .checkObjFieldIsNull(list
-                                                                .getMrchlist()
+                                                if (Tools.checkObjFieldIsNull(list.getMrchlist()
                                                                 .get(i))
                                                         && Tools.isNotNull(list
                                                         .getMrchlist()
@@ -1047,8 +1039,8 @@ public class ClientController {
     /**
      * 查询订单物流信息
      *
-     * @param request
-     * @param response
+     * @param 'request
+     * @param 'response
      * @throws ServletException
      * @throws IOException
      */

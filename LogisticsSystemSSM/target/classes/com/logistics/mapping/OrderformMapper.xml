@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.OrderformMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Orderform">
+		<id column="OrderFormID" jdbcType="INTEGER" property="orderformid" />
+		<result column="CustomID" jdbcType="INTEGER" property="customid" />
+		<result column="TransportModeID" jdbcType="INTEGER" property="transportmodeid" />
+		<result column="BillingMethodID" jdbcType="INTEGER" property="billingmethodid" />
+		<result column="PaymentID" jdbcType="INTEGER" property="paymentid" />
+		<result column="OrderNumber" jdbcType="VARCHAR" property="ordernumber" />
+		<result column="SendName" jdbcType="VARCHAR" property="sendname" />
+		<result column="SendAdress" jdbcType="VARCHAR" property="sendadress" />
+		<result column="SendPhoneNumber" jdbcType="VARCHAR" property="sendphonenumber" />
+		<result column="TakeName" jdbcType="VARCHAR" property="takename" />
+		<result column="TakeAdress" jdbcType="VARCHAR" property="takeadress" />
+		<result column="TakePhoneNumber" jdbcType="VARCHAR" property="takephonenumber" />
+		<result column="UploadTime" jdbcType="TIMESTAMP" property="uploadtime" />
+		<result column="IsIndeedUpload" jdbcType="BIT" property="isindeedupload" />
+		<result column="IsAuditing" jdbcType="BIT" property="isauditing" />
+		<result column="AuditTime" jdbcType="TIMESTAMP" property="audittime" />
+		<result column="TransportCost" jdbcType="REAL" property="transportcost" />
+		<result column="BargainMoney" jdbcType="REAL" property="bargainmoney" />
+		<result column="DeliveryTime" jdbcType="TIMESTAMP" property="deliverytime" />
+		<result column="ReceiptTime" jdbcType="TIMESTAMP" property="receipttime" />
+		<result column="Remark" jdbcType="VARCHAR" property="remark" />
+		<result column="StatusID" jdbcType="INTEGER" property="statusid" />
+		<result column="SingleTime" jdbcType="TIMESTAMP" property="singletime" />
+		<result column="StartTime" jdbcType="TIMESTAMP" property="starttime" />
+		<result column="FinishTime" jdbcType="TIMESTAMP" property="finishtime" />
+		<result column="IsFinish" jdbcType="BIT" property="isfinish" />
+		<result column="IsProblem" jdbcType="BIT" property="isproblem" />
+		<result column="IsCancel" jdbcType="BIT" property="iscancel" />
+	</resultMap>
+
+
+
+
+
+	<resultMap type="com.logistics.vo.OrderformVo" id="OrderformVo"
+		extends="BaseResultMap">
+		<result column="username" jdbcType="VARCHAR" property="username" />
+		<result column="transportmodename" jdbcType="VARCHAR" property="transportmodename" />
+		<result column="paymentname" jdbcType="VARCHAR" property="paymentname" />
+		<result column="statusname" jdbcType="VARCHAR" property="statusname" />
+		<result column="reason" jdbcType="VARCHAR" property="reason" />
+		<result column="isReceivables" jdbcType="BIT" property="isReceivables" />
+		<result column="phoneNumber" jdbcType="VARCHAR" property="phoneNumber" />
+		<result column="isSolve" jdbcType="BIT" property="isSolve" />
+		<result column="orderProblemID" jdbcType="INTEGER" property="orderProblemID" />
+		<result column="userid" jdbcType="INTEGER" property="userid" />
+		<result column="total" jdbcType="INTEGER" property="total" />
+		<result column="finish" jdbcType="INTEGER" property="finish" />
+		<result column="nofinish" jdbcType="INTEGER" property="nofinish" />
+		<result column="alreadyPay" jdbcType="INTEGER" property="alreadyPay" />
+		<result column="unpaid" jdbcType="INTEGER" property="unpaid" />
+		<result column="shangChuangTime" jdbcType="TIMESTAMP" property="shangChuangTime" />
+		<result column="dailyQuantity" jdbcType="INTEGER" property="dailyQuantity" />
+		<result column="customname" jdbcType="VARCHAR" property="customname" />
+
+	</resultMap>
+
+
+	<sql id="orderSql">
+		<if test="audit!=null and audit!='' ">
+			and b_orderform.IsAuditing=#{audit}
+		</if>
+		<if test="problem!=null and problem!='' ">
+			and b_orderform.IsProblem=#{problem}
+		</if>
+		<if test="finish!=null ">
+			and b_orderform.IsFinish=#{finish}
+		</if>
+
+		<if test="startTime!=null and startTime!=''">
+		 <![CDATA[and b_orderform.UploadTime >= CONCAT(#{startTime},' 00:00:00') ]]>
+		</if>
+		<if test="endTime!=null and endTime!=''">
+		 <![CDATA[	and b_orderform.UploadTime <= CONCAT(#{endTime},' 23:59:59')]]>
+		</if>
+		<if test="IsIndeedUpload !=null and IsIndeedUpload!=''">
+			and b_orderform.IsIndeedUpload=#{IsIndeedUpload}
+		</if>
+		<if test="vague!=null and vague!=''">
+			and (b_orderform.OrderNumber like concat
+			('%',#{vague},'%') or b_orderform.TakeAdress like concat
+			('%',#{vague},'%') or b_orderform.SendAdress like concat
+			('%',#{vague},'%')or b_orderform.TakePhoneNumber like concat
+			('%',#{vague},'%')or b_orderform.SendPhoneNumber like concat
+			('%',#{vague},'%')or b_orderform.TakeName like concat
+			('%',#{vague},'%')or
+			b_orderform.SendName like concat
+			('%',#{vague},'%') or
+			b_user.UserName like concat
+			('%',#{vague},'%'))
+		</if>
+		<if test="customid!=null and customid!=''">
+			and b_orderform.CustomID=#{customid}
+
+		</if>
+
+		<if test="iscancel!=null and iscancel!=''">
+			and b_orderform.IsCancel=#{iscancel}
+		</if>
+		<if test="userid!=null and userid!=''">
+			and b_teammembers.UserID=#{userid}
+		</if>
+		<if test="statusid!=null and statusid!=''">
+			and b_orderform.StatusID=#{statusid}
+		</if>
+		<if test="isfinish!=null  ">
+			and b_orderform.IsFinish=#{isfinish}
+		</if>
+		<if test="StatusID!=null and StatusID!=''">
+			and b_orderform.StatusID!=#{StatusID}
+		</if>
+		<if test="Reverse!=null and Reverse!=''">
+			ORDER BY b_orderform.OrderFormID DESC
+		</if>
+		<if test=" orderformid!=null and orderformid!=''">
+			and b_orderform.OrderFormID=#{orderformid}
+		</if>
+	</sql>
+
+
+
+	<select id="findPageOrder" resultMap="OrderformVo">
+		SELECT CASE WHEN
+		b_user.UserName
+		IS NULL THEN '等待委派司机中' ELSE
+		b_user.UserName
+		END AS
+		UserName ,
+		b_orderform.* ,
+		b_user.PhoneNumber
+		,b_orderproblem.*,b_custom.CustomName
+		,b_motorcade.MotorcadeName,s_status.StatusName,s_payment.PaymentName,s_transportmode.TransportModeName
+		FROM b_orderform LEFT JOIN b_procuratory ON b_orderform.OrderFormID
+		=b_procuratory.OrderFormID LEFT JOIN b_teammembers ON
+		b_teammembers.TeamMembersID=b_procuratory.TeamMembersID LEFT JOIN
+		b_user ON b_teammembers.UserID=b_user.UserID LEFT JOIN
+		b_orderproblem
+		ON b_orderform.OrderFormID=b_orderproblem.OrderFormID
+		LEFT JOIN
+		b_custom ON b_orderform.CustomID=b_custom.CustomID LEFT JOIN
+		b_motorcade ON b_teammembers.MotorcadeID=b_motorcade.MotorcadeID LEFT
+		JOIN s_status ON
+		b_orderform.StatusID=s_status.StatusID LEFT JOIN
+		s_payment ON b_orderform.PaymentID=s_payment.PaymentID LEFT
+		JOIN
+		s_transportmode ON
+		b_orderform.TransportModeID=s_transportmode.TransportModeID
+		where 1=1
+		<include refid="orderSql" />
+		LIMIT #{startIndex},#{pageSize}
+	</select>
+
+	<select id="findOrderBySql" resultMap="OrderformVo">
+		SELECT (SELECT COUNT(
+		b_orderform.OrderFormID) FROM b_orderform where
+		1=1
+		<include refid="orderSql" />
+		) AS total , (SELECT COUNT(
+		b_orderform.OrderFormID) FROM b_orderform
+		WHERE 1=1
+		<include refid="orderSql" />
+		and
+		b_orderform.IsFinish=1 ) AS finish , (SELECT
+		COUNT(b_orderform.OrderFormID) FROM b_orderform
+		WHERE 1=1
+		<include refid="orderSql" />
+		and
+		b_orderform.IsFinish=0)AS nofinish,(SELECT
+		COUNT(b_orderform.OrderFormID) FROM b_orderform RIGHT
+		JOIN
+		b_receivables ON b_orderform.OrderFormID=b_receivables.OrderFormID
+		where 1=1
+		<include refid="orderSql" />
+		)
+		AS alreadyPay , (SELECT Total-AlreadyPay)AS unpaid ,(select
+		COUNT(b_orderform.OrderFormID) FROM b_orderform where 1=1
+		<include refid="orderSql" />
+		and IsCancel=1) as Cancel
+
+	</select>
+	<select id="findTimeAndCount" resultMap="OrderformVo">
+		SELECT COUNT(*) AS dailyQuantity,DATE(UploadTime) AS shangChuangTime
+		FROM b_orderform where 1=1
+		<include refid="orderSql" />
+		GROUP BY DATE(UploadTime)
+
+
+	</select>
+
+	<select id="getTotalRowOrder" resultType="java.lang.Integer">
+		SELECT count(b_orderform.OrderFormID)
+		FROM b_orderform LEFT JOIN
+		b_procuratory ON b_orderform.OrderFormID
+		=b_procuratory.OrderFormID
+		LEFT JOIN b_teammembers ON
+		b_teammembers.TeamMembersID=b_procuratory.TeamMembersID LEFT JOIN
+		b_user ON b_teammembers.UserID=b_user.UserID LEFT JOIN
+		b_orderproblem
+		ON b_orderform.OrderFormID=b_orderproblem.OrderFormID
+		LEFT JOIN
+		b_custom ON b_orderform.CustomID=b_custom.CustomID LEFT JOIN
+		b_motorcade ON b_teammembers.MotorcadeID=b_motorcade.MotorcadeID LEFT
+		JOIN s_status ON
+		b_orderform.StatusID=s_status.StatusID LEFT JOIN
+		s_payment ON b_orderform.PaymentID=s_payment.PaymentID LEFT
+		JOIN
+		s_transportmode ON
+		b_orderform.TransportModeID=s_transportmode.TransportModeID
+		where 1=1
+		<include refid="orderSql" />
+
+	</select>
+
+	<select id="findByOrderformID" resultMap="OrderformVo">
+		SELECT
+		b_orderform.*,b_teammembers.UserID FROM b_orderform INNER JOIN
+		b_procuratory ON b_orderform.OrderFormID=b_procuratory.OrderFormID
+		INNER JOIN b_teammembers ON
+		b_procuratory.TeamMembersID=b_teammembers.TeamMembersID WHERE
+		1=1
+		<include refid="orderSql" />
+	</select>
+
+	<select id="findOrderformBySQL" resultMap="BaseResultMap">
+		SELECT
+		b_orderform.*,b_teammembers.UserID FROM b_orderform INNER JOIN
+		b_procuratory ON b_orderform.OrderFormID=b_procuratory.OrderFormID
+		INNER JOIN b_teammembers ON
+		b_procuratory.TeamMembersID=b_teammembers.TeamMembersID WHERE
+		1=1
+		<include refid="orderSql" />
+
+	</select>
+
+	<select id="selectOrderNumber" resultMap="BaseResultMap">
+		SELECT b_orderform.*
+		FROM b_orderform
+		ORDER BY b_orderform.OrderFormID DESC
+	</select>
+
+
+	<select id="findPage" resultMap="OrderformVo">
+		SELECT
+		b_user.UserName,b_orderform.*,s_payment.PaymentName,s_transportmode.TransportModeName
+		,s_status.StatusName FROM b_orderform LEFT JOIN
+		b_procuratory ON
+		b_orderform.OrderFormID=b_procuratory.OrderFormID
+		LEFT JOIN
+		b_teammembers ON
+		b_procuratory.TeamMembersID=b_teammembers.TeamMembersID LEFT JOIN
+		b_user ON b_teammembers.UserID=b_user.UserID LEFT JOIN s_payment ON
+		b_orderform.PaymentID=s_payment.PaymentID LEFT JOIN s_transportmode ON
+		b_orderform.TransportModeID=s_transportmode.TransportModeID LEFT JOIN
+		s_status ON b_orderform.StatusID=s_status.StatusID where 1=1
+		<include refid="orderSql" />
+		LIMIT #{startIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</select>
+	<select id="getTotalRow" resultType="java.lang.Integer">
+		SELECT COUNT( b_orderform.OrderFormID) FROM
+		b_orderform LEFT JOIN
+		b_procuratory ON
+		b_orderform.OrderFormID=b_procuratory.OrderFormID
+		LEFT
+		JOIN
+		b_teammembers ON
+		b_procuratory.TeamMembersID=b_teammembers.TeamMembersID LEFT JOIN
+		b_user ON b_teammembers.UserID=b_user.UserID WHERE 1=1
+		<include refid="orderSql" />
+
+
+
+	</select>
+
+	<select id="findOrderVo" resultMap="OrderformVo">
+		SELECT
+		b_user.PhoneNumber,b_car.PlateNumber,b_custom.CustomName,b_custom.CustomPhoneNumber,
+		b_user.UserName,b_orderform.*,s_payment.PaymentName,s_transportmode.TransportModeName
+		,s_status.StatusName FROM b_orderform LEFT JOIN
+		b_procuratory ON
+		b_orderform.OrderFormID=b_procuratory.OrderFormID
+		LEFT JOIN
+		b_teammembers ON
+		b_procuratory.TeamMembersID=b_teammembers.TeamMembersID LEFT JOIN
+		b_user ON b_teammembers.UserID=b_user.UserID LEFT JOIN s_payment ON
+		b_orderform.PaymentID=s_payment.PaymentID LEFT JOIN s_transportmode ON
+		b_orderform.TransportModeID=s_transportmode.TransportModeID LEFT JOIN
+		s_status ON b_orderform.StatusID=s_status.StatusID LEFT JOIN
+		b_car ON
+		b_user.UserID=b_car.UserID LEFT JOIN b_custom ON
+		b_orderform.CustomID=b_custom.CustomID WHERE 1=1
+		<include refid="orderSql" />
+	</select>
+
+
+
+
+	<sql id="Base_Column_List">
+		OrderFormID, CustomID, TransportModeID, BillingMethodID,
+		PaymentID, OrderNumber,
+		SendName, SendAdress, SendPhoneNumber,
+		TakeName, TakeAdress,
+		TakePhoneNumber, UploadTime,
+		IsIndeedUpload,
+		IsAuditing, AuditTime, TransportCost, BargainMoney, DeliveryTime,
+		ReceiptTime, Remark, StatusID, SingleTime, StartTime, FinishTime,
+		IsFinish, IsProblem,
+		IsCancel
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_orderform
+		where OrderFormID = #{orderformid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		b_orderform
+		where OrderFormID = #{orderformid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insertReturnID" parameterType="com.logistics.po.Orderform"
+		keyProperty="orderformid" useGeneratedKeys="true">
+
+
+		insert into
+		b_orderform
+		(OrderFormID, CustomID, TransportModeID,
+		BillingMethodID,
+		PaymentID,
+		OrderNumber,
+		SendName, SendAdress,
+		SendPhoneNumber,
+		TakeName,
+		TakeAdress,
+		TakePhoneNumber,
+		UploadTime,
+		IsIndeedUpload, IsAuditing,
+		AuditTime,
+		TransportCost, BargainMoney,
+		DeliveryTime, ReceiptTime,
+		Remark,
+		StatusID, SingleTime, StartTime,
+		FinishTime, IsFinish, IsProblem
+		)
+		values
+		(#{orderformid,jdbcType=INTEGER},
+		#{customid,jdbcType=INTEGER},
+		#{transportmodeid,jdbcType=INTEGER},
+		#{billingmethodid,jdbcType=INTEGER}, #{paymentid,jdbcType=INTEGER},
+		#{ordernumber,jdbcType=VARCHAR},
+		#{sendname,jdbcType=VARCHAR},
+		#{sendadress,jdbcType=VARCHAR}, #{sendphonenumber,jdbcType=VARCHAR},
+		#{takename,jdbcType=VARCHAR}, #{takeadress,jdbcType=VARCHAR},
+		#{takephonenumber,jdbcType=VARCHAR},
+		#{uploadtime,jdbcType=TIMESTAMP},
+		#{isindeedupload,jdbcType=BIT}, #{isauditing,jdbcType=BIT},
+		#{audittime,jdbcType=TIMESTAMP}, #{transportcost,jdbcType=REAL},
+		#{bargainmoney,jdbcType=REAL},
+		#{deliverytime,jdbcType=TIMESTAMP},
+		#{receipttime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR},
+		#{statusid,jdbcType=INTEGER}, #{singletime,jdbcType=TIMESTAMP},
+		#{starttime,jdbcType=TIMESTAMP},
+		#{finishtime,jdbcType=TIMESTAMP},
+		#{isfinish,jdbcType=BIT}, #{isproblem,jdbcType=BIT}
+		)
+
+
+	</insert>
+
+
+	<insert id="insert" parameterType="com.logistics.po.Orderform">
+		insert into b_orderform
+		(OrderFormID, CustomID, TransportModeID,
+		BillingMethodID, PaymentID,
+		OrderNumber,
+		SendName, SendAdress, SendPhoneNumber,
+		TakeName,
+		TakeAdress, TakePhoneNumber,
+		UploadTime, IsIndeedUpload, IsAuditing,
+		AuditTime, TransportCost, BargainMoney,
+		DeliveryTime, ReceiptTime,
+		Remark,
+		StatusID, SingleTime, StartTime,
+		FinishTime, IsFinish,
+		IsProblem,
+		IsCancel)
+		values (#{orderformid,jdbcType=INTEGER},
+		#{customid,jdbcType=INTEGER},
+		#{transportmodeid,jdbcType=INTEGER},
+		#{billingmethodid,jdbcType=INTEGER}, #{paymentid,jdbcType=INTEGER},
+		#{ordernumber,jdbcType=VARCHAR},
+		#{sendname,jdbcType=VARCHAR},
+		#{sendadress,jdbcType=VARCHAR}, #{sendphonenumber,jdbcType=VARCHAR},
+		#{takename,jdbcType=VARCHAR}, #{takeadress,jdbcType=VARCHAR},
+		#{takephonenumber,jdbcType=VARCHAR},
+		#{uploadtime,jdbcType=TIMESTAMP},
+		#{isindeedupload,jdbcType=BIT}, #{isauditing,jdbcType=BIT},
+		#{audittime,jdbcType=TIMESTAMP}, #{transportcost,jdbcType=REAL},
+		#{bargainmoney,jdbcType=REAL},
+		#{deliverytime,jdbcType=TIMESTAMP},
+		#{receipttime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR},
+		#{statusid,jdbcType=INTEGER}, #{singletime,jdbcType=TIMESTAMP},
+		#{starttime,jdbcType=TIMESTAMP},
+		#{finishtime,jdbcType=TIMESTAMP},
+		#{isfinish,jdbcType=BIT}, #{isproblem,jdbcType=BIT},
+		#{iscancel,jdbcType=BIT})
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Orderform">
+		insert into b_orderform
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="orderformid != null">
+				OrderFormID,
+			</if>
+			<if test="customid != null">
+				CustomID,
+			</if>
+			<if test="transportmodeid != null">
+				TransportModeID,
+			</if>
+			<if test="billingmethodid != null">
+				BillingMethodID,
+			</if>
+			<if test="paymentid != null">
+				PaymentID,
+			</if>
+			<if test="ordernumber != null">
+				OrderNumber,
+			</if>
+			<if test="sendname != null">
+				SendName,
+			</if>
+			<if test="sendadress != null">
+				SendAdress,
+			</if>
+			<if test="sendphonenumber != null">
+				SendPhoneNumber,
+			</if>
+			<if test="takename != null">
+				TakeName,
+			</if>
+			<if test="takeadress != null">
+				TakeAdress,
+			</if>
+			<if test="takephonenumber != null">
+				TakePhoneNumber,
+			</if>
+			<if test="uploadtime != null">
+				UploadTime,
+			</if>
+			<if test="isindeedupload != null">
+				IsIndeedUpload,
+			</if>
+			<if test="isauditing != null">
+				IsAuditing,
+			</if>
+			<if test="audittime != null">
+				AuditTime,
+			</if>
+			<if test="transportcost != null">
+				TransportCost,
+			</if>
+			<if test="bargainmoney != null">
+				BargainMoney,
+			</if>
+			<if test="deliverytime != null">
+				DeliveryTime,
+			</if>
+			<if test="receipttime != null">
+				ReceiptTime,
+			</if>
+			<if test="remark != null">
+				Remark,
+			</if>
+			<if test="statusid != null">
+				StatusID,
+			</if>
+			<if test="singletime != null">
+				SingleTime,
+			</if>
+			<if test="starttime != null">
+				StartTime,
+			</if>
+			<if test="finishtime != null">
+				FinishTime,
+			</if>
+			<if test="isfinish != null">
+				IsFinish,
+			</if>
+			<if test="isproblem != null">
+				IsProblem,
+			</if>
+			<if test="iscancel != null">
+				IsCancel,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="orderformid != null">
+				#{orderformid,jdbcType=INTEGER},
+			</if>
+			<if test="customid != null">
+				#{customid,jdbcType=INTEGER},
+			</if>
+			<if test="transportmodeid != null">
+				#{transportmodeid,jdbcType=INTEGER},
+			</if>
+			<if test="billingmethodid != null">
+				#{billingmethodid,jdbcType=INTEGER},
+			</if>
+			<if test="paymentid != null">
+				#{paymentid,jdbcType=INTEGER},
+			</if>
+			<if test="ordernumber != null">
+				#{ordernumber,jdbcType=VARCHAR},
+			</if>
+			<if test="sendname != null">
+				#{sendname,jdbcType=VARCHAR},
+			</if>
+			<if test="sendadress != null">
+				#{sendadress,jdbcType=VARCHAR},
+			</if>
+			<if test="sendphonenumber != null">
+				#{sendphonenumber,jdbcType=VARCHAR},
+			</if>
+			<if test="takename != null">
+				#{takename,jdbcType=VARCHAR},
+			</if>
+			<if test="takeadress != null">
+				#{takeadress,jdbcType=VARCHAR},
+			</if>
+			<if test="takephonenumber != null">
+				#{takephonenumber,jdbcType=VARCHAR},
+			</if>
+			<if test="uploadtime != null">
+				#{uploadtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isindeedupload != null">
+				#{isindeedupload,jdbcType=BIT},
+			</if>
+			<if test="isauditing != null">
+				#{isauditing,jdbcType=BIT},
+			</if>
+			<if test="audittime != null">
+				#{audittime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="transportcost != null">
+				#{transportcost,jdbcType=REAL},
+			</if>
+			<if test="bargainmoney != null">
+				#{bargainmoney,jdbcType=REAL},
+			</if>
+			<if test="deliverytime != null">
+				#{deliverytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="receipttime != null">
+				#{receipttime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="statusid != null">
+				#{statusid,jdbcType=INTEGER},
+			</if>
+			<if test="singletime != null">
+				#{singletime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="starttime != null">
+				#{starttime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="finishtime != null">
+				#{finishtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isfinish != null">
+				#{isfinish,jdbcType=BIT},
+			</if>
+			<if test="isproblem != null">
+				#{isproblem,jdbcType=BIT},
+			</if>
+			<if test="iscancel != null">
+				#{iscancel,jdbcType=BIT},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Orderform">
+		update b_orderform
+		<set>
+			<if test="customid != null">
+				CustomID = #{customid,jdbcType=INTEGER},
+			</if>
+			<if test="transportmodeid != null">
+				TransportModeID = #{transportmodeid,jdbcType=INTEGER},
+			</if>
+			<if test="billingmethodid != null">
+				BillingMethodID = #{billingmethodid,jdbcType=INTEGER},
+			</if>
+			<if test="paymentid != null">
+				PaymentID = #{paymentid,jdbcType=INTEGER},
+			</if>
+			<if test="ordernumber != null">
+				OrderNumber = #{ordernumber,jdbcType=VARCHAR},
+			</if>
+			<if test="sendname != null">
+				SendName = #{sendname,jdbcType=VARCHAR},
+			</if>
+			<if test="sendadress != null">
+				SendAdress = #{sendadress,jdbcType=VARCHAR},
+			</if>
+			<if test="sendphonenumber != null">
+				SendPhoneNumber = #{sendphonenumber,jdbcType=VARCHAR},
+			</if>
+			<if test="takename != null">
+				TakeName = #{takename,jdbcType=VARCHAR},
+			</if>
+			<if test="takeadress != null">
+				TakeAdress = #{takeadress,jdbcType=VARCHAR},
+			</if>
+			<if test="takephonenumber != null">
+				TakePhoneNumber = #{takephonenumber,jdbcType=VARCHAR},
+			</if>
+			<if test="uploadtime != null">
+				UploadTime = #{uploadtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isindeedupload != null">
+				IsIndeedUpload = #{isindeedupload,jdbcType=BIT},
+			</if>
+			<if test="isauditing != null">
+				IsAuditing = #{isauditing,jdbcType=BIT},
+			</if>
+			<if test="audittime != null">
+				AuditTime = #{audittime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="transportcost != null">
+				TransportCost = #{transportcost,jdbcType=REAL},
+			</if>
+			<if test="bargainmoney != null">
+				BargainMoney = #{bargainmoney,jdbcType=REAL},
+			</if>
+			<if test="deliverytime != null">
+				DeliveryTime = #{deliverytime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="receipttime != null">
+				ReceiptTime = #{receipttime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remark != null">
+				Remark = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="statusid != null">
+				StatusID = #{statusid,jdbcType=INTEGER},
+			</if>
+			<if test="singletime != null">
+				SingleTime = #{singletime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="starttime != null">
+				StartTime = #{starttime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="finishtime != null">
+				FinishTime = #{finishtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isfinish != null">
+				IsFinish = #{isfinish,jdbcType=BIT},
+			</if>
+			<if test="isproblem != null">
+				IsProblem = #{isproblem,jdbcType=BIT},
+			</if>
+			<if test="iscancel != null">
+				IsCancel = #{iscancel,jdbcType=BIT},
+			</if>
+		</set>
+		where OrderFormID = #{orderformid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Orderform">
+		update b_orderform
+		set CustomID = #{customid,jdbcType=INTEGER},
+		TransportModeID =
+		#{transportmodeid,jdbcType=INTEGER},
+		BillingMethodID =
+		#{billingmethodid,jdbcType=INTEGER},
+		PaymentID =
+		#{paymentid,jdbcType=INTEGER},
+		OrderNumber =
+		#{ordernumber,jdbcType=VARCHAR},
+		SendName =
+		#{sendname,jdbcType=VARCHAR},
+		SendAdress =
+		#{sendadress,jdbcType=VARCHAR},
+		SendPhoneNumber =
+		#{sendphonenumber,jdbcType=VARCHAR},
+		TakeName =
+		#{takename,jdbcType=VARCHAR},
+		TakeAdress =
+		#{takeadress,jdbcType=VARCHAR},
+		TakePhoneNumber =
+		#{takephonenumber,jdbcType=VARCHAR},
+		UploadTime =
+		#{uploadtime,jdbcType=TIMESTAMP},
+		IsIndeedUpload =
+		#{isindeedupload,jdbcType=BIT},
+		IsAuditing =
+		#{isauditing,jdbcType=BIT},
+		AuditTime =
+		#{audittime,jdbcType=TIMESTAMP},
+		TransportCost =
+		#{transportcost,jdbcType=REAL},
+		BargainMoney =
+		#{bargainmoney,jdbcType=REAL},
+		DeliveryTime =
+		#{deliverytime,jdbcType=TIMESTAMP},
+		ReceiptTime =
+		#{receipttime,jdbcType=TIMESTAMP},
+		Remark = #{remark,jdbcType=VARCHAR},
+		StatusID = #{statusid,jdbcType=INTEGER},
+		SingleTime =
+		#{singletime,jdbcType=TIMESTAMP},
+		StartTime =
+		#{starttime,jdbcType=TIMESTAMP},
+		FinishTime =
+		#{finishtime,jdbcType=TIMESTAMP},
+		IsFinish = #{isfinish,jdbcType=BIT},
+		IsProblem = #{isproblem,jdbcType=BIT},
+		IsCancel =
+		#{iscancel,jdbcType=BIT}
+		where OrderFormID =
+		#{orderformid,jdbcType=INTEGER}
+	</update>
+</mapper>

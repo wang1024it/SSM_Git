@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.PaymentMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Payment">
+		<id column="PaymentID" jdbcType="INTEGER" property="paymentid" />
+		<result column="PaymentName" jdbcType="VARCHAR" property="paymentname" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		PaymentID, PaymentName
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from s_payment
+		where PaymentID = #{paymentid,jdbcType=INTEGER}
+	</select>
+
+	<select id="findAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from s_payment
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		s_payment
+		where PaymentID = #{paymentid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Payment">
+		insert into s_payment
+		(PaymentID, PaymentName)
+		values (#{paymentid,jdbcType=INTEGER},
+		#{paymentname,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Payment">
+		insert into s_payment
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="paymentid != null">
+				PaymentID,
+			</if>
+			<if test="paymentname != null">
+				PaymentName,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="paymentid != null">
+				#{paymentid,jdbcType=INTEGER},
+			</if>
+			<if test="paymentname != null">
+				#{paymentname,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Payment">
+		update s_payment
+		<set>
+			<if test="paymentname != null">
+				PaymentName = #{paymentname,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where PaymentID = #{paymentid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Payment">
+		update s_payment
+		set PaymentName = #{paymentname,jdbcType=VARCHAR}
+		where PaymentID =
+		#{paymentid,jdbcType=INTEGER}
+	</update>
+</mapper>

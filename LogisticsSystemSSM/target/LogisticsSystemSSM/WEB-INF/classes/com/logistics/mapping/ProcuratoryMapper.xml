@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.ProcuratoryMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Procuratory">
+		<id column="ProcuratoryID" jdbcType="INTEGER" property="procuratoryid" />
+		<result column="TeamMembersID" jdbcType="INTEGER" property="teammembersid" />
+		<result column="OrderFormID" jdbcType="INTEGER" property="orderformid" />
+	</resultMap>
+	<resultMap type="com.logistics.vo.ProcuratoryVo" id="ProcuratoryVo"
+		extends="BaseResultMap">
+		<result column="ordernumber" jdbcType="VARCHAR" property="ordernumber" />
+		<result column="sendadress" jdbcType="VARCHAR" property="sendadress" />
+		<result column="takeadress" jdbcType="VARCHAR" property="takeadress" />
+		<result column="remark" jdbcType="VARCHAR" property="remark" />
+		<result column="customname" jdbcType="VARCHAR" property="customname" />
+		<result column="userid" jdbcType="INTEGER" property="userid" />
+		<result column="orderformid" jdbcType="INTEGER" property="orderformid" />
+		<result column="motorcadeid" jdbcType="INTEGER" property="motorcadeid" />
+		<result column="motorcadename" jdbcType="VARCHAR" property="motorcadename" />
+		<result column="username" jdbcType="VARCHAR" property="username" />
+
+	</resultMap>
+	<sql id="proSql">
+
+		<if test="statusid!=null and statusid!=''">
+			and b_orderform.StatusID=#{statusid}
+		</if>
+		<if test="userid != null and userid != ''">
+			and b_teammembers.userid=#{userid}
+		</if>
+		<if test="isfinish!=null and isfinish!=''">
+			and b_orderform.IsFinish=#{isfinish}
+		</if>
+
+	</sql>
+
+	<select id="findPage" resultMap="ProcuratoryVo">
+		SELECT
+		b_procuratory.*,b_orderform.*,b_custom.CustomName,b_teammembers.* FROM
+		b_procuratory LEFT JOIN b_orderform ON
+		b_procuratory.OrderFormID=b_orderform.OrderFormID LEFT JOIN b_custom
+		ON b_orderform.CustomID=b_custom.CustomID LEFT JOIN b_teammembers ON
+		b_procuratory.TeamMembersID=b_teammembers.TeamMembersID
+		where 1=1
+		<include refid="proSql" />
+		LIMIT #{startIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER};
+
+	</select>
+
+
+	<select id="findByOrderformID" resultMap="ProcuratoryVo">
+
+		SELECT
+		b_procuratory.*,b_motorcade.*,b_user.UserName FROM b_procuratory LEFT
+		JOIN b_teammembers ON b_procuratory.TeamMembersID=
+		b_teammembers.TeamMembersID LEFT JOIN b_motorcade ON
+		b_teammembers.MotorcadeID=b_motorcade.MotorcadeID LEFT JOIN b_user ON
+		b_teammembers.UserID=b_user.UserID WHERE
+		b_procuratory.OrderFormID=#{OrderformID}
+
+	</select>
+
+	<select id="getTotalRow" resultType="java.lang.Integer">
+		SELECT
+		COUNT( b_procuratory.ProcuratoryID) FROM
+		b_procuratory LEFT JOIN
+		b_orderform ON
+		b_procuratory.OrderFormID=b_orderform.OrderFormID LEFT
+		JOIN b_custom
+		ON b_orderform.CustomID=b_custom.CustomID LEFT JOIN
+		b_teammembers ON
+		b_procuratory.TeamMembersID=b_teammembers.TeamMembersID
+		where 1=1
+		<include refid="proSql" />
+	</select>
+
+
+	<sql id="Base_Column_List">
+		ProcuratoryID, TeamMembersID, OrderFormID
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_procuratory
+		where ProcuratoryID =
+		#{procuratoryid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		b_procuratory
+		where ProcuratoryID = #{procuratoryid,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteByOrderformID" parameterType="java.lang.Integer"> delete from
+		b_procuratory
+		where OrderFormID = #{OrderformID,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert" parameterType="com.logistics.po.Procuratory">
+		insert into b_procuratory
+		(ProcuratoryID, TeamMembersID, OrderFormID
+		)
+		values
+		(#{procuratoryid,jdbcType=INTEGER},
+		#{teammembersid,jdbcType=INTEGER},
+		#{orderformid,jdbcType=INTEGER}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Procuratory">
+		insert into b_procuratory
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="procuratoryid != null">
+				ProcuratoryID,
+			</if>
+			<if test="teammembersid != null">
+				TeamMembersID,
+			</if>
+			<if test="orderformid != null">
+				OrderFormID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="procuratoryid != null">
+				#{procuratoryid,jdbcType=INTEGER},
+			</if>
+			<if test="teammembersid != null">
+				#{teammembersid,jdbcType=INTEGER},
+			</if>
+			<if test="orderformid != null">
+				#{orderformid,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Procuratory">
+		update b_procuratory
+		<set>
+			<if test="teammembersid != null">
+				TeamMembersID = #{teammembersid,jdbcType=INTEGER},
+			</if>
+			<if test="orderformid != null">
+				OrderFormID = #{orderformid,jdbcType=INTEGER},
+			</if>
+		</set>
+		where ProcuratoryID = #{procuratoryid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Procuratory">
+		update
+		b_procuratory
+		set TeamMembersID = #{teammembersid,jdbcType=INTEGER},
+		OrderFormID = #{orderformid,jdbcType=INTEGER}
+		where ProcuratoryID =
+		#{procuratoryid,jdbcType=INTEGER}
+	</update>
+</mapper>

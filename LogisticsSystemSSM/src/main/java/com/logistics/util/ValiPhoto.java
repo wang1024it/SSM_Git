@@ -5,7 +5,7 @@ import java.util.HashMap;
 import org.json.JSONObject;
 
 import com.baidu.aip.ocr.AipOcr;
-import com.lj.util.RecognitionCharacters.HttpUtil;
+import com.logistics.util.RecognitionCharacters.HttpUtil;
 
 public class ValiPhoto {
 	// 设置APPID/AK/SK：百度云自己的帐号信息

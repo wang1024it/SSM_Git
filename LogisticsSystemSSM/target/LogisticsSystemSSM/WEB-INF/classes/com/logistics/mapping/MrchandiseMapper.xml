@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logistics.dao.MrchandiseMapper">
+	<resultMap id="BaseResultMap" type="com.logistics.po.Mrchandise">
+		<id column="MrchandiseID" jdbcType="INTEGER" property="mrchandiseid" />
+		<result column="MrchandiseTypeID" jdbcType="INTEGER" property="mrchandisetypeid" />
+		<result column="MrchandiseName" jdbcType="VARCHAR" property="mrchandisename" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		MrchandiseID, MrchandiseTypeID, MrchandiseName
+	</sql>
+
+
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from b_mrchandise
+		where MrchandiseID = #{mrchandiseid,jdbcType=INTEGER}
+	</select>
+
+	<insert id="insertReturnID" parameterType="com.logistics.po.Mrchandise"
+		keyProperty="mrchandiseid" useGeneratedKeys="true">
+
+		insert into b_mrchandise
+		(MrchandiseID, MrchandiseTypeID, MrchandiseName
+		)
+		values
+		(#{mrchandiseid,jdbcType=INTEGER},
+		#{mrchandisetypeid,jdbcType=INTEGER},
+		#{mrchandisename,jdbcType=VARCHAR}
+		)
+
+	</insert>
+
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		b_mrchandise
+		where MrchandiseID = #{mrchandiseid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.logistics.po.Mrchandise">
+		insert into b_mrchandise
+		(MrchandiseID, MrchandiseTypeID, MrchandiseName
+		)
+		values
+		(#{mrchandiseid,jdbcType=INTEGER},
+		#{mrchandisetypeid,jdbcType=INTEGER},
+		#{mrchandisename,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.logistics.po.Mrchandise">
+		insert into b_mrchandise
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mrchandiseid != null">
+				MrchandiseID,
+			</if>
+			<if test="mrchandisetypeid != null">
+				MrchandiseTypeID,
+			</if>
+			<if test="mrchandisename != null">
+				MrchandiseName,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="mrchandiseid != null">
+				#{mrchandiseid,jdbcType=INTEGER},
+			</if>
+			<if test="mrchandisetypeid != null">
+				#{mrchandisetypeid,jdbcType=INTEGER},
+			</if>
+			<if test="mrchandisename != null">
+				#{mrchandisename,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.logistics.po.Mrchandise">
+		update b_mrchandise
+		<set>
+			<if test="mrchandisetypeid != null">
+				MrchandiseTypeID = #{mrchandisetypeid,jdbcType=INTEGER},
+			</if>
+			<if test="mrchandisename != null">
+				MrchandiseName = #{mrchandisename,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where MrchandiseID = #{mrchandiseid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.logistics.po.Mrchandise">
+		update
+		b_mrchandise
+		set MrchandiseTypeID =
+		#{mrchandisetypeid,jdbcType=INTEGER},
+		MrchandiseName =
+		#{mrchandisename,jdbcType=VARCHAR}
+		where MrchandiseID =
+		#{mrchandiseid,jdbcType=INTEGER}
+	</update>
+</mapper>
